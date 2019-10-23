@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ChatWebsiteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ChatRoom">
+          <Key>
+            <PropertyRef Name="RoomID" />
+          </Key>
+          <Property Name="RoomID" Type="int" Nullable="false" />
+          <Property Name="RoomName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Room_Users">
+          <Key>
+            <PropertyRef Name="RoomID" />
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="RoomID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Socket" Type="char" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password_" Type="char" MaxLength="16" Nullable="false" />
+          <Property Name="Avatar" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK__Room_User__RoomI__06CD04F7">
+          <End Role="ChatRoom" Type="Self.ChatRoom" Multiplicity="1" />
+          <End Role="Room_Users" Type="Self.Room_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChatRoom">
+              <PropertyRef Name="RoomID" />
+            </Principal>
+            <Dependent Role="Room_Users">
+              <PropertyRef Name="RoomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Room_User__UserI__07C12930">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Room_Users" Type="Self.Room_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Room_Users">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Log_In" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="username" Type="nvarchar" Mode="In" />
+          <Parameter Name="password" Type="char" Mode="In" />
+        </Function>
+        <EntityContainer Name="ChatWebsiteModelStoreContainer">
+          <EntitySet Name="ChatRoom" EntityType="Self.ChatRoom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Room_Users" EntityType="Self.Room_Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Room_User__RoomI__06CD04F7" Association="Self.FK__Room_User__RoomI__06CD04F7">
+            <End Role="ChatRoom" EntitySet="ChatRoom" />
+            <End Role="Room_Users" EntitySet="Room_Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Room_User__UserI__07C12930" Association="Self.FK__Room_User__UserI__07C12930">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Room_Users" EntitySet="Room_Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ChatWebsiteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ChatRoom">
+          <Key>
+            <PropertyRef Name="RoomID" />
+          </Key>
+          <Property Name="RoomID" Type="Int32" Nullable="false" />
+          <Property Name="RoomName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Room_Users" Relationship="Self.FK__Room_User__RoomI__06CD04F7" FromRole="ChatRoom" ToRole="Room_Users" />
+        </EntityType>
+        <EntityType Name="Room_Users">
+          <Key>
+            <PropertyRef Name="RoomID" />
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="RoomID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Socket" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="ChatRoom" Relationship="Self.FK__Room_User__RoomI__06CD04F7" FromRole="Room_Users" ToRole="ChatRoom" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Room_User__UserI__07C12930" FromRole="Room_Users" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DisplayName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password_" Type="String" MaxLength="16" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Avatar" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Room_Users" Relationship="Self.FK__Room_User__UserI__07C12930" FromRole="Users" ToRole="Room_Users" />
+        </EntityType>
+        <Association Name="FK__Room_User__RoomI__06CD04F7">
+          <End Role="ChatRoom" Type="Self.ChatRoom" Multiplicity="1" />
+          <End Role="Room_Users" Type="Self.Room_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChatRoom">
+              <PropertyRef Name="RoomID" />
+            </Principal>
+            <Dependent Role="Room_Users">
+              <PropertyRef Name="RoomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Room_User__UserI__07C12930">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Room_Users" Type="Self.Room_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Room_Users">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ChatWebsiteEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ChatRooms" EntityType="Self.ChatRoom" />
+          <EntitySet Name="Room_Users" EntityType="Self.Room_Users" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK__Room_User__RoomI__06CD04F7" Association="Self.FK__Room_User__RoomI__06CD04F7">
+            <End Role="ChatRoom" EntitySet="ChatRooms" />
+            <End Role="Room_Users" EntitySet="Room_Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Room_User__UserI__07C12930" Association="Self.FK__Room_User__UserI__07C12930">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Room_Users" EntitySet="Room_Users" />
+          </AssociationSet>
+          <FunctionImport Name="Log_In" ReturnType="Collection(Int32)">
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Validate" ReturnType="Collection(Int32)">
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ChatWebsiteModelStoreContainer" CdmEntityContainer="ChatWebsiteEntities">
+          <EntitySetMapping Name="ChatRooms">
+            <EntityTypeMapping TypeName="ChatWebsiteModel.ChatRoom">
+              <MappingFragment StoreEntitySet="ChatRoom">
+                <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+                <ScalarProperty Name="RoomName" ColumnName="RoomName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Room_Users">
+            <EntityTypeMapping TypeName="ChatWebsiteModel.Room_Users">
+              <MappingFragment StoreEntitySet="Room_Users">
+                <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Socket" ColumnName="Socket" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="ChatWebsiteModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="Password_" ColumnName="Password_" />
+                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Log_In" FunctionName="ChatWebsiteModel.Store.Log_In" />
+          <FunctionImportMapping FunctionImportName="Validate" FunctionName="ChatWebsiteModel.Store.Log_In" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

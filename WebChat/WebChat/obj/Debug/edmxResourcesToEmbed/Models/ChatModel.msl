@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ChatWebsiteModelStoreContainer" CdmEntityContainer="ChatWebsiteEntities">
+    <EntitySetMapping Name="ChatRooms">
+      <EntityTypeMapping TypeName="ChatWebsiteModel.ChatRoom">
+        <MappingFragment StoreEntitySet="ChatRoom">
+          <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+          <ScalarProperty Name="RoomName" ColumnName="RoomName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Room_Users">
+      <EntityTypeMapping TypeName="ChatWebsiteModel.Room_Users">
+        <MappingFragment StoreEntitySet="Room_Users">
+          <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Socket" ColumnName="Socket" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="ChatWebsiteModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="Password_" ColumnName="Password_" />
+          <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Log_In" FunctionName="ChatWebsiteModel.Store.Log_In" />
+    <FunctionImportMapping FunctionImportName="Validate" FunctionName="ChatWebsiteModel.Store.Log_In" />
+  </EntityContainerMapping>
+</Mapping>
