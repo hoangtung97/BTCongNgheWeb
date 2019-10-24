@@ -1,6 +1,10 @@
-﻿
+﻿@model IEnumerable<WebChat.Models.CustomModel.CustomChatRoom>
+
 @{
     ViewBag.Title = "Main";
     Layout = "~/Views/Layout/_MainLayout.cshtml";
 }
 
+@Html.Partial("~/Views/Partial/_MainPartialPage1.cshtml", Model);
+
+																				
