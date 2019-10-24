@@ -173,6 +173,9 @@
     <Compile Include="Models\ChatRoom.cs">
       <DependentUpon>ChatModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Conversation.cs">
+      <DependentUpon>ChatModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CustomModel\CustomChatRoom.cs" />
     <Compile Include="Models\Room_Users.cs">
       <DependentUpon>ChatModel.tt</DependentUpon>

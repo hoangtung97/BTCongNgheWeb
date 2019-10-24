@@ -7,6 +7,7 @@
     <Property Name="RoomID" Type="Int32" Nullable="false" />
     <Property Name="RoomName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Room_Users" Relationship="Self.FK__Room_User__RoomI__06CD04F7" FromRole="ChatRoom" ToRole="Room_Users" />
+    <NavigationProperty Name="Conversations" Relationship="ChatWebsiteModel.FK__Conversat__RoomI__160F4887" FromRole="ChatRoom" ToRole="Conversation" />
   </EntityType>
   <EntityType Name="Room_Users">
     <Key>
@@ -74,5 +75,34 @@
       <Parameter Name="username" Mode="In" Type="String" />
       <Parameter Name="password" Mode="In" Type="String" />
     </FunctionImport>
+    <EntitySet Name="Conversations" EntityType="ChatWebsiteModel.Conversation" />
+    <AssociationSet Name="FK__Conversat__RoomI__160F4887" Association="ChatWebsiteModel.FK__Conversat__RoomI__160F4887">
+      <End Role="ChatRoom" EntitySet="ChatRooms" />
+      <End Role="Conversation" EntitySet="Conversations" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="Conversation">
+    <Key>
+      <PropertyRef Name="RoomID" />
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="C_Time" />
+    </Key>
+    <Property Name="RoomID" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="C_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Content" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ChatRoom" Relationship="ChatWebsiteModel.FK__Conversat__RoomI__160F4887" FromRole="Conversation" ToRole="ChatRoom" />
+  </EntityType>
+  <Association Name="FK__Conversat__RoomI__160F4887">
+    <End Type="ChatWebsiteModel.ChatRoom" Role="ChatRoom" Multiplicity="1" />
+    <End Type="ChatWebsiteModel.Conversation" Role="Conversation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChatRoom">
+        <PropertyRef Name="RoomID" />
+      </Principal>
+      <Dependent Role="Conversation">
+        <PropertyRef Name="RoomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

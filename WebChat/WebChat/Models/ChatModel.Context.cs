@@ -30,6 +30,7 @@ namespace WebChat.Models
         public virtual DbSet<ChatRoom> ChatRooms { get; set; }
         public virtual DbSet<Room_Users> Room_Users { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Conversation> Conversations { get; set; }
     
         public virtual ObjectResult<Nullable<int>> Log_In(string username, string password)
         {

@@ -37,7 +37,13 @@ namespace WebChat.Controllers
                     }
                 default:
                     {
-                        Session["UserCredential"] = new UserCredential( validate );
+                        //create cookies
+                        HttpCookie userCookie = new HttpCookie("user", validate.ToString() );
+
+                        userCookie.Expires.AddDays(10);
+
+                        HttpContext.Response.SetCookie(userCookie);
+                        //Session["UserCredential"] = new UserCredential( validate );
                         return RedirectToAction("Main", "Main");
                     }
             }

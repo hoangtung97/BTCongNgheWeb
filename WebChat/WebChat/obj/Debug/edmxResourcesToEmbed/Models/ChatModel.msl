@@ -31,5 +31,15 @@
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="Log_In" FunctionName="ChatWebsiteModel.Store.Log_In" />
     <FunctionImportMapping FunctionImportName="Validate" FunctionName="ChatWebsiteModel.Store.Log_In" />
+    <EntitySetMapping Name="Conversations">
+      <EntityTypeMapping TypeName="ChatWebsiteModel.Conversation">
+        <MappingFragment StoreEntitySet="Conversations">
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="C_Time" ColumnName="_Time" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

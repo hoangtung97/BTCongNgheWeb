@@ -18,6 +18,7 @@ namespace WebChat.Models
         public ChatRoom()
         {
             this.Room_Users = new HashSet<Room_Users>();
+            this.Conversations = new HashSet<Conversation>();
         }
     
         public int RoomID { get; set; }
@@ -25,5 +26,7 @@ namespace WebChat.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Room_Users> Room_Users { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Conversation> Conversations { get; set; }
     }
 }
