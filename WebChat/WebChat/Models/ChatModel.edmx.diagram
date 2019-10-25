@@ -12,6 +12,7 @@
         <AssociationConnector Association="ChatWebsiteModel.FK__Room_User__UserI__07C12930" ManuallyRouted="false" />
         <EntityTypeShape EntityType="ChatWebsiteModel.Conversation" Width="1.5" PointX="3" PointY="4" />
         <AssociationConnector Association="ChatWebsiteModel.FK__Conversat__RoomI__160F4887" />
+        <AssociationConnector Association="ChatWebsiteModel.FK__Conversat__UserI__2739D489" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
