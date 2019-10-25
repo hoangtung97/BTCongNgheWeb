@@ -38,7 +38,7 @@ namespace WebChat.Controllers
                 default:
                     {
                         //create cookies
-                        HttpCookie userCookie = new HttpCookie("user", validate.ToString() );
+                        HttpCookie userCookie = new HttpCookie("user", validate.ToString());
 
                         userCookie.Expires.AddDays(10);
 

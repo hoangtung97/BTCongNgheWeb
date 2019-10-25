@@ -33,7 +33,7 @@
     <OutputPath>bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>0</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -148,6 +148,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\APIWSController.cs" />
+    <Compile Include="Controllers\DbModuls\DbCalls.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LogInController.cs" />
     <Compile Include="Controllers\MainController.cs" />
@@ -177,6 +178,7 @@
       <DependentUpon>ChatModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CustomModel\CustomChatRoom.cs" />
+    <Compile Include="Models\CustomModel\CustomConversations.cs" />
     <Compile Include="Models\Room_Users.cs">
       <DependentUpon>ChatModel.tt</DependentUpon>
     </Compile>

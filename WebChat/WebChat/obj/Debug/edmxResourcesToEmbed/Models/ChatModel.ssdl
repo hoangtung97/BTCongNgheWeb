@@ -49,6 +49,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__Conversat__UserI__2739D489">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Conversations" Type="Self.Conversations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Conversations">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__Room_User__RoomI__06CD04F7">
     <End Role="ChatRoom" Type="Self.ChatRoom" Multiplicity="1" />
     <End Role="Room_Users" Type="Self.Room_Users" Multiplicity="*" />
@@ -84,6 +96,10 @@
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__Conversat__RoomI__160F4887" Association="Self.FK__Conversat__RoomI__160F4887">
       <End Role="ChatRoom" EntitySet="ChatRoom" />
+      <End Role="Conversations" EntitySet="Conversations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Conversat__UserI__2739D489" Association="Self.FK__Conversat__UserI__2739D489">
+      <End Role="Users" EntitySet="Users" />
       <End Role="Conversations" EntitySet="Conversations" />
     </AssociationSet>
     <AssociationSet Name="FK__Room_User__RoomI__06CD04F7" Association="Self.FK__Room_User__RoomI__06CD04F7">

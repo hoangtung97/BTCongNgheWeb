@@ -9,7 +9,5 @@ namespace WebChat.Models.CustomModel
     {
         public int RoomID { get; set; }
         public string RoomName { get; set; }
-        public string LatestText { get; set; }
-        public DateTime LatesTime { get; set; }
     }
 }
