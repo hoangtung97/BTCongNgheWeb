@@ -21,7 +21,7 @@
 				<div class="container">
 					<a href="#" class="logo" rel="home"><img src="img/dataimage.png" alt="logo"></a>
 					<ul class="nav" role="tablist">
-						<li><a href="#conversations" class="active" data-toggle="tab" role="tab" aria-controls="conversations" aria-selected="true"><i data-eva="message-square" data-eva-animation="pulse"></i></a></li>
+						<li><a href="#conversations" aria-selected="true"><i data-eva="message-square" data-eva-animation="pulse"></i></a></li>
 						<li><a href="#friends" data-toggle="tab" role="tab" aria-controls="friends" aria-selected="false"><i data-eva="people" data-eva-animation="pulse"></i></a></li>
 						<li><a href="#notifications" data-toggle="tab" role="tab" aria-controls="notifications" aria-selected="false"><i data-eva="bell" data-eva-animation="pulse"></i></a></li>
 						<li><a href="#settings" data-toggle="tab" role="tab" aria-controls="settings" aria-selected="false"><i data-eva="settings" data-eva-animation="pulse"></i></a></li>
@@ -632,7 +632,7 @@
 								</div>
 								<div class="middle" id="scroll">
 									<div class="container">
-										<ul>
+										<ul id="message-container">
 											<li>
 												<img src="img/avatars/avatar-male-3.jpg" alt="avatar">
 												<div class="content">
@@ -641,7 +641,6 @@
 															<p>Tôi có chuyện cần bàn</p>
 														</div>
 													</div>
-													<span>17:20</span>
 												</div>
 											</li>
 											<li>
@@ -651,76 +650,16 @@
 															<p>Tôi đây!</p>
 														</div>
 													</div>
-													<span>17:30</span>
 												</div>
-											</li>
-											<li>
-												<img src=" img/avatars/avatar-male-3.jpg" alt="avatar">
-												<div class="content">
-													<div class="message">
-														<div class="bubble">
-															<div class="attachment">
-																<a href="#" class="round"><i data-eva="file-text"></i></a>
-																<div class="meta">
-																	<a href="#"><h5>build-plugins.js</h5></a>
-																	<span>3kb</span>
-																</div>
-															</div>
-														</div>
-													</div>
-													<span>17:31</span>
-												</div>
-											</li>
-											<li>
-												<div class="content">
-													<div class="message">
-														<div class="bubble">
-															<p>Tôi cần phải làm gì</p>
-														</div>
-													</div>
-													<span>17:32</span>
-												</div>
-											</li>
-											<li>
-												<img src=" img/avatars/avatar-male-3.jpg" alt="avatar">
-												<div class="content">
-													<div class="message">
-														<div class="bubble">
-															<p>Tôi sẽ gửi lại thông báo sớm</p>
-														</div>
-													</div>
-													<span>17:34</span>
-												</div>
-											</li>
-											<li>
-												<div class="content">
-													<div class="message">
-														<div class="bubble">
-															<p>Cảm ơn!</p>
-														</div>
-													</div>
-													<span>17:35<i data-eva="done-all"></i></span>
-												</div>
-											</li>
-											<li>
-												<img src=" img/avatars/avatar-male-3.jpg" alt="avatar">
-												<div class="content">
-													<div class="message">
-														<div class="bubble">
-															<p>Thêm thư viện cho dự án</p>
-														</div>
-													</div>
-													<span>17:36</span>
-												</div>
-											</li>
+											</li>											
 										</ul>
 									</div>
 								</div>
 								<div class="container">
 									<div class="bottom">
 										<form>
-											<textarea class="form-control" placeholder="Type message..." rows="1"></textarea>
-											<button type="submit" class="btn prepend"><i data-eva="paper-plane"></i></button>
+											<textarea class="form-control" id ="InputMessage" placeholder="Type message..." rows="1"></textarea>
+											<button type="submit" id = "addMessage" class="btn prepend"><i data-eva="paper-plane"></i></button>
 										</form>
 									</div>
 								</div>
@@ -1471,5 +1410,17 @@
 		<script src=" js/vendor/eva.min.js"></script>
 		<script src=" js/vendor/bootstrap.min.js"></script>
 		<script src=" js/swipe.min.js"></script>
+        <script>  
+                
+                $(document).ready(function(){
+                    $("#addMessage").click(function(){
+                        var message = document.getElementById("InputMessage").value;
+                        $("#message-container").append('<li></li><li><div class="content"><div class="message"><div class="bubble"><p>'+message+'</p></div></div></div></li>');
+                        document.getElementById("InputMessage").value = "";
+                        
+                    });
+                });
+            
+        </script>
 	</body>
 </html>																																																										
