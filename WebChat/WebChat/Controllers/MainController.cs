@@ -28,26 +28,19 @@ namespace WebChat.Controllers
 
             ChatWebsiteEntities database = new ChatWebsiteEntities();
 
-            var table_room_user = from a in database.Room_Users
-                                  join conv in (from b in database.ChatRooms
-                                                join c in database.Conversations on b.RoomID equals c.RoomID
-                                                select new
-                                                {
-                                                    RoomID = b.RoomID,
-                                                    RoomName = b.RoomName,
-                                                    UserID = c.UserID,
-                                                    Time = c.C_Time,
-                                                    Content = c.Content
-                                                })
-                                  on a.RoomID equals conv.RoomID
+            var room_user = from a in database.Room_Users
+                                  join b in database.ChatRooms
+                                    on a.RoomID equals b.RoomID
                                   where a.UserID == currentUser.userID
+                                  select new { roomID = b.RoomID, roomName = b.RoomName };
 
-                                  select new { roomID = a.RoomID, roomName = conv.RoomName, };
-
+            var conversation = from r_u in room_user
+                               join conv in database.Conversations
+                               on 
 
             List < CustomChatRoom > roomList = new List<CustomChatRoom>();
 
-            foreach (var item in table_room_user)
+            foreach (var item in room_user)
             {
                 roomList.Add( new CustomChatRoom { RoomID = item.roomID , RoomName = item.roomName } );
             }

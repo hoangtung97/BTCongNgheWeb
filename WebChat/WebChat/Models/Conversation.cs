@@ -20,5 +20,6 @@ namespace WebChat.Models
         public string Content { get; set; }
     
         public virtual ChatRoom ChatRoom { get; set; }
+        public virtual User User { get; set; }
     }
 }
