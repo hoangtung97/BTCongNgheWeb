@@ -19,6 +19,7 @@ namespace WebChat.Models
         {
             this.Room_Users = new HashSet<Room_Users>();
             this.Conversations = new HashSet<Conversation>();
+            this.ChatRooms = new HashSet<ChatRoom>();
         }
     
         public int UserID { get; set; }
@@ -31,5 +32,7 @@ namespace WebChat.Models
         public virtual ICollection<Room_Users> Room_Users { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Conversation> Conversations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ChatRoom> ChatRooms { get; set; }
     }
 }

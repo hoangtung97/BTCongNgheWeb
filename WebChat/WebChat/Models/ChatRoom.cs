@@ -23,10 +23,13 @@ namespace WebChat.Models
     
         public int RoomID { get; set; }
         public string RoomName { get; set; }
+        public Nullable<int> RoomAdmin { get; set; }
+        public string RoomPW { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Room_Users> Room_Users { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Conversation> Conversations { get; set; }
+        public virtual User User { get; set; }
     }
 }
