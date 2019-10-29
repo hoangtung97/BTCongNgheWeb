@@ -148,8 +148,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\APIWSController.cs" />
+    <Compile Include="Controllers\DbModuls\DbEdit.cs" />
     <Compile Include="Controllers\DbModuls\DbGet.cs" />
-    <Compile Include="Controllers\DbModuls\DbPost.cs" />
+    <Compile Include="Controllers\DbModuls\DbAdd.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LogInController.cs" />
     <Compile Include="Controllers\MainController.cs" />
