@@ -17,7 +17,7 @@
 </head>
 <body>
     <div>
-        
+
     </div>
     <!-- Layout -->
     <div class="layout">
@@ -874,81 +874,15 @@
                             </div>
                             <div class="middle">
                                 <div class="container">
-                                    <ul>
-                                        <li>
-                                            <img src="~/Content/img/avatars/avatar-male-3.jpg" alt="avatar">
-                                            <div class="content">
-                                                <div class="message">
-                                                    <div class="bubble">
-                                                        <p>Thực tập nhómm</p>
-                                                    </div>
-                                                </div>
-                                                <span>07:30</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <img src="~/Content/img/avatars/avatar-male-5.jpg" alt="avatar">
-                                            <div class="content">
-                                                <div class="message">
-                                                    <div class="bubble">
-                                                        <p>Thực tập nhómmmm</p>
-                                                    </div>
-                                                </div>
-                                                <span>11:56</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <img src="~/Content/img/avatars/avatar-male-3.jpg" alt="avatar">
-                                            <div class="content">
-                                                <div class="message">
-                                                    <div class="bubble">
-                                                        <p>Thực tập nhómmmm</p>
-                                                    </div>
-                                                </div>
-                                                <span>13:03</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <img src="~/Content/img/avatars/avatar-male-5.jpg" alt="avatar">
-                                            <div class="content">
-                                                <div class="message">
-                                                    <div class="bubble">
-                                                        <p>Thực tập nhómmmm</p>
-                                                    </div>
-                                                </div>
-                                                <span>15:42</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <img src="~/Content/img/avatars/avatar-male-3.jpg" alt="avatar">
-                                            <div class="content">
-                                                <div class="message">
-                                                    <div class="bubble">
-                                                        <p>Thực tập nhómmmm</p>
-                                                    </div>
-                                                </div>
-                                                <span>16:20</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <img src="~/Content/img/avatars/avatar-male-5.jpg" alt="avatar">
-                                            <div class="content">
-                                                <div class="message">
-                                                    <div class="bubble">
-                                                        <p>Thực tập nhómmmm</p>
-                                                    </div>
-                                                </div>
-                                                <span>20:15<i data-eva="done-all"></i></span>
-                                            </div>
-                                        </li>
+                                    <ul id="message-container">
                                     </ul>
                                 </div>
                             </div>
                             <div class="container">
                                 <div class="bottom">
                                     <form>
-                                        <textarea class="form-control" placeholder="Type message..." rows="1"></textarea>
-                                        <button type="submit" class="btn prepend"><i data-eva="paper-plane"></i></button>
+                                        <textarea class="form-control" id="InputMessage" placeholder="Type message..." rows="1"></textarea>
+                                        <button type="submit" class="btn prepend" onClick="ShowTypedMessage()"><i data-eva="paper-plane"></i></button>
                                     </form>
                                 </div>
                             </div>
@@ -1353,5 +1287,34 @@
     <script src="~/Content/js/vendor/bootstrap.min.js"></script>
     <script src="~/Content/js/swipe.min.js"></script>
     <script src="~/Content/js/websocket_client/client.js"></script>
+    <script>
+        function ShowTypedMessage() {
+            var message = document.getElementById("InputMessage").value;
+            var addli = document.createElement("li");
+            var adddiv = document.createElement("div");
+            adddiv.classList.add("Out");
+            adddiv.innerHTML = '<div class="contentOut"><div class="message"><div class="bubbleOut"><p class="pOut">' + message + '</p></div></div></div>';
+            addli.appendChild(adddiv);
+            document.getElementById("message-container").appendChild(addli);
+            document.getElementById("InputMessage").value = "";
+        }
+        function ShowSentMessage(message) {
+            var addli = document.createElement("li");
+            var adddiv = document.createElement("div");
+            adddiv.classList.add("Out");
+            adddiv.innerHTML = '<div class="contentOut"><div class="message"><div class="bubbleOut"><p class="pOut">' + message + '</p></div></div></div>';
+            addli.appendChild(adddiv);
+            document.getElementById("message-container").appendChild(addli);
+        }
+        function ShowInboxMessage(message, name) {
+            var addli = document.createElement("li");
+            var adddiv = document.createElement("div");
+            adddiv.classList.add("In");
+            adddiv.innerHTML = '<span>' + name + '</span><div class="contentIn"><div class="message"><div class="bubbleIn"><p class ="pIn">' + message + '</p></div></div></div>';
+            addli.appendChild(adddiv);
+            document.getElementById("message-container").appendChild(addli);
+        }
+
+    </script>
 </body>
 </html>																																																										
