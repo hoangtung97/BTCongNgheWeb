@@ -28,7 +28,7 @@ namespace WebChat.Controllers
             HttpCookie cookie = Request.Cookies["user"];
             UserCredential currentUser = new UserCredential(Int32.Parse(cookie.Value));
 
-            return View( Controllers.DbModuls.DbGet.getRoomList( currentUser.userID ));
+            return View( Controllers.DbModuls.DbGet.getUserRoomList( currentUser.userID ));
         }
     }
 }
