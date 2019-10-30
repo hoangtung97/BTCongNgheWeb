@@ -1239,14 +1239,25 @@ a.dropdown-item {
     margin-bottom: 0
 }
 
-.chat .item .middle ul>li {
+.Out {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-align: end;
     align-items: flex-end;
     -ms-flex-pack: justify;
     justify-content: flex-end;
-    text-align: right
+    text-align: left
+}
+
+.In {
+    
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -ms-flex-pack: justify;
+    justify-content: flex-start;
+    text-align: left
 }
 
 .chat .item .middle ul>li + li {
@@ -1257,12 +1268,22 @@ a.dropdown-item {
     width: 42px;
     height: 42px;
     border-radius: 100%;
+
+}
+
+.ImgIn{
     margin-left: 15px;
     -ms-flex-order: 2;
     order: 2
 }
 
-.chat .item .middle ul>li .content {
+.ImgOut{
+    margin-right: 15px;
+    -ms-flex-order: 1;
+    order: 1	
+}
+
+.contentOut {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-direction: column;
@@ -1275,16 +1296,16 @@ a.dropdown-item {
     margin-top: 15px
 }
 
-.chat .item .middle ul>li .bubble {
+.bubbleOut {
     display: inline-block;
     max-width: 360px;
     background: #007bff;
     text-align: left;
-    border-radius: 6px
+    border-radius: 10px
 }
 
-.chat .item .middle ul>li p {
-    padding: 15px 20px;
+.pOut {
+    padding: 6px 20px;
     color: #fff
 }
 
@@ -1343,30 +1364,29 @@ a.dropdown-item {
     margin-top: 0
 }
 
-.chat .item .middle ul>li:nth-of-type(odd) {
-    -ms-flex-pack: justify;
-    justify-content: flex-start;
-    text-align: left
-}
 
-.chat .item .middle ul>li:nth-of-type(odd) img {
-    margin-right: 15px;
-    margin-left: 0;
-    -ms-flex-order: 1;
-    order: 1
-}
 
-.chat .item .middle ul>li:nth-of-type(odd) .content {
+.contentIn {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
     -ms-flex-order: 2;
     order: 2
 }
 
-.chat .item .middle ul>li:nth-of-type(odd) .bubble {
-    background: #f5f5f5
+.bubbleIn {
+    display: inline-block;
+    max-width: 360px;
+    background: #eaeaea;
+    text-align: left;
+    border-radius: 10px;
+    margin-left: 15px;
 }
 
-.chat .item .middle ul>li:nth-of-type(odd) p {
-    color: #bdbac2
+.pIn {
+    padding: 6px 20px;
+    color: #373736;
 }
 
 .chat .item .middle ul>li:nth-of-type(odd) .attachment .round {
@@ -2061,5 +2081,8 @@ a.dropdown-item {
     .chat .item .top span {
         height: 15px;
         overflow: hidden
+    }
+    .hide{
+        display:none;  
     }
 }
