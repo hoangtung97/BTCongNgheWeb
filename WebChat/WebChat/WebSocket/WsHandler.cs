@@ -8,9 +8,7 @@ namespace WebApplication1
 {
     public class WsHandler : WebSocketHandler
     {
-        //private static WebSocketCollection _procClients = new WebSocketCollection();
-        private static Dictionary<int, WsHandler> mapSession = new Dictionary<int, WsHandler>();
-
+        private static WebSocketCollection _procClients = new WebSocketCollection();
         public String userid { get; set; }
         public WsHandler()
         {
@@ -20,36 +18,19 @@ namespace WebApplication1
         public override void OnOpen()
         {
             System.Diagnostics.Debug.WriteLine("Open");
+            _procClients.Add(this);
             base.OnOpen();
         }
         public override void OnClose()
         {
             System.Diagnostics.Debug.WriteLine("Close");
+            _procClients.Remove(this);
             base.OnClose();
         }
 
         public override void OnMessage(string message)
         {
-            // parse to json
-            var jsonMess = Newtonsoft.Json.Linq.JObject.Parse(message);
-            
-            String action = (String)jsonMess["action"];
-
-            //switch - case -> process with per action
-            if(action == "ADD_U")
-            {
-                int id = (int)jsonMess["id"];
-                if (mapSession.ContainsKey(id))
-                {
-                    mapSession[id] = this;
-                }
-                else
-                {
-                    mapSession.Add(id, this);
-                }
-            }
-            
-
+            System.Diagnostics.Debug.WriteLine(message);
             //base.OnMessage(message);
         }
     }
