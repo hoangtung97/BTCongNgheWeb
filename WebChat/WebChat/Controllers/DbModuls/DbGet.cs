@@ -9,8 +9,24 @@ namespace WebChat.Controllers.DbModuls
     {
         public static Models.ChatWebsiteEntities database = new Models.ChatWebsiteEntities();
 
+        //tra ve danh sach tat ca cac phong trong server
+        public static List<Models.ChatRoom> getRoomList()
+        {
+            var room = from r in database.ChatRooms
+                       select new { roomID = r.RoomID, roomName = r.RoomName };
+
+            List<Models.ChatRoom> roomList = new List<Models.ChatRoom>();
+
+            foreach (var item in room)
+            {
+                roomList.Add(new Models.ChatRoom { RoomID = item.roomID, RoomName = item.roomName });
+            }
+
+            return roomList;
+        }
+
         //tra ve danh sach phong nguoi dung dang tham gia 
-        public static List<Models.CustomModel.CustomChatRoom> getRoomList ( int userID ){
+        public static List<Models.ChatRoom> getUserRoomList ( int userID ){
             
             var room_user = from a in database.Room_Users
                                   join b in database.ChatRooms
@@ -22,18 +38,18 @@ namespace WebChat.Controllers.DbModuls
             //                   join conv in database.Conversations
             //                   on 
 
-            List < Models.CustomModel.CustomChatRoom > roomList = new List<Models.CustomModel.CustomChatRoom>();
+            List < Models.ChatRoom > roomList = new List<Models.ChatRoom>();
 
             foreach (var item in room_user)
             {
-                roomList.Add( new Models.CustomModel.CustomChatRoom { RoomID = item.roomID , RoomName = item.roomName } );
+                roomList.Add( new Models.ChatRoom { RoomID = item.roomID , RoomName = item.roomName } );
             }
 
             return roomList;
         }
 
         //tra ve danh sach tin nhan trong phong
-        public static List<Models.CustomModel.CustomConversations> getConversations( int roomID)
+        public static List<Models.CustomModel.CustomConversations> getUserConversations( int roomID)
         {
             var convlist = from room in database.ChatRooms
                            join conv in (from userconv in database.Conversations
