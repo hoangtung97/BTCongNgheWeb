@@ -4,6 +4,8 @@
     <EntitySetMapping Name="ChatRooms">
       <EntityTypeMapping TypeName="ChatWebsiteModel.ChatRoom">
         <MappingFragment StoreEntitySet="ChatRoom">
+          <ScalarProperty Name="RoomPW" ColumnName="RoomPW" />
+          <ScalarProperty Name="RoomAdmin" ColumnName="RoomAdmin" />
           <ScalarProperty Name="RoomID" ColumnName="RoomID" />
           <ScalarProperty Name="RoomName" ColumnName="RoomName" />
         </MappingFragment>

@@ -6,6 +6,8 @@
     </Key>
     <Property Name="RoomID" Type="int" Nullable="false" />
     <Property Name="RoomName" Type="nvarchar" MaxLength="50" />
+    <Property Name="RoomAdmin" Type="int" />
+    <Property Name="RoomPW" Type="char" MaxLength="16" />
   </EntityType>
   <EntityType Name="Conversations">
     <Key>
@@ -37,6 +39,18 @@
     <Property Name="Password_" Type="char" MaxLength="16" Nullable="false" />
     <Property Name="Avatar" Type="varbinary(max)" />
   </EntityType>
+  <Association Name="FK__ChatRoom__RoomAd__3A4CA8FD">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="ChatRoom" Type="Self.ChatRoom" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="ChatRoom">
+        <PropertyRef Name="RoomAdmin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__Conversat__RoomI__160F4887">
     <End Role="ChatRoom" Type="Self.ChatRoom" Multiplicity="1" />
     <End Role="Conversations" Type="Self.Conversations" Multiplicity="*" />
@@ -94,6 +108,10 @@
     <EntitySet Name="Conversations" EntityType="Self.Conversations" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Room_Users" EntityType="Self.Room_Users" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ChatRoom__RoomAd__3A4CA8FD" Association="Self.FK__ChatRoom__RoomAd__3A4CA8FD">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="ChatRoom" EntitySet="ChatRoom" />
+    </AssociationSet>
     <AssociationSet Name="FK__Conversat__RoomI__160F4887" Association="Self.FK__Conversat__RoomI__160F4887">
       <End Role="ChatRoom" EntitySet="ChatRoom" />
       <End Role="Conversations" EntitySet="Conversations" />
