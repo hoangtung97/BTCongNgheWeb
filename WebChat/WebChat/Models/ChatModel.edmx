@@ -44,7 +44,7 @@
           <Property Name="Password_" Type="char" MaxLength="16" Nullable="false" />
           <Property Name="Avatar" Type="varbinary(max)" />
         </EntityType>
-        <Association Name="FK__ChatRoom__RoomAd__3A4CA8FD">
+        <Association Name="FK__ChatRoom__RoomAd__164452B1">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="ChatRoom" Type="Self.ChatRoom" Multiplicity="*" />
           <ReferentialConstraint>
@@ -56,7 +56,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Conversat__RoomI__160F4887">
+        <Association Name="FK__Conversat__RoomI__173876EA">
           <End Role="ChatRoom" Type="Self.ChatRoom" Multiplicity="1" />
           <End Role="Conversations" Type="Self.Conversations" Multiplicity="*" />
           <ReferentialConstraint>
@@ -68,7 +68,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Conversat__UserI__2739D489">
+        <Association Name="FK__Conversat__UserI__182C9B23">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Conversations" Type="Self.Conversations" Multiplicity="*" />
           <ReferentialConstraint>
@@ -80,7 +80,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Room_User__RoomI__06CD04F7">
+        <Association Name="FK__Room_User__RoomI__1920BF5C">
           <End Role="ChatRoom" Type="Self.ChatRoom" Multiplicity="1" />
           <End Role="Room_Users" Type="Self.Room_Users" Multiplicity="*" />
           <ReferentialConstraint>
@@ -92,7 +92,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Room_User__UserI__07C12930">
+        <Association Name="FK__Room_User__UserI__1A14E395">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Room_Users" Type="Self.Room_Users" Multiplicity="*" />
           <ReferentialConstraint>
@@ -113,23 +113,23 @@
           <EntitySet Name="Conversations" EntityType="Self.Conversations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Room_Users" EntityType="Self.Room_Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__ChatRoom__RoomAd__3A4CA8FD" Association="Self.FK__ChatRoom__RoomAd__3A4CA8FD">
+          <AssociationSet Name="FK__ChatRoom__RoomAd__164452B1" Association="Self.FK__ChatRoom__RoomAd__164452B1">
             <End Role="Users" EntitySet="Users" />
             <End Role="ChatRoom" EntitySet="ChatRoom" />
           </AssociationSet>
-          <AssociationSet Name="FK__Conversat__RoomI__160F4887" Association="Self.FK__Conversat__RoomI__160F4887">
+          <AssociationSet Name="FK__Conversat__RoomI__173876EA" Association="Self.FK__Conversat__RoomI__173876EA">
             <End Role="ChatRoom" EntitySet="ChatRoom" />
             <End Role="Conversations" EntitySet="Conversations" />
           </AssociationSet>
-          <AssociationSet Name="FK__Conversat__UserI__2739D489" Association="Self.FK__Conversat__UserI__2739D489">
+          <AssociationSet Name="FK__Conversat__UserI__182C9B23" Association="Self.FK__Conversat__UserI__182C9B23">
             <End Role="Users" EntitySet="Users" />
             <End Role="Conversations" EntitySet="Conversations" />
           </AssociationSet>
-          <AssociationSet Name="FK__Room_User__RoomI__06CD04F7" Association="Self.FK__Room_User__RoomI__06CD04F7">
+          <AssociationSet Name="FK__Room_User__RoomI__1920BF5C" Association="Self.FK__Room_User__RoomI__1920BF5C">
             <End Role="ChatRoom" EntitySet="ChatRoom" />
             <End Role="Room_Users" EntitySet="Room_Users" />
           </AssociationSet>
-          <AssociationSet Name="FK__Room_User__UserI__07C12930" Association="Self.FK__Room_User__UserI__07C12930">
+          <AssociationSet Name="FK__Room_User__UserI__1A14E395" Association="Self.FK__Room_User__UserI__1A14E395">
             <End Role="Users" EntitySet="Users" />
             <End Role="Room_Users" EntitySet="Room_Users" />
           </AssociationSet>
