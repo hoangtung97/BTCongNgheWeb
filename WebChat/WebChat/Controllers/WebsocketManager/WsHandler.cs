@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Microsoft.Web.WebSockets;
+using Newtonsoft.Json;
+using WebChat.Controllers.WebsocketManager;
 
 namespace WebApplication1
 {
@@ -46,6 +49,30 @@ namespace WebApplication1
                 else
                 {
                     mapSession.Add(id, this);
+                }
+            }
+            else if(action == "SEND_MESS")
+            {
+                //get and create data
+                int idRoom = (int)jsonMess["id_room"];
+                string mess = (string)jsonMess["messenge"];
+                int idUser = (int)jsonMess["id"];
+                var jsondata = new
+                {
+                    id = idUser,
+                    messenge = mess,
+                };
+                string data = JsonConvert.SerializeObject(jsondata).ToString();
+
+                //get session of users and send data to its
+                ArrayList userInRoom = Manager.roomsManager[Manager.mappingRooms[idRoom]];
+                foreach (WebChat.Models.User user in userInRoom)
+                {
+                    try
+                    {
+                        mapSession[user.UserID].Send(data);
+                    }
+                    catch (Exception ex) {}
                 }
             }
             
