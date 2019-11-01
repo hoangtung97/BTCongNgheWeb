@@ -157,6 +157,8 @@
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\SignUpController.cs" />
     <Compile Include="Controllers\SystemStatus\SystemStatus.cs" />
+    <Compile Include="Controllers\WebsocketManager\Manager.cs" />
+    <Compile Include="Controllers\WebsocketManager\WsHandler.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -190,7 +192,6 @@
       <DependentUpon>ChatModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebSocket\WsHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
