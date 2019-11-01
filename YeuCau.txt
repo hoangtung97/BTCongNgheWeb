@@ -5,6 +5,7 @@
 + Khung hiển thị những người đang trong phòng
 + Tạo phòng, thay đổi thông tin phòng, ra khỏi phòng( xóa ). Phòng gồm các thông tin: tên phòng, mật khẩu ( nếu có )
 + Thay đổi thông tin cá nhân: tên hiển thị, ảnh, mật khẩu( nếu có )
++ Không cần hiển thị những người đang online
 
 - Chú ý:
 + Không được load lại cả view trong mọi trường hợp, trừ khi người dùng
