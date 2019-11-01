@@ -17,11 +17,14 @@ vì load lại sẽ bị disconnect websocket
 
 - Các sự kiện:
 	+ Khi onOpen():
-		~ Gửi mess bắt tay cấu trúc:
-			action  : 'SEND_MESS'
-			id_room : id của room đang nt
-			messenge: nd của tin nhắn
-			id	: id của user (lấy từ cookie)
+		~ Gửi 1 message theo cấu trúc:
+			action  : 'ADD_U'
+			id		: id của user (lấy từ cookie)
+	+ Gửi mess cấu trúc:
+		action  : 'SEND_MESS'
+		id_room : id của room đang nt
+		messenge: nd của tin nhắn
+		id	: id của user (lấy từ cookie)
 	+ Trong onMessage():
 		~ Bắt sự kiện tin nhắn đến:
 			id 	: id của người gửi tin nhắn đến
