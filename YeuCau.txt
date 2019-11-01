@@ -1,0 +1,12 @@
+﻿* Frontend:
+- Có các chức năng sau:
++ Khung chat
++ Khung hiện các phòng đang tham gia, có thể kết hợp với tìm kiếm phòng
++ Khung hiển thị những người đang trong phòng
++ Tạo phòng, thay đổi thông tin phòng, ra khỏi phòng( xóa ). Phòng gồm các thông tin: tên phòng, mật khẩu ( nếu có )
++ Thay đổi thông tin cá nhân: tên hiển thị, ảnh, mật khẩu( nếu có )
+
+- Chú ý:
++ Không được load lại cả view trong mọi trường hợp, trừ khi người dùng
+sử dụng nút refresh của trình duyệt
++ Sử dngj ajax + partial view để chỉ load lại 1 phần của view

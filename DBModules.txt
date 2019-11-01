@@ -1,0 +1,13 @@
+﻿- DbGet: Các module lấy dữ liệu từ CSDL
+	+ Lấy danh sách phòng người dùng đang tham gia
+	+ Lấy danh sách người dùng trong phòng
+- DbEdit: Các module chỉnh sửa dữ liệu
+	+ Chỉnh sửa thông tin người dùng
+	+ Chỉnh sửa thông tin phòng
+- DbAdd: Các module thêm dữ liệu
+	+ Thêm phòng ( tạo phòng mới )
+	+ Thêm bản ghi tin nhắn ( nhắn tin )
+	+ Thêm người vào phòng ( khi có người tham gia phòng )
+- DbDelete: Các module xóa dữ liệu
+	+ Xoa người trong phòng ( khi người đó rời khỏi phòng )
+	+ Xóa phòng ( khi không còn ai trong phòng )
