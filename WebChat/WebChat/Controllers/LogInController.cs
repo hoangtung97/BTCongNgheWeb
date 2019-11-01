@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using System.Web.Security;
 
 namespace WebChat.Controllers
 {
@@ -12,7 +13,17 @@ namespace WebChat.Controllers
         // GET: LogIn
         public ActionResult LogIn()
         {
-            return View();
+            //check cookie
+            HttpCookie validate = Request.Cookies["userID"];
+
+            if( validate == null || validate.Value == "")
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Main", "Main");
+            }
         }
 
         [HttpPost]
@@ -26,9 +37,11 @@ namespace WebChat.Controllers
 
             int? validate = chatWebsiteEntities.Validate(username, password).FirstOrDefault();
 
+            
+
             string message = String.Empty;
 
-            switch (validate)
+            switch (validate.Value)
             {
                 case -1:
                     {
@@ -38,11 +51,14 @@ namespace WebChat.Controllers
                 default:
                     {
                         //create cookies
-                        HttpCookie userCookie = new HttpCookie("user", validate.ToString());
+                        HttpCookie userIDCookie = new HttpCookie("userID", validate.ToString());
+                        HttpCookie userNameCookie = new HttpCookie("displayName", DbModuls.DbGet.getSpecificUser( validate.Value ).UserID.ToString());
 
-                        userCookie.Expires.AddDays(10);
+                        userIDCookie.Expires.AddDays(10);
 
-                        HttpContext.Response.SetCookie(userCookie);
+                        HttpContext.Response.SetCookie(userIDCookie);
+
+                        
                         //Session["UserCredential"] = new UserCredential( validate );
                         return RedirectToAction("Main", "Main");
                     }

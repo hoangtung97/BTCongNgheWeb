@@ -33,6 +33,7 @@ namespace WebChat.Controllers.DbModuls
 
             database.Room_Users.Add(room_Users);
             database.SaveChanges();
+
         }
 
         //Them nguoi dung

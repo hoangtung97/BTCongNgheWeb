@@ -25,7 +25,12 @@ namespace WebChat.Controllers
         // GET: Main
         public ActionResult Main()
         {
-            HttpCookie cookie = Request.Cookies["user"];
+            HttpCookie cookie = Request.Cookies["userID"];
+            if( cookie == null)
+            {
+                return RedirectToAction("LogIn", "LogIn");
+            }
+            
             UserCredential currentUser = new UserCredential(Int32.Parse(cookie.Value));
 
             return View( Controllers.DbModuls.DbGet.getUserRoomList( currentUser.userID ));

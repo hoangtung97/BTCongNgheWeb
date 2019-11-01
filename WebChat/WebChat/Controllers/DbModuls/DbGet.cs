@@ -25,6 +25,20 @@ namespace WebChat.Controllers.DbModuls
             return roomList;
         }
 
+        public static List<Models.User> getUserList()
+        {
+            var user = from u in database.Users
+                       select u;
+
+            List<Models.User> userList = new List<Models.User>();
+
+            foreach( var item in user)
+            {
+                userList.Add(item);
+            }
+            return userList;
+        }
+
         //tra ve danh sach phong nguoi dung dang tham gia 
         public static List<Models.ChatRoom> getUserRoomList ( int userID ){
             
@@ -103,7 +117,14 @@ namespace WebChat.Controllers.DbModuls
             return usersList;
         }
 
+        public static Models.User getSpecificUser( int userID)
+        {
+            var user = from u in database.Users
+                       where u.UserID == userID
+                       select u;
 
+            return user.First();
+        }
         
     }
 }
