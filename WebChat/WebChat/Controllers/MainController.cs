@@ -35,5 +35,22 @@ namespace WebChat.Controllers
 
             return View( Controllers.DbModuls.DbGet.getUserRoomList( currentUser.userID ));
         }
+
+        public ActionResult LogOut()
+        {
+            HttpCookie userID = Request.Cookies["userID"];
+            HttpCookie displayName = Request.Cookies["displayName"];
+
+            if( userID != null || displayName != null)
+            {
+                userID.Expires = DateTime.Now.AddDays(-1);
+                displayName.Expires = DateTime.Now.AddDays(-1);
+
+                Response.Cookies.Add(userID);
+                Response.Cookies.Add(displayName);
+            }
+
+            return RedirectToAction("LogIn", "LogIn");
+        }
     }
 }
