@@ -6,6 +6,7 @@ using System.Web;
 using Microsoft.Web.WebSockets;
 using Newtonsoft.Json;
 using WebChat.Controllers.WebsocketManager;
+using WebChat.Controllers.DbModuls;
 
 namespace WebApplication1
 {
@@ -34,8 +35,7 @@ namespace WebApplication1
         public override void OnMessage(string message)
         {
             // parse to json
-            var jsonMess = Newtonsoft.Json.Linq.JObject.Parse(message);
-            
+            var jsonMess = Newtonsoft.Json.Linq.JObject.Parse(message);            
             String action = (String)jsonMess["action"];
 
             //switch - case -> process with per action
@@ -64,6 +64,9 @@ namespace WebApplication1
                     id_room = idRoom
                 };
                 string data = JsonConvert.SerializeObject(jsondata).ToString();
+
+                //save message to database
+                DbAdd.addMessage(mess,idUser,idRoom);
 
                 //get session of users and send data to its
                 ArrayList userInRoom = Manager.roomsManager[Manager.mappingRooms[idRoom]];
