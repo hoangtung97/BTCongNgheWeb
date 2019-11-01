@@ -7,6 +7,8 @@ using Microsoft.Web.WebSockets;
 using Newtonsoft.Json;
 using WebChat.Controllers.WebsocketManager;
 using WebChat.Controllers.DbModuls;
+using System.Threading;
+
 
 namespace WebApplication1
 {
@@ -57,30 +59,37 @@ namespace WebApplication1
                 int idRoom = (int)jsonMess["id_room"];
                 string mess = (string)jsonMess["messenge"];
                 int idUser = (int)jsonMess["id"];
+                String displayName = Manager.displayNamesMapping[idUser];
                 var jsondata = new
                 {
                     id = idUser,
+                    display_name = displayName,
                     messenge = mess,
                     id_room = idRoom
                 };
                 string data = JsonConvert.SerializeObject(jsondata).ToString();
 
-                //save message to database
-                DbAdd.addMessage(mess,idUser,idRoom);
-
-                //get session of users and send data to its
-                ArrayList userInRoom = Manager.roomsManager[Manager.mappingRooms[idRoom]];
-                foreach (WebChat.Models.User user in userInRoom)
+                Thread sendThread = new Thread(()=>
                 {
-                    try
-                    {
-                        mapSession[user.UserID].Send(data);
-                    }
-                    catch (Exception ex) {}
-                }
-            }
-            
+                    
+                    //save message to database
+                    DbAdd.addMessage(mess, idUser, idRoom);
 
+                    //get session of users and send data to its
+                    ArrayList userInRoom = Manager.roomsManager[Manager.mappingRooms[idRoom]];
+
+                    foreach (WebChat.Models.User user in userInRoom)
+                    {
+                        try
+                        {
+                            mapSession[user.UserID].Send(data);
+                        }
+                        catch (Exception ex) { }
+                    }
+                });
+                sendThread.Priority=ThreadPriority.AboveNormal;
+                sendThread.Start();
+            }
             //base.OnMessage(message);
         }
     }

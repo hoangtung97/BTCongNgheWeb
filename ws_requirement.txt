@@ -8,7 +8,8 @@ vì load lại sẽ bị disconnect websocket
 
 - có những biến global lưu: 
 	1 list lưu danh sách các id room mà người dùng hiện có
-	1 biến lưu id room hiện tại đang thao tác	
+	1 biến lưu id room hiện tại đang thao tác
+	
 
 - Khi lấy dữ liệu tin nhắn ban đầu sẽ sử dụng http để get dữ liệu
   và load lên (có kiểm tra xem còn tồn tại trong phòng không)

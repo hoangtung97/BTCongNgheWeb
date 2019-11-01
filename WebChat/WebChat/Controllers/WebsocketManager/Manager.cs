@@ -10,7 +10,7 @@ namespace WebChat.Controllers.WebsocketManager
     {
         public static Dictionary<int, Models.ChatRoom> mappingRooms = new Dictionary<int, Models.ChatRoom>();
         public static Dictionary<Models.ChatRoom, ArrayList> roomsManager = new Dictionary<Models.ChatRoom, ArrayList>();
-        
+        public static Dictionary<int, String> displayNamesMapping = new Dictionary<int, String>();
 
         public static void updateRoomsManager()
         {
@@ -29,6 +29,16 @@ namespace WebChat.Controllers.WebsocketManager
             foreach (Models.ChatRoom room in rooms)
             {
                 mappingRooms.Add(room.RoomID,room);
+            }
+        }
+
+        public static void updateDisplayNamesMapping()
+        {
+            displayNamesMapping.Clear();
+            List<Models.User> users = DbModuls.DbGet.getUserList();
+            foreach (Models.User user in users)
+            {
+                displayNamesMapping.Add(user.UserID, user.DisplayName);
             }
         }
     }
