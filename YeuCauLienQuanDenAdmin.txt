@@ -1,0 +1,4 @@
+﻿* Yêu cầu liên quan tới admin của phòng:
++ Có quyền xóa thành vien khỏi phòng
++ Có quyền xóa phòng
+=> Thêm 2 chức năng này vào form setting của phòng
