@@ -1,6 +1,9 @@
 ﻿###################### REQUIREMENT ########################
-Không load lại trang mà sử dụng ajax
-vì load lại sẽ bị disconnect websocket
+
+NOTICE:
+*****Không load lại trang mà sử dụng ajax****
+*********************************************
+<=== vì load lại sẽ bị disconnect websocket
 
 - cookie sẽ lưu:
 	+ id của user hiện tại
@@ -10,11 +13,13 @@ vì load lại sẽ bị disconnect websocket
 	1 list lưu danh sách các id room mà người dùng hiện có
 	1 biến lưu id room hiện tại đang thao tác
 	
-
-- Khi lấy dữ liệu tin nhắn ban đầu sẽ sử dụng http để get dữ liệu
+- Khi lấy dữ liệu tin nhắn ban đầu sẽ sử dụng http để lấy dữ liệu
   và load lên (có kiểm tra xem còn tồn tại trong phòng không)
+  (Hiếu làm truyền dữ liệu của phần này)
 
 - Kiểu dữ liệu truyền trên websocket: json
+
+- Hiển thị người gửi tin nhắn theo display_name ở bên dưới
 
 - Các sự kiện:
 	+ Khi onOpen():
@@ -22,10 +27,11 @@ vì load lại sẽ bị disconnect websocket
 			action  : 'ADD_U'
 			id		: id của user (lấy từ cookie)
 	+ Gửi mess cấu trúc:
-		action  : 'SEND_MESS'
-		id_room : id của room đang nt
-		messenge: nd của tin nhắn
-		id	: id của user (lấy từ cookie)
+		action  	: 'SEND_MESS'
+		id_room 	: id của room đang nt
+		display_name: tên hiển thị
+		messenge	: nd của tin nhắn
+		id			: id của user (lấy từ cookie)
 	+ Trong onMessage():
 		~ Bắt sự kiện tin nhắn đến:
 			id 	: id của người gửi tin nhắn đến
