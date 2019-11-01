@@ -11,7 +11,7 @@ namespace WebChat.Controllers.DbModuls
         public static Models.ChatWebsiteEntities database = new Models.ChatWebsiteEntities();
 
         //Them phong
-        public static void addGroup( string roomName, int adminID, string roomPW )
+        public static void addRoom( string roomName, int adminID, string roomPW )
         {
             Models.ChatRoom room = new Models.ChatRoom();
 
