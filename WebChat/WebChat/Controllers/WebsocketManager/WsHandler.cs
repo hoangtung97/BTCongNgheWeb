@@ -61,6 +61,7 @@ namespace WebApplication1
                 {
                     id = idUser,
                     messenge = mess,
+                    id_room = idRoom
                 };
                 string data = JsonConvert.SerializeObject(jsondata).ToString();
 
