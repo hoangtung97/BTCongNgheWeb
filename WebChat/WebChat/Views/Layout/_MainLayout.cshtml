@@ -882,7 +882,7 @@
                                 <div class="bottom">
                                     <form>
                                         <textarea class="form-control" id="InputMessage" placeholder="Type message..." rows="1"></textarea>
-                                        <button type="submit" class="btn prepend" onClick="ShowTypedMessage()"><i data-eva="paper-plane"></i></button>
+                                        <button type="button" class="btn prepend" onClick="ShowTypedMessage()"><i data-eva="paper-plane"></i></button>
                                     </form>
                                 </div>
                             </div>
@@ -1287,33 +1287,8 @@
     <script src="~/Content/js/vendor/bootstrap.min.js"></script>
     <script src="~/Content/js/swipe.min.js"></script>
     <script src="~/Content/js/websocket_client/client.js"></script>
-    <script>
-        function ShowTypedMessage() {
-            var message = document.getElementById("InputMessage").value;
-            var addli = document.createElement("li");
-            var adddiv = document.createElement("div");
-            adddiv.classList.add("Out");
-            adddiv.innerHTML = '<div class="contentOut"><div class="message"><div class="bubbleOut"><p class="pOut">' + message + '</p></div></div></div>';
-            addli.appendChild(adddiv);
-            document.getElementById("message-container").appendChild(addli);
-            document.getElementById("InputMessage").value = "";
-        }
-        function ShowSentMessage(message) {
-            var addli = document.createElement("li");
-            var adddiv = document.createElement("div");
-            adddiv.classList.add("Out");
-            adddiv.innerHTML = '<div class="contentOut"><div class="message"><div class="bubbleOut"><p class="pOut">' + message + '</p></div></div></div>';
-            addli.appendChild(adddiv);
-            document.getElementById("message-container").appendChild(addli);
-        }
-        function ShowInboxMessage(message, name) {
-            var addli = document.createElement("li");
-            var adddiv = document.createElement("div");
-            adddiv.classList.add("In");
-            adddiv.innerHTML = '<span>' + name + '</span><div class="contentIn"><div class="message"><div class="bubbleIn"><p class ="pIn">' + message + '</p></div></div></div>';
-            addli.appendChild(adddiv);
-            document.getElementById("message-container").appendChild(addli);
-        }
+    <script src="~/Content/js/message.js"> 
+        
 
     </script>
 </body>
