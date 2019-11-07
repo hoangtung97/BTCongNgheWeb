@@ -1,5 +1,4 @@
 ﻿@using System.Data;
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,8 +46,7 @@
                                 <button type="submit" class="btn prepend"><i data-eva="search"></i></button>
                             </form>
                             <ul class="nav" role="tablist">
-                                <li><a href="#direct" class="filter-btn active" data-toggle="tab" data-filter="direct">Tin nhắn</a></li>
-                                <li><a href="#groups" class="filter-btn" data-toggle="tab" data-filter="groups">Nhóm</a></li>
+                                <li><a class="filter-btn   active" data-toggle="tab" data-filter="groups">Nhóm</a></li>
                             </ul>
                         </div>
                         @RenderBody()
@@ -479,368 +477,6 @@
         <!--  Chat -->
         <div class="chat">
             <div class="tab-content">
-                <!--  Chat Room -->
-                <div class="tab-pane fade show active" id="chat1" role="tabpanel">
-                    <div class="item">
-                        <div class="content">
-                            <div class="container">
-                                <div class="top">
-                                    <div class="headline">
-                                        <img src="~/Content/img/avatars/avatar-male-3.jpg" alt="avatar">
-                                        <div class="content">
-                                            <h5>Triệu Quang Minh</h5>
-                                            <span>Đang hoạt động</span>
-                                        </div>
-                                    </div>
-                                    <ul>
-                                        <li><button type="button" class="btn"><i data-eva="video" data-eva-animation="pulse"></i></button></li>
-                                        <li><button type="button" class="btn"><i data-eva="phone" data-eva-animation="pulse"></i></button></li>
-                                        <li><button type="button" class="btn" data-toggle="modal" data-target="#compose"><i data-eva="person-add" data-eva-animation="pulse"></i></button></li>
-                                        <li><button type="button" class="btn" data-utility="open"><i data-eva="info" data-eva-animation="pulse"></i></button></li>
-                                        <li><button type="button" class="btn round" data-chat="open"><i data-eva="arrow-ios-back"></i></button></li>
-                                        <li>
-                                            <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-eva="more-vertical" data-eva-animation="pulse"></i></button>
-                                            <div class="dropdown-menu">
-                                                <button type="button" class="dropdown-item"><i data-eva="video"></i>Video call</button>
-                                                <button type="button" class="dropdown-item"><i data-eva="phone"></i>Voice call</button>
-                                                <button type="button" class="dropdown-item" data-toggle="modal" data-target="#compose"><i data-eva="person-add"></i>Add people</button>
-                                                <button type="button" class="dropdown-item" data-utility="open"><i data-eva="info"></i>Information</button>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="middle" id="scroll">
-                                <div class="container">
-                                    <ul>
-                                        <li>
-                                            <img src="~/Content/img/avatars/avatar-male-3.jpg" alt="avatar">
-                                            <div class="content">
-                                                <div class="message">
-                                                    <div class="bubble">
-                                                        <p>Tôi có chuyện cần bàn</p>
-                                                    </div>
-                                                </div>
-                                                <span>17:20</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="content">
-                                                <div class="message">
-                                                    <div class="bubble">
-                                                        <p>Tôi đây!</p>
-                                                    </div>
-                                                </div>
-                                                <span>17:30</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <img src="~/Content/img/avatars/avatar-male-3.jpg" alt="avatar">
-                                            <div class="content">
-                                                <div class="message">
-                                                    <div class="bubble">
-                                                        <div class="attachment">
-                                                            <a href="#" class="round"><i data-eva="file-text"></i></a>
-                                                            <div class="meta">
-                                                                <a href="#"><h5>build-plugins.js</h5></a>
-                                                                <span>3kb</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <span>17:31</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="content">
-                                                <div class="message">
-                                                    <div class="bubble">
-                                                        <p>Tôi cần phải làm gì</p>
-                                                    </div>
-                                                </div>
-                                                <span>17:32</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <img src="~/Content/img/avatars/avatar-male-3.jpg" alt="avatar">
-                                            <div class="content">
-                                                <div class="message">
-                                                    <div class="bubble">
-                                                        <p>Tôi sẽ gửi lại thông báo sớm</p>
-                                                    </div>
-                                                </div>
-                                                <span>17:34</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="content">
-                                                <div class="message">
-                                                    <div class="bubble">
-                                                        <p>Cảm ơn!</p>
-                                                    </div>
-                                                </div>
-                                                <span>17:35<i data-eva="done-all"></i></span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <img src="~/Content/img/avatars/avatar-male-3.jpg" alt="avatar">
-                                            <div class="content">
-                                                <div class="message">
-                                                    <div class="bubble">
-                                                        <p>Thêm thư viện cho dự án</p>
-                                                    </div>
-                                                </div>
-                                                <span>17:36</span>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="container">
-                                <div class="bottom">
-                                    <form>
-                                        <textarea class="form-control" placeholder="Type message..." rows="1"></textarea>
-                                        <button type="submit" class="btn prepend"><i data-eva="paper-plane"></i></button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Start of Utility -->
-                        <div class="utility">
-                            <div class="container">
-                                <button type="button" class="close" data-utility="open"><i data-eva="close"></i></button>
-                                <button type="button" class="btn primary" data-toggle="modal" data-target="#compose">Thêm thành viên</button>
-                                <ul class="nav" role="tablist">
-                                    <li><a href="#users" class="active" data-toggle="tab" role="tab" aria-controls="users" aria-selected="true">Người dùng</a></li>
-                                    <li><a href="#files" data-toggle="tab" role="tab" aria-controls="files" aria-selected="false">Files</a></li>
-                                </ul>
-                                <div class="tab-content">
-                                    <!-- Start of Users -->
-                                    <div class="tab-pane fade active show" id="users" role="tabpanel">
-                                        <h4>Người dùng</h4>
-                                        <hr>
-                                        <ul class="users">
-                                            <li>
-                                                <div class="status online"><img src="~/Content/img/avatars/avatar-male-1.jpg" alt="avatar"><i data-eva="radio-button-on"></i></div>
-                                                <div class="content">
-                                                    <h5>Ninh Thái Phan</h5>
-                                                    <span>Ninh Bình, VN</span>
-                                                </div>
-                                                <div class="dropdown">
-                                                    <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-eva="more-vertical"></i></button>
-                                                    <div class="dropdown-menu dropdown-menu-right">
-                                                        <button type="button" class="dropdown-item">Sửa</button>
-                                                        <button type="button" class="dropdown-item">Chia sẻ</button>
-                                                        <button type="button" class="dropdown-item">Xóa</button>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="status offline"><img src="~/Content/img/avatars/avatar-male-2.jpg" alt="avatar"><i data-eva="radio-button-on"></i></div>
-                                                <div class="content">
-                                                    <h5>Nguyễn Minh Hiếu</h5>
-                                                    <span>Thái Bình, VN</span>
-                                                </div>
-                                                <div class="dropdown">
-                                                    <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-eva="more-vertical"></i></button>
-                                                    <div class="dropdown-menu dropdown-menu-right">
-                                                        <button type="button" class="dropdown-item">Sửa</button>
-                                                        <button type="button" class="dropdown-item">Chia sẻ</button>
-                                                        <button type="button" class="dropdown-item">Xóa</button>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="status online"><img src="~/Content/img/avatars/avatar-male-3.jpg" alt="avatar"><i data-eva="radio-button-on"></i></div>
-                                                <div class="content">
-                                                    <h5>Triệu Quang Minh</h5>
-                                                    <span>Hà Nội, VN</span>
-                                                </div>
-                                                <div class="dropdown">
-                                                    <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-eva="more-vertical"></i></button>
-                                                    <div class="dropdown-menu dropdown-menu-right">
-                                                        <button type="button" class="dropdown-item">Sửa</button>
-                                                        <button type="button" class="dropdown-item">Chia sẻ</button>
-                                                        <button type="button" class="dropdown-item">Xóa</button>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="status offline"><img src="~/Content/img/avatars/avatar-male-4.jpg" alt="avatar"><i data-eva="radio-button-on"></i></div>
-                                                <div class="content">
-                                                    <h5>Lê Sỹ Tùng</h5>
-                                                    <span>Thanh Hóa, VN</span>
-                                                </div>
-                                                <div class="dropdown">
-                                                    <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-eva="more-vertical"></i></button>
-                                                    <div class="dropdown-menu dropdown-menu-right">
-                                                        <button type="button" class="dropdown-item">Sửa</button>
-                                                        <button type="button" class="dropdown-item">Chia sẻ</button>
-                                                        <button type="button" class="dropdown-item">Xóa</button>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="status offline"><img src="~/Content/img/avatars/avatar-male-5.jpg" alt="avatar"><i data-eva="radio-button-on"></i></div>
-                                                <div class="content">
-                                                    <h5>Nguyễn Nam</h5>
-                                                    <span>Hà Nam, VN</span>
-                                                </div>
-                                                <div class="dropdown">
-                                                    <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-eva="more-vertical"></i></button>
-                                                    <div class="dropdown-menu dropdown-menu-right">
-                                                        <button type="button" class="dropdown-item">Sửa</button>
-                                                        <button type="button" class="dropdown-item">Chia sẻ</button>
-                                                        <button type="button" class="dropdown-item">Xóa</button>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="status online"><img src="~/Content/img/avatars/avatar-male-6.jpg" alt="avatar"><i data-eva="radio-button-on"></i></div>
-                                                <div class="content">
-                                                    <h5>Lê Huy</h5>
-                                                    <span>Hà Nam, VN</span>
-                                                </div>
-                                                <div class="dropdown">
-                                                    <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-eva="more-vertical"></i></button>
-                                                    <div class="dropdown-menu dropdown-menu-right">
-                                                        <button type="button" class="dropdown-item">Sửa</button>
-                                                        <button type="button" class="dropdown-item">Chia sẻ</button>
-                                                        <button type="button" class="dropdown-item">Xóa</button>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <!-- Kết thúc Người dùng -->
-                                    <!-- Files -->
-                                    <div class="tab-pane fade" id="files" role="tabpanel">
-                                        <h4>Files</h4>
-                                        <div class="upload">
-                                            <label>
-                                                <input type="file">
-                                                <span>Mở hoặc kéo file vào đây.</span>
-                                            </label>
-                                        </div>
-                                        <ul class="files">
-                                            <li>
-                                                <ul class="avatars">
-                                                    <li><button class="btn round"><i data-eva="file-text"></i></button></li>
-                                                    <li><a href="#"><img src="~/Content/img/avatars/avatar-male-1.jpg" alt="avatar"></a></li>
-                                                </ul>
-                                                <div class="meta">
-                                                    <a href="#"><h5>workbox.js</h5></a>
-                                                    <span>2kb</span>
-                                                </div>
-                                                <div class="dropdown">
-                                                    <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-eva="more-vertical"></i></button>
-                                                    <div class="dropdown-menu dropdown-menu-right">
-                                                        <button type="button" class="dropdown-item">Sửa</button>
-                                                        <button type="button" class="dropdown-item">Chia sẻ</button>
-                                                        <button type="button" class="dropdown-item">Xóa</button>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <ul class="avatars">
-                                                    <li><button class="btn round"><i data-eva="folder"></i></button></li>
-                                                    <li><a href="#"><img src="~/Content/img/avatars/avatar-male-2.jpg" alt="avatar"></a></li>
-                                                </ul>
-                                                <div class="meta">
-                                                    <a href="#"><h5>bug_report</h5></a>
-                                                    <span>1kb</span>
-                                                </div>
-                                                <div class="dropdown">
-                                                    <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-eva="more-vertical"></i></button>
-                                                    <div class="dropdown-menu dropdown-menu-right">
-                                                        <button type="button" class="dropdown-item">Sửa</button>
-                                                        <button type="button" class="dropdown-item">Chia sẻ</button>
-                                                        <button type="button" class="dropdown-item">Xóa</button>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <ul class="avatars">
-                                                    <li><button class="btn round"><i data-eva="briefcase"></i></button></li>
-                                                    <li><a href="#"><img src="~/Content/img/avatars/avatar-male-3.jpg" alt="avatar"></a></li>
-                                                </ul>
-                                                <div class="meta">
-                                                    <a href="#"><h5>nuget.zip</h5></a>
-                                                    <span>7mb</span>
-                                                </div>
-                                                <div class="dropdown">
-                                                    <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-eva="more-vertical"></i></button>
-                                                    <div class="dropdown-menu dropdown-menu-right">
-                                                        <button type="button" class="dropdown-item">Sửa</button>
-                                                        <button type="button" class="dropdown-item">Chia sẻ</button>
-                                                        <button type="button" class="dropdown-item">Xóa</button>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <ul class="avatars">
-                                                    <li><button class="btn round"><i data-eva="image-2"></i></button></li>
-                                                    <li><a href="#"><img src="~/Content/img/avatars/avatar-male-4.jpg" alt="avatar"></a></li>
-                                                </ul>
-                                                <div class="meta">
-                                                    <a href="#"><h5>clearfix.jpg</h5></a>
-                                                    <span>1kb</span>
-                                                </div>
-                                                <div class="dropdown">
-                                                    <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-eva="more-vertical"></i></button>
-                                                    <div class="dropdown-menu dropdown-menu-right">
-                                                        <button type="button" class="dropdown-item">Sửa</button>
-                                                        <button type="button" class="dropdown-item">Chia sẻ</button>
-                                                        <button type="button" class="dropdown-item">Xóa</button>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <ul class="avatars">
-                                                    <li><button class="btn round"><i data-eva="folder"></i></button></li>
-                                                    <li><a href="#"><img src="~/Content/img/avatars/avatar-male-5.jpg" alt="avatar"></a></li>
-                                                </ul>
-                                                <div class="meta">
-                                                    <a href="#"><h5>package</h5></a>
-                                                    <span>4mb</span>
-                                                </div>
-                                                <div class="dropdown">
-                                                    <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-eva="more-vertical"></i></button>
-                                                    <div class="dropdown-menu dropdown-menu-right">
-                                                        <button type="button" class="dropdown-item">Sửa</button>
-                                                        <button type="button" class="dropdown-item">Chia sẻ</button>
-                                                        <button type="button" class="dropdown-item">Xóa</button>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <ul class="avatars">
-                                                    <li><button class="btn round"><i data-eva="file-text"></i></button></li>
-                                                    <li><a href="#"><img src="~/Content/img/avatars/avatar-male-6.jpg" alt="avatar"></a></li>
-                                                </ul>
-                                                <div class="meta">
-                                                    <a href="#"><h5>plugins.js</h5></a>
-                                                    <span>3kb</span>
-                                                </div>
-                                                <div class="dropdown">
-                                                    <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-eva="more-vertical"></i></button>
-                                                    <div class="dropdown-menu dropdown-menu-right">
-                                                        <button type="button" class="dropdown-item">Sửa</button>
-                                                        <button type="button" class="dropdown-item">Chia sẻ</button>
-                                                        <button type="button" class="dropdown-item">Xóa</button>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <!-- End of Files -->
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of Utility -->
-                    </div>
-                </div>
-                <!-- End of Chat Room -->
                 <!-- Start of Chat Room -->
                 <div class="tab-pane fade" id="chat2" role="tabpanel">
                     <div class="item">
@@ -874,8 +510,7 @@
                             </div>
                             <div class="middle">
                                 <div class="container">
-                                    <ul id="message-container">
-                                    </ul>
+                                    <ul id="message-container"></ul>
                                 </div>
                             </div>
                             <div class="container">
@@ -1117,6 +752,7 @@
                                     </div>
                                     <!-- End of Files -->
                                 </div>
+                                <button type="button" class="btn primary">Thoát khỏi phòng</button>
                             </div>
                         </div>
                         <!-- End of Utility -->
@@ -1131,7 +767,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5>Biên soạn</h5>
+                        <h5>Thêm phòng</h5>
                         <button type="button" class="btn round" data-dismiss="modal" aria-label="Close">
                             <i data-eva="close"></i>
                         </button>
@@ -1146,12 +782,12 @@
                             <div class="details tab-pane fade show active" id="details" role="tabpanel">
                                 <form>
                                     <div class="form-group">
-                                        <label>Tiêu đề</label>
+                                        <label>Tên phòng</label>
                                         <input type="text" class="form-control" placeholder="Tên nhóm?">
                                     </div>
                                     <div class="form-group">
-                                        <label>Tin nhắn</label>
-                                        <textarea class="form-control" placeholder="Xin chào!"></textarea>
+                                        <label>Password</label>
+                                        <textarea class="form-control" placeholder="Nhập mật khẩu"></textarea>
                                     </div>
                                 </form>
                             </div>
@@ -1168,7 +804,7 @@
                                 <hr>
                                 <ul class="users">
                                     <li>
-                                        <div class="status online"><img src="~/Content/img/avatars/avatar-male-1.jpg" alt="avatar"><i data-eva="radio-button-on"></i></div>
+                                        <div class="status online"><img src=" img/avatars/avatar-male-1.jpg" alt="avatar"><i data-eva="radio-button-on"></i></div>
                                         <div class="content">
                                             <h5>Ninh Thái Phan</h5>
                                             <span>Ninh Bình, VN</span>
@@ -1179,7 +815,7 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <div class="status offline"><img src="~/Content/img/avatars/avatar-male-2.jpg" alt="avatar"><i data-eva="radio-button-on"></i></div>
+                                        <div class="status offline"><img src=" img/avatars/avatar-male-2.jpg" alt="avatar"><i data-eva="radio-button-on"></i></div>
                                         <div class="content">
                                             <h5>Nguyễn Minh Hiếu</h5>
                                             <span>Thái Bình, VN</span>
@@ -1190,7 +826,7 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <div class="status online"><img src="~/Content/img/avatars/avatar-male-3.jpg" alt="avatar"><i data-eva="radio-button-on"></i></div>
+                                        <div class="status online"><img src=" img/avatars/avatar-male-3.jpg" alt="avatar"><i data-eva="radio-button-on"></i></div>
                                         <div class="content">
                                             <h5>Triệu Quang Minh</h5>
                                             <span>Hà Nội, VN</span>
@@ -1201,7 +837,7 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <div class="status offline"><img src="~/Content/img/avatars/avatar-male-4.jpg" alt="avatar"><i data-eva="radio-button-on"></i></div>
+                                        <div class="status offline"><img src=" img/avatars/avatar-male-4.jpg" alt="avatar"><i data-eva="radio-button-on"></i></div>
                                         <div class="content">
                                             <h5>Lê Sỹ Tùng</h5>
                                             <span>Thanh Hóa, VN</span>
@@ -1212,7 +848,7 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <div class="status offline"><img src="~/Content/img/avatars/avatar-male-5.jpg" alt="avatar"><i data-eva="radio-button-on"></i></div>
+                                        <div class="status offline"><img src=" img/avatars/avatar-male-5.jpg" alt="avatar"><i data-eva="radio-button-on"></i></div>
                                         <div class="content">
                                             <h5>Nguyễn Nam</h5>
                                             <span>Hà Nam, VN</span>
@@ -1223,7 +859,7 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <div class="status online"><img src="~/Content/img/avatars/avatar-male-6.jpg" alt="avatar"><i data-eva="radio-button-on"></i></div>
+                                        <div class="status online"><img src=" img/avatars/avatar-male-6.jpg" alt="avatar"><i data-eva="radio-button-on"></i></div>
                                         <div class="content">
                                             <h5>Lê Huy</h5>
                                             <span>Hà Nam, VN</span>
@@ -1234,7 +870,7 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <div class="status offline"><img src="~/Content/img/avatars/avatar-female-1.jpg" alt="avatar"><i data-eva="radio-button-on"></i></div>
+                                        <div class="status offline"><img src=" img/avatars/avatar-female-1.jpg" alt="avatar"><i data-eva="radio-button-on"></i></div>
                                         <div class="content">
                                             <h5>Hoàng Thủy</h5>
                                             <span>Thanh Hóa, VN</span>
@@ -1245,7 +881,7 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <div class="status offline"><img src="~/Content/img/avatars/avatar-female-2.jpg" alt="avatar"><i data-eva="radio-button-on"></i></div>
+                                        <div class="status offline"><img src=" img/avatars/avatar-female-2.jpg" alt="avatar"><i data-eva="radio-button-on"></i></div>
                                         <div class="content">
                                             <h5>Lan Hương</h5>
                                             <span>Ninh Bình, VN</span>
@@ -1256,7 +892,7 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <div class="status online"><img src="~/Content/img/avatars/avatar-female-3.jpg" alt="avatar"><i data-eva="radio-button-on"></i></div>
+                                        <div class="status online"><img src=" img/avatars/avatar-female-3.jpg" alt="avatar"><i data-eva="radio-button-on"></i></div>
                                         <div class="content">
                                             <h5>Hà Phương</h5>
                                             <span>Nghệ An, VN</span>
@@ -1272,7 +908,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn primary">Xác nhận</button>
+                        <button type="submit" class="btn primary">Thêm phòng</button>
                     </div>
                 </div>
             </div>
@@ -1287,8 +923,8 @@
     <script src="~/Content/js/vendor/bootstrap.min.js"></script>
     <script src="~/Content/js/swipe.min.js"></script>
     <script src="~/Content/js/websocket_client/client.js"></script>
-    <script src="~/Content/js/message.js"> 
-        
+    <script src="~/Content/js/message.js">
+
 
     </script>
 </body>
