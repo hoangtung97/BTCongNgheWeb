@@ -62,6 +62,7 @@ namespace WebApplication1
                 String displayName = Manager.displayNamesMapping[idUser];
                 var jsondata = new
                 {
+                    action = "RECEIVE_MESS",
                     id = idUser,
                     display_name = displayName,
                     messenge = mess,
