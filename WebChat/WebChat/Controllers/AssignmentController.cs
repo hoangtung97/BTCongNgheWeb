@@ -37,6 +37,16 @@ namespace WebChat.Controllers
             try
             {
                 // TODO: Add insert logic here
+                Models.User newUser = new Models.User();
+                Models.User last = database.Users.Last();
+
+                newUser.UserID = database.Users.Last().UserID + 1;
+                newUser.Username = collection["Username"];
+                newUser.DisplayName = collection["DisplayName"];
+                newUser.Password_ = collection["Password_"];
+
+                database.Users.Add(newUser);
+                database.SaveChanges();
 
                 return RedirectToAction("Index");
             }

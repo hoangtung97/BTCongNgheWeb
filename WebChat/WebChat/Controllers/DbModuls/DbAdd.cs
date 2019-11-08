@@ -18,7 +18,7 @@ namespace WebChat.Controllers.DbModuls
 
             Models.ChatRoom room = new Models.ChatRoom();
 
-            int id = idnum.Last().RoomID;
+            int id = idnum.Last().RoomID + 1;
 
             room.RoomID = id;
             room.RoomName = roomName;
