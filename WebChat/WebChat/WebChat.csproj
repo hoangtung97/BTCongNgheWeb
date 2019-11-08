@@ -149,6 +149,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\APIWSController.cs" />
+    <Compile Include="Controllers\AssignmentController.cs" />
+    <Compile Include="Controllers\DbModuls\DbDelete.cs" />
     <Compile Include="Controllers\DbModuls\DbEdit.cs" />
     <Compile Include="Controllers\DbModuls\DbGet.cs" />
     <Compile Include="Controllers\DbModuls\DbAdd.cs" />
@@ -186,6 +188,12 @@
     <Compile Include="Models\CustomModel\CustomChatRoom.cs" />
     <Compile Include="Models\CustomModel\CustomConversations.cs" />
     <Compile Include="Models\Room_Users.cs">
+      <DependentUpon>ChatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>ChatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
       <DependentUpon>ChatModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
@@ -390,6 +398,9 @@
     <Content Include="Views\SignUp\SignUp.cshtml" />
     <Content Include="Views\Layout\_SignUpLayout.cshtml" />
     <Content Include="Views\Partial\_MainPartialPage1.cshtml" />
+    <Content Include="Views\Assignment\Index.cshtml" />
+    <Content Include="Views\Assignment\Edit.cshtml" />
+    <Content Include="Views\Assignment\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

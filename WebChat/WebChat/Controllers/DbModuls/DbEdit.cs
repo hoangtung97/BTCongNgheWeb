@@ -25,13 +25,22 @@ namespace WebChat.Controllers.DbModuls
         }
 
         //sua ten phong
-        public static void editRoom( int roomID, string newRoomName)
+        //neu khong thay doi phan nao thi de tham so null
+        public static void editRoom( int roomID, string newRoomName, string newPW )
         {
             Models.ChatRoom room = new Models.ChatRoom();
 
             room = database.ChatRooms.Single(r => r.RoomID == roomID);
-            room.RoomName = newRoomName;
+            if( newRoomName != null)
+            {
+                room.RoomName = newRoomName;
+            }
 
+            if( newPW != null)
+            {
+                room.RoomPW = newPW;
+            }
+            
             database.SaveChanges();
         }
     }

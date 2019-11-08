@@ -13,9 +13,12 @@ namespace WebChat.Controllers.DbModuls
         //Them phong
         public static void addRoom( string roomName, int adminID, string roomPW )
         {
+            var idnum = from last_id in database.Room_Users
+                        select last_id;
+
             Models.ChatRoom room = new Models.ChatRoom();
 
-            int id = Controllers.SystemStatus.SystemStatus.TotalRoomNumber++;
+            int id = idnum.Last().RoomID;
 
             room.RoomID = id;
             room.RoomName = roomName;
@@ -39,9 +42,12 @@ namespace WebChat.Controllers.DbModuls
         //Them nguoi dung
         public static void addUser( string username, string displayname, string password)
         {
+            var idnum = from last_id in database.Users
+                        select last_id;
+
             Models.User user = new Models.User();
 
-            int id = Controllers.SystemStatus.SystemStatus.TotalUserNumber++;
+            int id = idnum.Last().UserID;
 
             user.UserID = id;
             user.Username = username;
