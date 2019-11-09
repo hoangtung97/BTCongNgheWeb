@@ -38,9 +38,8 @@ namespace WebChat.Controllers
             {
                 // TODO: Add insert logic here
                 Models.User newUser = new Models.User();
-                Models.User last = database.Users.Last();
 
-                newUser.UserID = database.Users.Last().UserID + 1;
+                newUser.UserID = database.Users.Max( m => m.UserID ) + 1;
                 newUser.Username = collection["Username"];
                 newUser.DisplayName = collection["DisplayName"];
                 newUser.Password_ = collection["Password_"];
