@@ -7,12 +7,19 @@ namespace WebChat.Controllers.DbModuls
 {
     public class DbDelete
     {
-        Models.ChatWebsiteEntities database = new Models.ChatWebsiteEntities();
+        static Models.ChatWebsiteEntities database = new Models.ChatWebsiteEntities();
 
         //su dung de xoa mot user ra khoi room khi user thoat khoi room
         public static void deleteUserFromRoom( int userID, int roomID)
         {
+            var userinroom = from room_user in database.Room_Users
+                             where room_user.UserID == userID && room_user.RoomID == roomID
+                             select room_user;
 
+            database.Room_Users.RemoveRange(userinroom);
+            database.SaveChanges();
         }
+
+
     }
 }

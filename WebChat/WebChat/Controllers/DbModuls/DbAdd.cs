@@ -18,7 +18,7 @@ namespace WebChat.Controllers.DbModuls
 
             Models.ChatRoom room = new Models.ChatRoom();
 
-            int id = idnum.Last().RoomID + 1;
+            int id = idnum.Max( m => m.RoomID ) + 1;
 
             room.RoomID = id;
             room.RoomName = roomName;
@@ -47,7 +47,7 @@ namespace WebChat.Controllers.DbModuls
 
             Models.User user = new Models.User();
 
-            int id = idnum.Last().UserID;
+            int id = idnum.Max( m => m.UserID ) + 1;
 
             user.UserID = id;
             user.Username = username;

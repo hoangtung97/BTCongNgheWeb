@@ -21,7 +21,9 @@ namespace WebChat.Controllers
         // GET: Assignment/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            Models.User detailUser = DbModuls.DbGet.getSpecificUser(id);
+
+            return View( detailUser );
         }
 
         // GET: Assignment/Create
@@ -36,10 +38,13 @@ namespace WebChat.Controllers
         {
             try
             {
+                var lastuser = from u in database.Users.AsEnumerable()
+                                select u;
+
                 // TODO: Add insert logic here
                 Models.User newUser = new Models.User();
 
-                newUser.UserID = database.Users.Max( m => m.UserID ) + 1;
+                newUser.UserID = lastuser.Max( m => m.UserID) + 1;
                 newUser.Username = collection["Username"];
                 newUser.DisplayName = collection["DisplayName"];
                 newUser.Password_ = collection["Password_"];
