@@ -98,7 +98,7 @@ namespace WebChat.Controllers
         // GET: Assignment/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View( DbModuls.DbGet.getSpecificUser( id ) );
         }
 
         // POST: Assignment/Delete/5
@@ -108,6 +108,7 @@ namespace WebChat.Controllers
             try
             {
                 // TODO: Add delete logic here
+                DbModuls.DbDelete.deleteUser(id);
 
                 return RedirectToAction("Index");
             }

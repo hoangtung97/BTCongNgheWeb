@@ -21,5 +21,45 @@ namespace WebChat.Controllers.DbModuls
         }
 
 
+        public static void deleteRoom( int roomID)
+        {
+            //delete conversation first
+
+            var roomconv = from conv in database.Conversations
+                           where conv.RoomID == roomID
+                           select conv;
+
+            database.Conversations.RemoveRange(roomconv);
+
+            //delete user-room relationship record
+
+            var roomuser = from ru in database.Room_Users
+                           where ru.RoomID == roomID
+                           select ru;
+
+            database.Room_Users.RemoveRange(roomuser);
+
+            //delete room
+
+            var room = from r in database.ChatRooms
+                       where r.RoomID == roomID
+                       select r;
+
+            database.ChatRooms.RemoveRange(room);
+
+            database.SaveChanges();
+        }
+
+
+        public static void deleteUser( int userID)
+        {
+            var user = ( from u in database.Users
+                       where u.UserID == userID
+                       select u ).FirstOrDefault();
+
+            database.Users.Remove( user );
+            database.SaveChanges();
+        }
     }
+
 }

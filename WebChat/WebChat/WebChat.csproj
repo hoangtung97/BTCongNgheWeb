@@ -403,6 +403,7 @@
     <Content Include="Views\Assignment\Edit.cshtml" />
     <Content Include="Views\Assignment\Create.cshtml" />
     <Content Include="Views\Assignment\Details.cshtml" />
+    <Content Include="Views\Assignment\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
