@@ -57,7 +57,7 @@ namespace WebApplication1
             {
                 //get and create data
                 int idRoom = (int)jsonMess["id_room"];
-                string mess = (string)jsonMess["messenge"];
+                string mess = (string)jsonMess["message"];
                 int idUser = (int)jsonMess["id"];
                 String displayName = Manager.displayNamesMapping[idUser];
                 var jsondata = new
@@ -65,7 +65,7 @@ namespace WebApplication1
                     action = "RECEIVE_MESS",
                     id = idUser,
                     display_name = displayName,
-                    messenge = mess,
+                    message = mess,
                     id_room = idRoom
                 };
                 string data = JsonConvert.SerializeObject(jsondata).ToString();
@@ -77,7 +77,7 @@ namespace WebApplication1
                     DbAdd.addMessage(mess, idUser, idRoom);
 
                     //get session of users and send data to its
-                    ArrayList userInRoom = Manager.roomsManager[Manager.mappingRooms[idRoom]];
+                    ArrayList userInRoom = Manager.roomsManager[Manager.mappingRooms[idRoom].RoomID];
 
                     foreach (WebChat.Models.User user in userInRoom)
                     {

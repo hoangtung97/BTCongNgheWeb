@@ -52,10 +52,10 @@ namespace WebChat.Controllers
                     {
                         //create cookies
                         HttpCookie userIDCookie = new HttpCookie("userID", validate.ToString());
-                        HttpCookie userNameCookie = new HttpCookie("displayName", DbModuls.DbGet.getSpecificUser( validate.Value ).UserID.ToString());
+                        HttpCookie displayNameCookie = new HttpCookie("displayName", DbModuls.DbGet.getSpecificUser( validate.Value ).DisplayName.ToString());
 
                         userIDCookie.Expires.AddDays(10);
-
+                        HttpContext.Response.SetCookie(displayNameCookie);
                         HttpContext.Response.SetCookie(userIDCookie);
 
                         

@@ -1,5 +1,6 @@
 ﻿@using System.Data;
 <!DOCTYPE html>
+<asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true" />
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -12,6 +13,7 @@
     <link href="~/Content/css/swipe.min.css" type="text/css" rel="stylesheet">
     <!-- Favicon -->
     <link href="~/Content/img/favicon.png" type="image/png" rel="icon">
+    <div>@Html.ActionLink("Back to List", "Index") </div>
 
 </head>
 <body>
@@ -517,7 +519,7 @@
                                 <div class="bottom">
                                     <form>
                                         <textarea class="form-control" id="InputMessage" placeholder="Type message..." rows="1"></textarea>
-                                        <button type="button" class="btn prepend" onClick="ShowTypedMessage()"><i data-eva="paper-plane"></i></button>
+                                        <button type="button" id ="SendButton" class="btn prepend"><i data-eva="paper-plane"></i></button>
                                     </form>
                                 </div>
                             </div>
@@ -922,7 +924,6 @@
     <script src="~/Content/js/vendor/eva.min.js"></script>
     <script src="~/Content/js/vendor/bootstrap.min.js"></script>
     <script src="~/Content/js/swipe.min.js"></script>
-    <script src="~/Content/js/websocket_client/client.js"></script>
     <script src="~/Content/js/message.js">
 
 

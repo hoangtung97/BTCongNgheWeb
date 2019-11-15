@@ -33,6 +33,11 @@ namespace WebChat.Controllers
             
             UserCredential currentUser = new UserCredential(Int32.Parse(cookie.Value));
 
+
+            WebsocketManager.Manager.updateRoomsManager();
+            WebsocketManager.Manager.updateDisplayNamesMapping();
+            WebsocketManager.Manager.updateMappingRooms();
+
             return View( Controllers.DbModuls.DbGet.getUserRoomList( currentUser.userID ));
         }
 
@@ -51,6 +56,12 @@ namespace WebChat.Controllers
             }
 
             return RedirectToAction("LogIn", "LogIn");
+        }
+
+        public string GetCookie(string name)
+        {
+            string cookie = this.GetCookie(name);
+            return cookie;
         }
     }
 }

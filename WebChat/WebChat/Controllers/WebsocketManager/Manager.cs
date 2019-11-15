@@ -9,7 +9,7 @@ namespace WebChat.Controllers.WebsocketManager
     public class Manager
     {
         public static Dictionary<int, Models.ChatRoom> mappingRooms = new Dictionary<int, Models.ChatRoom>();
-        public static Dictionary<Models.ChatRoom, ArrayList> roomsManager = new Dictionary<Models.ChatRoom, ArrayList>();
+        public static Dictionary<int, ArrayList> roomsManager = new Dictionary<int, ArrayList>();
         public static Dictionary<int, String> displayNamesMapping = new Dictionary<int, String>();
 
         public static void updateRoomsManager()
@@ -18,7 +18,7 @@ namespace WebChat.Controllers.WebsocketManager
             List<Models.ChatRoom> rooms = DbModuls.DbGet.getRoomList();
             foreach (Models.ChatRoom room in rooms)
             {
-                roomsManager.Add(room,new ArrayList(DbModuls.DbGet.getUserInRoom(room.RoomID)));
+                roomsManager.Add(room.RoomID,new ArrayList(DbModuls.DbGet.getUserInRoom(room.RoomID)));
             }
         }
 
