@@ -1,10 +1,11 @@
 ﻿@model IEnumerable<WebChat.Models.ChatRoom>
 
-@{
-    ViewBag.Title = "Main";
-    Layout = "~/Views/Layout/_MainLayout.cshtml";
-}
+    @{
+        ViewBag.Title = "Main";
+        Layout = "~/Views/Layout/_MainLayout.cshtml";
+    }
 
-@Html.Partial("~/Views/Partial/_MainPartialPage1.cshtml", Model);
+    @Html.Partial("~/Views/Partial/_MainPartialPage1.cshtml");
 
-																				
+
+

@@ -5,12 +5,12 @@
     <h4>Cuộc trò chuyện</h4>
     <button type="button" class="btn round" data-toggle="modal" data-target="#compose"><i data-eva="edit-2"></i></button>
     <hr>
-    <ul class="nav discussions" role="tablist">
-       
+    <ul class="nav discussions " role="tablist">
+
         @foreach (var item in Model)
         {
             <li>
-                <a href="#chat2" class="filter groups" data-chat="open" data-toggle="tab" role="tab" aria-controls="chat2" aria-selected="false">
+                <a href="#chat@(item.RoomID)"  id ="@(item.RoomID)"class="filter groups roomtab" data-chat="open" data-toggle="tab" role="tab" aria-controls="chat2" aria-selected="false">
                     <div class="content">
                         <div class="headline">
                             <img src="~/Content/img/avatars/avatar-group-1.jpg" alt="avatar">
@@ -25,5 +25,3 @@
 
     </ul>
 </div>
-
-

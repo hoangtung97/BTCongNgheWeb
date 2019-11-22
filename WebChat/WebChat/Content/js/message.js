@@ -1,4 +1,7 @@
 ﻿var services;
+var currRoom;
+
+
 
 function getCookie(cname) {
     var name = cname + "=";
@@ -16,24 +19,36 @@ function getCookie(cname) {
     return "";
 }
 
-
 $(document).ready(function () {
+
     var url = "ws://" + window.location.hostname + ":" + location.port
     var endpoint = "/api/APIWS"
     var services = new WebSocket(url + endpoint);
     var userID = parseInt(getCookie("userID"));
-    var roomID = 1;
     var username = getCookie("displayName");
-    $("#SendButton").click(function () {
+    var roomID;
+    var sendbutton
+    //get room clicked
+    $(".roomtab").click(function () {
+        roomID = this.id;
+        alert(roomID); 
+        sendbutton = "SendButton" + roomID;
+        alert(sendbutton);
+
+    });
+    //press send button message
+
+
+    $(".SendButton").click(function () {
         if (!services.OPEN) {
             services.close();
             services = new WebSocket(url);
         }
-
-        if ($("#InputMessage").val() != "") {
-            var sendingmessage = $("#InputMessage").val();
-            var nametodisplay = username;
-         
+        alert("buttonclicked");
+        if ($("#" + roomID + "InputMessage").val() != "") {
+            sendingmessage = $("#" + roomID + "InputMessage").val();
+            alert(sendingmessage);
+            nametodisplay = username;
             services.send(JSON.stringify({
                 action: 'SEND_MESS',
                 id_room: roomID,
@@ -41,10 +56,7 @@ $(document).ready(function () {
                 message: sendingmessage,
                 id: userID
             }))
-            alert(sendingmessage);
         }
-    
-
     });
 
     services.onopen = function () {
@@ -54,19 +66,21 @@ $(document).ready(function () {
                 id: userID
         }));
     }
+    //show sent and inbox message
 
     services.onmessage = function (event) {
             var obj = JSON.parse(event.data);
             var cookieid = getCookie("userID");
-        if (obj.action == "RECEIVE_MESS") {
-                if (obj.id == cookieid) {
+            if (obj.action == "RECEIVE_MESS") {
+            if (obj.id == cookieid) {
+                   
                     var addli = document.createElement("li");
                     var adddiv = document.createElement("div");
                     adddiv.classList.add("Out");
                     adddiv.innerHTML = '<div class="contentOut"><div class="message"><div class="bubbleOut"><p class="pOut">' + obj.message + '</p></div></div></div>';
                     addli.appendChild(adddiv);
-                    document.getElementById("message-container").appendChild(addli);
-                    document.getElementById("InputMessage").value = "";
+                    $("#" + roomID + "InputMessage").val() != "";
+                    $(addli).appendTo("#" + obj.id_room + "message-container")
                 }
                 else {
                     var addli = document.createElement("li");
@@ -74,12 +88,13 @@ $(document).ready(function () {
                     adddiv.classList.add("In");
                     adddiv.innerHTML = '<span>' + obj.display_name + '</span><div class="contentIn"><div class="message"><div class="bubbleIn"><p class ="pIn">' + obj.message + '</p></div></div></div>';
                     addli.appendChild(adddiv);
-                    document.getElementById("message-container").appendChild(addli);
+                    $(addli).appendTo("#" + obj.id_room + "message-container");
                 }
             }
         
        
     }
+  
 
 });
 
