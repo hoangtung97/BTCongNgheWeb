@@ -31,9 +31,7 @@ $(document).ready(function () {
     //get room clicked
     $(".roomtab").click(function () {
         roomID = this.id;
-        alert(roomID); 
         sendbutton = "SendButton" + roomID;
-        alert(sendbutton);
 
     });
     //press send button message
@@ -44,10 +42,8 @@ $(document).ready(function () {
             services.close();
             services = new WebSocket(url);
         }
-        alert("buttonclicked");
         if ($("#" + roomID + "InputMessage").val() != "") {
             sendingmessage = $("#" + roomID + "InputMessage").val();
-            alert(sendingmessage);
             nametodisplay = username;
             services.send(JSON.stringify({
                 action: 'SEND_MESS',
