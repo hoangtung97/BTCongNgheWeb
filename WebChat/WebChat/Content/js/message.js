@@ -17,25 +17,24 @@ function getCookie(cname) {
     return "";
 }
 
-
-
-
-//send and inbox
 $(document).ready(function () {
+
     var url = "ws://" + window.location.hostname + ":" + location.port
     var endpoint = "/api/APIWS"
     var services = new WebSocket(url + endpoint);
     var userID = parseInt(getCookie("userID"));
     var username = getCookie("displayName");
     var roomID;
-
+    var sendbutton
     //get room clicked
     $(".roomtab").click(function () {
         roomID = this.id;
         sendbutton = "SendButton" + roomID;
-    });
 
+    });
     //press send button message
+
+
     $(".SendButton").click(function () {
         if (!services.OPEN) {
             services.close();
@@ -61,78 +60,51 @@ $(document).ready(function () {
                 id: userID
         }));
     }
-
-    //function append sent mess
-    function AppendMyMess(message, roomid) {
-        var addli = document.createElement("li");
-        var adddiv = document.createElement("div");
-        adddiv.classList.add("Out");
-        adddiv.innerHTML = '<div class="contentOut"><div class="message"><div class="bubbleOut"><p class="pOut">' + message + '</p></div></div></div>';
-        addli.appendChild(adddiv);
-        $("#" + roomID + "InputMessage").val() != "";
-        $(addli).appendTo("#" + roomid + "message-container")
-    }
-
-    //function append inbox mess
-    function AppendOtherMess(name, message, roomid) {
-        var addli = document.createElement("li");
-        var adddiv = document.createElement("div");
-        adddiv.classList.add("In");
-        adddiv.innerHTML = '<span>' + name + '</span><div class="contentIn"><div class="message"><div class="bubbleIn"><p class ="pIn">' + message + '</p></div></div></div>';
-        addli.appendChild(adddiv);
-        $(addli).appendTo("#" + roomid + "message-container");
-    }
-
     //show sent and inbox message
+
     services.onmessage = function (event) {
             var obj = JSON.parse(event.data);
             var cookieid = getCookie("userID");
             if (obj.action == "RECEIVE_MESS") {
-                if (obj.id == cookieid) {
-                    AppendMyMess(obj.message, obj.id_room);
+            if (obj.id == cookieid) {
+                   
+                    var addli = document.createElement("li");
+                    var adddiv = document.createElement("div");
+                    adddiv.classList.add("Out");
+                    adddiv.innerHTML = '<div class="contentOut"><div class="message"><div class="bubbleOut"><p class="pOut">' + obj.message + '</p></div></div></div>';
+                    addli.appendChild(adddiv);
+                    $("#" + roomID + "InputMessage").val() != "";
+                    $(addli).appendTo("#" + obj.id_room + "message-container")
                 }
                 else {
-                    AppendOtherMess(obj.display_name, obj.message, obj.id_room);
+                    var addli = document.createElement("li");
+                    var adddiv = document.createElement("div");
+                    adddiv.classList.add("In");
+                    adddiv.innerHTML = '<span>' + obj.display_name + '</span><div class="contentIn"><div class="message"><div class="bubbleIn"><p class ="pIn">' + obj.message + '</p></div></div></div>';
+                    addli.appendChild(adddiv);
+                    $(addli).appendTo("#" + obj.id_room + "message-container");
                 }
             }       
     }
 
-    //get all room id
-    var i = 0;
-    var roomids = [];
-    $(".roomtab").each(function () {
-        roomids[i++] = $(this).attr("id"); //this.id
-    });
-    var limit = roomids.length;
-
-    function DisplayMess(counter, limit) {
-        //alert(counter);
-        if (counter < limit)
-            $.ajax({
+     $.ajax({
                 type: "GET",
                 url: "/Main/GetConversations",
-                data: { room: roomids[counter] },
-                contentType: "application/json; charset=utf-8",
+                contentType: "application/json;charset=utf-8",
                 dataType: "json",
-                success: function (data) {
-                    var dataNumber = Object.keys(data).length;
-                    data.sort((a, b) => (a.Time > b.Time) ? 1 : -1)
-                    for (var index1 = 0; index1 < dataNumber; index1++) {
-                       if (data[index1].UserID == userID) {
-                            AppendMyMess(data[index1].Content, roomids[counter]);
-                       }
-                       else {
-                            AppendOtherMess(data[index1].UserDisplayName, data[index1].Content, roomids[counter]);
-                       }
+                data: "{room: '1'}",
+                success: function (result) {
 
+                    for (var i in result) {
+                        alert(result[i].Content);
                     }
-                    counter++;
-                    DisplayMess(counter, limit);
+
                 },
-                error: function (data) {
-                    alert('error');
+                error: function (response) {
+                    alert('eror');
                 }
             });
-    }
-    DisplayMess(0, limit);
+  
+
 });
+

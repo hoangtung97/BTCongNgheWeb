@@ -165,7 +165,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ChatBox.cs" />
+    <Compile Include="Models\ChatBox\ChatBox.cs" />
     <Compile Include="Models\ChatModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -403,7 +403,6 @@
     <Content Include="Views\Assignment\Details.cshtml" />
     <Content Include="Views\Assignment\Delete.cshtml" />
     <Content Include="Views\Partial\ChatRoomPartialPage1.cshtml" />
-    <Content Include="Views\Message\Message.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
