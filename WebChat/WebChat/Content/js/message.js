@@ -1,8 +1,6 @@
 ﻿var services;
 var currRoom;
 
-
-
 function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
@@ -86,10 +84,26 @@ $(document).ready(function () {
                     addli.appendChild(adddiv);
                     $(addli).appendTo("#" + obj.id_room + "message-container");
                 }
-            }
-        
-       
+            }       
     }
+
+     $.ajax({
+                type: "GET",
+                url: "/Main/GetConversations",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                data: "{room: '1'}",
+                success: function (result) {
+
+                    for (var i in result) {
+                        alert(result[i].Content);
+                    }
+
+                },
+                error: function (response) {
+                    alert('eror');
+                }
+            });
   
 
 });

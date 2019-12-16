@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebChat.Models.ChatRoom>
+﻿
 @foreach (var item in Model)
 {
     <div class="tab-pane fade" id="chat@(item.RoomID)" role="tabpanel">
@@ -35,14 +35,19 @@
                 </div>
                 <div class="middle">
                     <div class="container">
-                        <ul id="@(item.RoomID)message-container"></ul>
+                        <ul id="@(item.RoomID)message-container">
+                            @foreach(var item1 in Model)
+                            {
+                                @item1.Displayname;
+                            }
+                        </ul>
                     </div>
                 </div>
                 <div class="container">
                     <div class="bottom">
                         <form>
                             <textarea class="form-control InputMessage" id="@(item.RoomID)InputMessage" placeholder="Type message..." rows="1"></textarea>
-                            <button type="button" id ="@(item.RoomID)SendButton" class="btn prepend SendButton"><i data-eva="paper-plane"></i></button>
+                            <button type="button" id="@(item.RoomID)SendButton" class="btn prepend SendButton"><i data-eva="paper-plane"></i></button>
                         </form>
                     </div>
 
@@ -88,3 +93,4 @@
     </div>
     <!-- End of Chat Room -->
 }
+

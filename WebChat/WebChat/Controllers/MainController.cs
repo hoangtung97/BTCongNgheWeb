@@ -63,5 +63,11 @@ namespace WebChat.Controllers
             string cookie = this.GetCookie(name);
             return cookie;
         }
+
+        public ActionResult GetConversations(int room)
+        {
+            List<Models.CustomModel.CustomConversations> getUserConversations = DbModuls.DbGet.getUserConversations(room);
+            return Json(getUserConversations, JsonRequestBehavior.AllowGet);
+        }
     }
 }

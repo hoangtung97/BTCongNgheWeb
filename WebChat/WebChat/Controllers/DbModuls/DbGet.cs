@@ -125,6 +125,15 @@ namespace WebChat.Controllers.DbModuls
 
             return user.First();
         }
-        
+
+        public static string getSpecificUserName(int userID)
+        {
+            var user = from u in database.Users
+                       where u.UserID == userID
+                       select u;
+
+            return user.First().DisplayName;
+        }
+
     }
 }
