@@ -64,7 +64,7 @@ namespace WebChat.Controllers
             return cookie;
         }
 
-        public ActionResult GetConversations(int room)
+        public JsonResult GetConversations(int room)
         {
             List<Models.CustomModel.CustomConversations> getUserConversations = DbModuls.DbGet.getUserConversations(room);
             return Json(getUserConversations, JsonRequestBehavior.AllowGet);
