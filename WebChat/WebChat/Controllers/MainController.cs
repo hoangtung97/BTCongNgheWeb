@@ -38,7 +38,17 @@ namespace WebChat.Controllers
             WebsocketManager.Manager.updateDisplayNamesMapping();
             WebsocketManager.Manager.updateMappingRooms();
 
-            return View( Controllers.DbModuls.DbGet.getUserRoomList( currentUser.userID ));
+            //return View( Controllers.DbModuls.DbGet.getUserRoomList( currentUser.userID ));
+            //get all user in all room
+            var Room_Users = Controllers.DbModuls.DbGet.GetRoom_Users();
+            //get chat room user currently joined
+            var ChatRoom = Controllers.DbModuls.DbGet.getUserRoomList(currentUser.userID);
+            //get list of user join each room
+            var AllUser = Controllers.DbModuls.DbGet.getUserList();
+
+            ViewModel ViewModel1 = new ViewModel {ChatRoom = ChatRoom, Users = AllUser, Room_Users = Room_Users };
+
+            return View(ViewModel1);
         }
 
         public ActionResult LogOut()

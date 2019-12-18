@@ -1,92 +1,107 @@
-﻿@model IEnumerable<WebChat.Models.ChatRoom>
+﻿@model WebChat.Models.ViewModel
 
-@foreach (var item in Model)
-{
-    <div class="tab-pane fade" id="chat@(item.RoomID)" role="tabpanel">
-        <div class="item">
-            <div class="content">
-                <div class="container">
-                    <div class="top">
-                        <div class="headline">
-                            <img src="~/Content/img/avatars/avatar-group-1.jpg" alt="avatar">
-                            <div class="content">
-                                <h5>@item.RoomName</h5>
-                                <span>Nhóm</span>
+<div class="tab-content">
+        @foreach (var item1 in Model.ChatRoom)
+        {
+            <div class="tab-pane fade" id="chat@(item1.RoomID)" role="tabpanel">
+                <div class="item">
+                    <div class="content">
+                        <div class="container">
+                            <div class="top">
+                                <div class="headline">
+                                    <img src="~/Content/img/avatars/avatar-group-1.jpg" alt="avatar">
+                                    <div class="content">
+                                        <h5>@item1.RoomName</h5>
+                                        <span>Nhóm</span>
+                                    </div>
+                                </div>
+                                <ul>
+
+                                    <li><button type="button" class="btn"><i data-eva="video" data-eva-animation="pulse"></i></button></li>
+                                    <li><button type="button" class="btn"><i data-eva="phone" data-eva-animation="pulse"></i></button></li>
+                                    <li><button type="button" class="btn" data-toggle="modal" data-target="#compose"><i data-eva="person-add" data-eva-animation="pulse"></i></button></li>
+                                    <li><button type="button" class="btn" data-utility="open"><i data-eva="info" data-eva-animation="pulse"></i></button></li>
+                                    <li><button type="button" class="btn round" data-chat="open"><i data-eva="arrow-ios-back"></i></button></li>
+                                    <li>
+                                        <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-eva="more-vertical" data-eva-animation="pulse"></i></button>
+                                        <div class="dropdown-menu">
+                                            <button type="button" class="dropdown-item"><i data-eva="video"></i>Video call</button>
+                                            <button type="button" class="dropdown-item"><i data-eva="phone"></i>Voice call</button>
+                                            <button type="button" class="dropdown-item" data-toggle="modal" data-target="#compose"><i data-eva="person-add"></i>Add people</button>
+                                            <button type="button" class="dropdown-item" data-utility="open"><i data-eva="info"></i>Information</button>
+                                        </div>
+                                    </li>
+
+                                </ul>
                             </div>
                         </div>
-                        <ul>
-
-                            <li><button type="button" class="btn"><i data-eva="video" data-eva-animation="pulse"></i></button></li>
-                            <li><button type="button" class="btn"><i data-eva="phone" data-eva-animation="pulse"></i></button></li>
-                            <li><button type="button" class="btn" data-toggle="modal" data-target="#compose"><i data-eva="person-add" data-eva-animation="pulse"></i></button></li>
-                            <li><button type="button" class="btn" data-utility="open"><i data-eva="info" data-eva-animation="pulse"></i></button></li>
-                            <li><button type="button" class="btn round" data-chat="open"><i data-eva="arrow-ios-back"></i></button></li>
-                            <li>
-                                <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-eva="more-vertical" data-eva-animation="pulse"></i></button>
-                                <div class="dropdown-menu">
-                                    <button type="button" class="dropdown-item"><i data-eva="video"></i>Video call</button>
-                                    <button type="button" class="dropdown-item"><i data-eva="phone"></i>Voice call</button>
-                                    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#compose"><i data-eva="person-add"></i>Add people</button>
-                                    <button type="button" class="dropdown-item" data-utility="open"><i data-eva="info"></i>Information</button>
-                                </div>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>
-                <div class="middle">
-                    <div class="container">
-                        <ul id="@(item.RoomID)message-container">  </ul>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="bottom">
-                        <form>
-                            <textarea class="form-control InputMessage" id="@(item.RoomID)InputMessage" placeholder="Type message..." rows="1"></textarea>
-                            <button type="button" id="@(item.RoomID)SendButton" class="btn prepend SendButton"><i data-eva="paper-plane"></i></button>
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-            <!-- Start of Utility -->
-            <div class="utility">
-                <div class="container">
-                    <button type="button" class="close" data-utility="open"><i data-eva="close"></i></button>
-                    <button type="button" class="btn primary" data-toggle="modal" data-target="#compose">Thêm thành viên</button>
-                    <ul class="nav" role="tablist">
-                        <li><a href="#users2" class="active" data-toggle="tab" role="tab" aria-controls="users2" aria-selected="true">Người dùng</a></li>
-                        <li><a href="#files2" data-toggle="tab" role="tab" aria-controls="files2" aria-selected="false">Files</a></li>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane fade active show" id="users2" role="tabpanel">
-                            <h4>Người dùng</h4>
-                            <ul class="users">
-                                <li>
-                                    <div class="status online"><img src="~/Content/img/avatars/avatar-male-1.jpg" alt="avatar"><i data-eva="radio-button-on"></i></div>
-                                    <div class="content">
-                                        <h5>Ninh Thái Phan</h5>
-                                        <span>Ninh Bình, VN</span>
-                                    </div>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-eva="more-vertical"></i></button>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <button type="button" class="dropdown-item">Sửa</button>
-                                            <button type="button" class="dropdown-item">Chia sẻ</button>
-                                            <button type="button" class="dropdown-item">Xóa</button>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
+                        <div class="middle">
+                            <div class="container">
+                                <ul id="@(item1.RoomID)message-container">  </ul>
+                            </div>
                         </div>
+                        <div class="container">
+                            <div class="bottom">
+                                <form>
+                                    <textarea class="form-control InputMessage" id="@(item1.RoomID)InputMessage" placeholder="Type message..." rows="1"></textarea>
+                                    <button type="button" id="@(item1.RoomID)SendButton" class="btn prepend SendButton"><i data-eva="paper-plane"></i></button>
+                                </form>
+                            </div>
 
+                        </div>
                     </div>
-                    <button type="button" class="btn primary">Thoát khỏi phòng</button>
+                    <!-- Start of Utility -->
+                    <div class="utility">
+                        <div class="container">
+                            <button type="button" class="close" data-utility="open"><i data-eva="close"></i></button>
+                            <button type="button" class="btn primary" data-toggle="modal" data-target="#compose"></button>
+                            <ul class="nav" role="tablist">
+                                <li><a href="#users2" class="active" data-toggle="tab" role="tab" aria-controls="users2" aria-selected="true">Người dùng</a></li>
+                                <li><a href="#files2" data-toggle="tab" role="tab" aria-controls="files2" aria-selected="false">Files</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane fade active show" id="users2" role="tabpanel">
+                                    <h4>Người dùng</h4>
+                                    @foreach (var item2 in Model.Room_Users)
+                                    {
+                                        if (item2.RoomID == item1.RoomID)
+                                        {
+                                            foreach (var item3 in Model.Users)
+                                            {
+                                                if (item3.UserID == item2.UserID)
+                                                {
+                                                    <ul class="users">
+                                                        <li>
+                                                            <div class="status online"><img src="~/Content/img/avatars/avatar-male-1.jpg" alt="avatar"><i data-eva="radio-button-on"></i></div>
+                                                            <div class="content">
+                                                                <h5>@item3.DisplayName</h5>
+                                                                <span>@item3.Username</span>
+                                                            </div>
+                                                            <div class="dropdown">
+                                                                <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-eva="more-vertical"></i></button>
+                                                                <div class="dropdown-menu dropdown-menu-right">
+                                                                    <button type="button" class="dropdown-item">Sửa</button>
+                                                                    <button type="button" class="dropdown-item">Chia sẻ</button>
+                                                                    <button type="button" class="dropdown-item">Xóa</button>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                </div>
+
+                            </div>
+                            <button type="button" class="btn primary">Thoát khỏi phòng</button>
+                        </div>
+                    </div>
+                    <!-- End of Utility -->
                 </div>
             </div>
-            <!-- End of Utility -->
-        </div>
-    </div>
-    <!-- End of Chat Room -->
-}
+            <!-- End of Chat Room -->
+        }
 
+</div>

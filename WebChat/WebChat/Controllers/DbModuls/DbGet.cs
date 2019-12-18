@@ -117,6 +117,27 @@ namespace WebChat.Controllers.DbModuls
             return usersList;
         }
 
+        public static List<Models.Room_Users> GetRoom_Users()
+        {
+            var AllRoomUser = from room in database.Room_Users
+                           join user in database.Users
+                           on room.UserID equals user.UserID
+                           select new
+                           {
+                               RoomID = room.RoomID,
+                               UserID = user.UserID,
+                           };
+
+            List<Models.Room_Users> room_UsersList = new List<Models.Room_Users>();
+
+            foreach (var item in AllRoomUser)
+            {
+                room_UsersList.Add(new Models.Room_Users { RoomID = item.RoomID, UserID = item.UserID });
+            }
+
+            return room_UsersList;
+        }
+
         public static Models.User getSpecificUser( int userID)
         {
             var user = from u in database.Users
