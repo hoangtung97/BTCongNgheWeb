@@ -38,6 +38,8 @@
     <Property Name="DisplayName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Password_" Type="char" MaxLength="16" Nullable="false" />
     <Property Name="Avatar" Type="varbinary(max)" />
+    <Property Name="Sex" Type="nvarchar" MaxLength="50" />
+    <Property Name="DateOfBirth" Type="date" />
   </EntityType>
   <Association Name="FK__ChatRoom__RoomAd__3A4CA8FD">
     <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
