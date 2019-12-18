@@ -379,6 +379,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\Layout\_MainLayout.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -393,7 +394,6 @@
     <Content Include="Views\LogIn\LogIn.cshtml" />
     <Content Include="Views\Main\Main.cshtml" />
     <Content Include="Views\Layout\_LogInLayout.cshtml" />
-    <Content Include="Views\Layout\_MainLayout.cshtml" />
     <Content Include="Views\SignUp\SignUp.cshtml" />
     <Content Include="Views\Layout\_SignUpLayout.cshtml" />
     <Content Include="Views\Partial\_MainPartialPage1.cshtml" />
