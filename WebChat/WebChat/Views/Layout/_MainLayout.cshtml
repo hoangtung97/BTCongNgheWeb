@@ -30,7 +30,7 @@
                     <li><a href="#friends" data-toggle="tab" role="tab" aria-controls="friends" aria-selected="false"><i data-eva="people" data-eva-animation="pulse"></i></a></li>
                     <li><a href="#notifications" data-toggle="tab" role="tab" aria-controls="notifications" aria-selected="false"><i data-eva="bell" data-eva-animation="pulse"></i></a></li>
                     <li><a href="#settings" data-toggle="tab" role="tab" aria-controls="settings" aria-selected="false"><i data-eva="settings" data-eva-animation="pulse"></i></a></li>
-                    <li><button type="button" class="btn"><img src="~/Content/img/signout.png" alt="avatar"</button></li>
+                    <li><button type="button" class="btn"><img src="~/Content/img/avatars/avatar-male-1.jpg" alt="avatar"></button></li>
                 </ul>
             </div>
         </nav>
@@ -242,7 +242,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Ngày Sinh</label>
-                                                <input type="date" class="form-control" placeholder="Ngày sinh của bạn" value="20/10/1997">
+                                                <input type="date" class="form-control" placeholder="Ngày sinh của bạn" value="21/08/1998">
                                             </div>
                                             <div class="form-group">
                                                 <label>Mật khẩu</label>
@@ -448,8 +448,8 @@
                             <li>
                                 <a href="#" class="headline" data-toggle="collapse" aria-expanded="false" data-target="#appearance" aria-controls="appearance">
                                     <div class="title">
-                                        <h5>Giao diện</h5>
-                                        <p>Tùy chỉnh giao diện cho TPMH Chat</p>
+                                        <h5>Đăng xuất</h5>
+                                        <p>Đăng xuất khỏi tài khoản</p>
                                     </div>
                                     <i data-eva="arrow-ios-forward"></i>
                                     <i data-eva="arrow-ios-downward"></i>
@@ -458,14 +458,11 @@
                                     <div class="inside">
                                         <ul class="options">
                                             <li>
-                                                <div class="headline">
-                                                    <h5>Chế độ ban đêm</h5>
-                                                    <label class="switch">
-                                                        <input type="checkbox">
-                                                        <span class="slider round mode"></span>
-                                                    </label>
-                                                </div>
-                                                <p>Chuyển sang màu tối cho sử dụng vào ban đêm.</p>
+                                                 </div>
+                                                    <input type="button" title="Delete" class="btn primary" onclick="location.href='@Url.Action("LogOut", "Main")'" value="Đăng xuất" />
+                                                    @*<button type="button" class="btn primary">Đăng xuất</button>*@
+                                                    
+                                                 </div>
                                             </li>
                                         </ul>
                                     </div>
