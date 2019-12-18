@@ -1,4 +1,8 @@
 ﻿@using System.Data;
+@using WebChat.Models;
+
+@model ViewModel
+
 <!DOCTYPE html>
 <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true" />
 <html lang="en">
@@ -49,6 +53,7 @@
                             <ul class="nav" role="tablist">
                                 <li><a class="filter-btn   active" data-toggle="tab" data-filter="groups">Nhóm</a></li>
                             </ul>
+
                         </div>
                         @RenderBody()
                     </div>
@@ -203,8 +208,19 @@
                                 <img src="~/Content/img/avatars/avatar-male-1.jpg" alt="avatar">
                             </label>
                             <div class="content">
-                                <h5>Hoàng Tùng</h5>
-                                <span>Thanh Hóa, VN</span>
+                                @{
+                                    HttpCookie cookie = Request.Cookies["userID"];
+                                    var UserId = Int32.Parse(cookie.Value);
+                                    foreach( var item in Model.Users)
+                                    {
+                                        if (UserId == item.UserID)
+                                        {
+                                            <h5>@item.DisplayName</h5>
+                                            <span>Tiểu vương quốc Thanh Hóa</span>
+                                        }
+                                    }
+                                }
+
                             </div>
                         </div>
                         <h4>Tùy chọn</h4>
@@ -487,26 +503,45 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5>Thêm phòng</h5>
+                        <h5>Phòng chat</h5>
                         <button type="button" class="btn round" data-dismiss="modal" aria-label="Close">
                             <i data-eva="close"></i>
                         </button>
                     </div>
                     <div class="modal-body">
                         <ul class="nav" role="tablist">
-                            <li><a href="#details" class="active" data-toggle="tab" role="tab" aria-controls="details" aria-selected="true">Chi tiết</a></li>
+                            <li><a href="#details" class="active" data-toggle="tab" role="tab" aria-controls="details" aria-selected="true">Thêm phòng</a></li>
+                            <li><a href="#participants" data-toggle="tab" role="tab" aria-controls="participants" aria-selected="true">Vào phòng</a></li>
                         </ul>
                         <div class="tab-content">
                             <!-- Start of Details -->
                             <div class="details tab-pane fade show active" id="details" role="tabpanel">
-                                <form>
+                                <form id="roomCreateForm">
                                     <div class="form-group">
                                         <label>Tên phòng</label>
-                                        <input type="text" class="form-control" placeholder="Tên nhóm?">
+                                        <input id="groupnameID" name="groupname" type="text" class="form-control" placeholder="Tên nhóm?">
                                     </div>
                                     <div class="form-group">
                                         <label>Password</label>
-                                        <textarea class="form-control" placeholder="Nhập mật khẩu"></textarea>
+                                        <textarea id="grouppassID" name="grouppass" class="form-control" placeholder="Nhập mật khẩu"></textarea>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button id="createRoomButton" type="button" class="btn primary">Thêm phòng</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="details tab-pane fade show " id="participants" role="tabpanel">
+                                <form id="joinroom">
+                                    <div class="form-group">
+                                        <label>ID phòng</label>
+                                        <input  name="groupname" type="text" class="form-control" placeholder="Tên nhóm?">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <textarea  name="grouppass" class="form-control" placeholder="Nhập mật khẩu"></textarea>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn primary">Vào phòng</button>
                                     </div>
                                 </form>
                             </div>
@@ -514,9 +549,7 @@
                         </div>
                     </div>
 
-                    <div class="modal-footer">
-                        <button type="submit" class="btn primary">Thêm phòng</button>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -530,9 +563,7 @@
     <script src="~/Content/js/vendor/jquery.js"></script>
     <script src="~/Content/js/vendor/bootstrap.min.js"></script>
     <script src="~/Content/js/swipe.min.js"></script>
-    <script src="~/Content/js/message.js">
-
-
-    </script>
+    <script src="~/Content/js/message.js"></script>
+    <script src="~/Content/js/Assignment.js"></script>
 </body>
 </html>																																																										
