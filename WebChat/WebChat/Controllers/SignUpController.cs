@@ -8,6 +8,7 @@ namespace WebChat.Controllers
 {
     public class SignUpController : Controller
     {
+
         // GET: SignUp
         public ActionResult SignUp()
         {

@@ -28,6 +28,7 @@
     <Property Name="RoomID" Type="int" Nullable="false" />
     <Property Name="UserID" Type="int" Nullable="false" />
     <Property Name="Socket" Type="char" MaxLength="50" />
+    <Property Name="AdminRight" Type="bit" />
   </EntityType>
   <EntityType Name="Users">
     <Key>

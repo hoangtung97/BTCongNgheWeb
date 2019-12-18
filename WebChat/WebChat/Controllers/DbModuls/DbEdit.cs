@@ -11,20 +11,21 @@ namespace WebChat.Controllers.DbModuls
     {
         public static Models.ChatWebsiteEntities database = new Models.ChatWebsiteEntities();
 
-        //sua ten hien thi cua nguoi dung
+        //sua thong tin cua nguoi dung
         public static void editUser( Models.User newUser )
         {
             Models.User user = new Models.User();
 
             user = database.Users.Single(u => u.UserID == newUser.UserID);
             user.DisplayName = newUser.DisplayName;
-
-            //o day chua co luu anh 
-            //do dang nghien cuu cach luu tru anh trong csdl
+            user.DateOfBirth = newUser.DateOfBirth;
+            user.Sex = newUser.Sex;
+            user.Avatar = newUser.Avatar;
+            
             database.SaveChanges();
         }
 
-        //sua ten phong
+        //sua thong tin phong
         //neu khong thay doi phan nao thi de tham so null
         public static void editRoom( int roomID, string newRoomName, string newPW )
         {

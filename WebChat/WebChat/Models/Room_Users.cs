@@ -17,6 +17,7 @@ namespace WebChat.Models
         public int RoomID { get; set; }
         public int UserID { get; set; }
         public string Socket { get; set; }
+        public Nullable<bool> AdminRight { get; set; }
     
         public virtual ChatRoom ChatRoom { get; set; }
         public virtual User User { get; set; }

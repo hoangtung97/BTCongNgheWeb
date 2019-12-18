@@ -22,6 +22,7 @@
     <Property Name="Socket" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
     <NavigationProperty Name="ChatRoom" Relationship="Self.FK__Room_User__RoomI__06CD04F7" FromRole="Room_Users" ToRole="ChatRoom" />
     <NavigationProperty Name="User" Relationship="Self.FK__Room_User__UserI__07C12930" FromRole="Room_Users" ToRole="Users" />
+    <Property Name="AdminRight" Type="Boolean" />
   </EntityType>
   <EntityType Name="User">
     <Key>

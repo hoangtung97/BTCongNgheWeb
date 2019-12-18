@@ -156,5 +156,48 @@ namespace WebChat.Controllers.DbModuls
             return user.First().DisplayName;
         }
 
+
+        #region Search Moduls
+        public static List<Models.User> searchUser( string username )
+        {
+            var userlist = from user in database.Users
+                           select user;
+
+            if( !String.IsNullOrEmpty( username))
+            {
+                userlist = userlist.Where(user => user.DisplayName.Contains(username));
+            }
+
+            return userlist.ToList();
+        }
+
+        public static List<Models.ChatRoom> searchRoom( string roomName )
+        {
+            var roomList = from room in database.ChatRooms
+                           select room;
+
+            if(!String.IsNullOrEmpty(roomName))
+            {
+                roomList = roomList.Where(room => room.RoomName.Contains(roomName));
+            }
+
+            return roomList.ToList();
+        }
+
+        public static List<Models.User> searchUserInRoom( string name, int roomID )
+        {
+            var userlist = from room in database.Room_Users
+                           join user in database.Users on room.UserID equals user.UserID
+                           where room.RoomID == roomID
+                           select user;
+
+            if(!String.IsNullOrEmpty(name))
+            {
+                userlist = userlist.Where(user => user.DisplayName.Contains(name));
+            }
+
+            return userlist.ToList();
+        }
+        #endregion
     }
 }
