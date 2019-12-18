@@ -1,27 +1,24 @@
-﻿@model IEnumerable<WebChat.Models.ChatRoom>
-
+﻿@model WebChat.Models.ViewModel
 
 <div class="middle">
     <h4>Cuộc trò chuyện</h4>
     <button type="button" class="btn round" data-toggle="modal" data-target="#compose"><i data-eva="edit-2"></i></button>
     <hr>
     <ul class="nav discussions " role="tablist">
-
-        @foreach (var item in Model)
-        {
-            <li>
-                <a href="#chat@(item.RoomID)"  id ="@(item.RoomID)"class="filter groups roomtab" data-chat="open" data-toggle="tab" role="tab" aria-controls="chat2" aria-selected="false">
-                    <div class="content">
-                        <div class="headline">
-                            <img src="~/Content/img/avatars/avatar-group-1.jpg" alt="avatar">
-                            <h5>@item.RoomName</h5>
-                            <span>Hôm nay</span>
+            @foreach (var item1 in Model.ChatRoom)
+            {
+                <li>
+                    <a href="#chat@(item1.RoomID)" id="@(item1.RoomID)" class="filter groups roomtab" data-chat="open" data-toggle="tab" role="tab" aria-controls="chat2" aria-selected="false">
+                        <div class="content">
+                            <div class="headline">
+                                <img src="~/Content/img/avatars/avatar-group-1.jpg" alt="avatar">
+                                <h5>@item1.RoomName</h5>
+                                <span>Hôm nay</span>
+                            </div>
+                            @*<p>Commit all </p>*@
                         </div>
-                        @*<p>Commit all </p>*@
-                    </div>
-                </a>
-            </li>
-        }
-
+                    </a>
+                </li>
+            }
     </ul>
 </div>
