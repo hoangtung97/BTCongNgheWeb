@@ -36,6 +36,8 @@
     <NavigationProperty Name="Room_Users" Relationship="Self.FK__Room_User__UserI__07C12930" FromRole="Users" ToRole="Room_Users" />
     <NavigationProperty Name="Conversations" Relationship="ChatWebsiteModel.FK__Conversat__UserI__2739D489" FromRole="User" ToRole="Conversation" />
     <NavigationProperty Name="ChatRooms" Relationship="ChatWebsiteModel.FK__ChatRoom__RoomAd__3A4CA8FD" FromRole="User" ToRole="ChatRoom" />
+    <Property Name="Sex" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
   </EntityType>
   <Association Name="FK__Room_User__RoomI__06CD04F7">
     <End Role="ChatRoom" Type="Self.ChatRoom" Multiplicity="1" />

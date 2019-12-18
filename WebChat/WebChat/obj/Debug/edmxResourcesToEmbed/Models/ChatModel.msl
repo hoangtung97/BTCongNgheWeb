@@ -24,6 +24,8 @@
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="ChatWebsiteModel.User">
         <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="Username" ColumnName="Username" />
           <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
