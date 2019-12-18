@@ -60,6 +60,56 @@ namespace WebChat.Controllers.DbModuls
             database.Users.Remove( user );
             database.SaveChanges();
         }
+
+        #region User Related
+        public static bool kickUser(int userID, int kickUserID, int roomID)
+        {
+            //check if user is an admin
+            var adright = ( from u in database.Room_Users
+                       where u.UserID == userID && u.RoomID == roomID
+                       select u.AdminRight ).FirstOrDefault();
+            if( adright == true )
+            {
+                deleteUserFromRoom(kickUserID, roomID);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static void leaveRoom( int userID, int roomID)
+        {
+            //get user admin right
+            var adright = (from right in database.Room_Users
+                           where right.UserID == userID && right.RoomID == roomID
+                           select right.AdminRight ).FirstOrDefault();
+
+            deleteUserFromRoom(userID, roomID);
+
+            //if the user is the last user in the room
+            //delete the room
+            var usernum = database.Room_Users.Count();
+
+            if( usernum != 0)
+            {
+                if( adright == true )
+                {
+                    //if the user has administrator right, it will be transfered to someone else
+                    var newad = database.Room_Users.First();
+
+                    newad.AdminRight = true;
+                }
+            }
+            else
+            {
+                deleteRoom(roomID);
+            }
+
+            database.SaveChanges();
+        }
+        #endregion
     }
 
 }

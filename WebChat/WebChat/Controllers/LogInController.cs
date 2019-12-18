@@ -54,6 +54,9 @@ namespace WebChat.Controllers
                         HttpCookie userIDCookie = new HttpCookie("userID", validate.ToString());
                         HttpCookie displayNameCookie = new HttpCookie("displayName", DbModuls.DbGet.getSpecificUser( validate.Value ).DisplayName.ToString());
 
+                        FormsAuthentication.SetAuthCookie(validate.Value.ToString(), false);
+
+
                         userIDCookie.Expires.AddDays(10);
                         HttpContext.Response.SetCookie(displayNameCookie);
                         HttpContext.Response.SetCookie(userIDCookie);

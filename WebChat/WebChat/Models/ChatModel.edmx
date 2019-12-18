@@ -33,6 +33,7 @@
           <Property Name="RoomID" Type="int" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="Socket" Type="char" MaxLength="50" />
+          <Property Name="AdminRight" Type="bit" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -193,6 +194,7 @@
           <Property Name="Socket" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="ChatRoom" Relationship="Self.FK__Room_User__RoomI__06CD04F7" FromRole="Room_Users" ToRole="ChatRoom" />
           <NavigationProperty Name="User" Relationship="Self.FK__Room_User__UserI__07C12930" FromRole="Room_Users" ToRole="Users" />
+          <Property Name="AdminRight" Type="Boolean" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -376,6 +378,7 @@
           <EntitySetMapping Name="Room_Users">
             <EntityTypeMapping TypeName="ChatWebsiteModel.Room_Users">
               <MappingFragment StoreEntitySet="Room_Users">
+                <ScalarProperty Name="AdminRight" ColumnName="AdminRight" />
                 <ScalarProperty Name="RoomID" ColumnName="RoomID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Socket" ColumnName="Socket" />
