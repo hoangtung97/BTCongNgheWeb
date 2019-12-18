@@ -69,7 +69,7 @@ $(document).ready(function () {
         adddiv.classList.add("Out");
         adddiv.innerHTML = '<div class="contentOut"><div class="message"><div class="bubbleOut"><p class="pOut">' + message + '</p></div></div></div>';
         addli.appendChild(adddiv);
-        $("#" + roomID + "InputMessage").val() != "";
+        $("#" + roomID + "InputMessage").text("");
         $(addli).appendTo("#" + roomid + "message-container")
     }
 

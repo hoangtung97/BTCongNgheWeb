@@ -78,12 +78,31 @@ namespace WebChat.Controllers
         {
             List<Models.CustomModel.CustomConversations> getUserConversations = DbModuls.DbGet.getUserConversations(room);
             return Json(getUserConversations, JsonRequestBehavior.AllowGet);
+            
         }
 
-        public ActionResult DeleteUserInRoom(int userid, int roomid)
+
+        //CREATE, DELETE, EDIT METHODS
+
+        //delelte user in room
+        public void DeleteUserInRoom(int userid, int roomid)
         {
             DbModuls.DbDelete.deleteUserFromRoom(userid, roomid);
-            return RedirectToAction("Main");
+        }
+        //exit room
+        public void ExitRoom(int userid, int roomid)
+        {
+            DbModuls.DbDelete.GetOutOfRoom(userid, roomid);
+        }
+
+        //create room
+ 
+        public ActionResult CreateRoom(string roomname, string roompass)
+        {
+            HttpCookie cookie = Request.Cookies["userID"];
+            var adminId = Int32.Parse(cookie.Value);
+            DbModuls.DbAdd.addRoom(roomname, adminId, roompass);
+            return RedirectToAction("Main", "Main");
         }
 
     }

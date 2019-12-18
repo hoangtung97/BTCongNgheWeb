@@ -46,7 +46,7 @@ namespace WebChat.Controllers.DbModuls
                                   join b in database.ChatRooms
                                     on a.RoomID equals b.RoomID
                                   where a.UserID == userID
-                                  select new { roomID = b.RoomID, roomName = b.RoomName };
+                                  select new { roomID = b.RoomID, roomName = b.RoomName, roomAdmin = b.RoomAdmin };
 
             //var conversation = from r_u in room_user
             //                   join conv in database.Conversations
@@ -56,7 +56,7 @@ namespace WebChat.Controllers.DbModuls
 
             foreach (var item in room_user)
             {
-                roomList.Add( new Models.ChatRoom { RoomID = item.roomID , RoomName = item.roomName } );
+                roomList.Add( new Models.ChatRoom { RoomID = item.roomID , RoomName = item.roomName, RoomAdmin = item.roomAdmin } );
             }
 
             return roomList;
@@ -145,6 +145,15 @@ namespace WebChat.Controllers.DbModuls
                        select u;
 
             return user.First();
+        }
+
+        public static Models.ChatRoom getSpecificRoom(int roomID)
+        {
+            var room = from r in database.ChatRooms
+                       where r.RoomID == roomID
+                       select r;
+
+            return room.First();
         }
 
         public static string getSpecificUserName(int userID)
