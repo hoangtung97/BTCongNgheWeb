@@ -79,5 +79,12 @@ namespace WebChat.Controllers
             List<Models.CustomModel.CustomConversations> getUserConversations = DbModuls.DbGet.getUserConversations(room);
             return Json(getUserConversations, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult DeleteUserInRoom(int userid, int roomid)
+        {
+            DbModuls.DbDelete.deleteUserFromRoom(userid, roomid);
+            return RedirectToAction("Main");
+        }
+
     }
 }
