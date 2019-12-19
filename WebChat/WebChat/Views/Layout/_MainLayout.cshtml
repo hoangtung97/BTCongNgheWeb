@@ -31,8 +31,6 @@
                 <a href="#" class="logo" rel="home"><img src="~/Content/img/dataimage.png" alt="logo"></a>
                 <ul class="nav" role="tablist">
                     <li><a href="#conversations" class="active" data-toggle="tab" role="tab" aria-controls="conversations" aria-selected="true"><i data-eva="message-square" data-eva-animation="pulse"></i></a></li>
-                    <li><a href="#friends" data-toggle="tab" role="tab" aria-controls="friends" aria-selected="false"><i data-eva="people" data-eva-animation="pulse"></i></a></li>
-                    <li><a href="#notifications" data-toggle="tab" role="tab" aria-controls="notifications" aria-selected="false"><i data-eva="bell" data-eva-animation="pulse"></i></a></li>
                     <li><a href="#settings" data-toggle="tab" role="tab" aria-controls="settings" aria-selected="false"><i data-eva="settings" data-eva-animation="pulse"></i></a></li>
                     <li><button type="button" class="btn"><img src="~/Content/img/avatars/avatar-male-1.jpg" alt="avatar"><i data-eva="radio-button-on"></i></button></li>
                 </ul>
@@ -58,153 +56,12 @@
                         @RenderBody()
                     </div>
                     <!-- End of Discussions -->
-                    <!-- Start of Friends -->
-                    <div class="tab-pane fade" id="friends" role="tabpanel">
-                        <div class="top">
-                            <form>
-                                <input type="search" class="form-control" placeholder="Search">
-                                <button type="submit" class="btn prepend"><i data-eva="search"></i></button>
-                            </form>
-                        </div>
-                        <div class="middle">
-                            <h4>Bạn bè</h4>
-                            <hr>
-                            <ul class="users">
-                                <li>
-                                    <a href="#">
-                                        <div class="status online"><img src="~/Content/img/avatars/avatar-male-1.jpg" alt="avatar"><i data-eva="radio-button-on"></i></div>
-                                        <div class="content">
-                                            <h5>Ninh Thái Phan</h5>
-                                            <span>Ninh Bình, VN</span>
-                                        </div>
-                                        <div class="icon"><i data-eva="person"></i></div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="status offline"><img src="~/Content/img/avatars/avatar-male-2.jpg" alt="avatar"><i data-eva="radio-button-on"></i></div>
-                                        <div class="content">
-                                            <h5>Nguyễn Minh Hiếu</h5>
-                                            <span>Thái Bình, VN</span>
-                                        </div>
-                                        <div class="icon"><i data-eva="person"></i></div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="status online"><img src="~/Content/img/avatars/avatar-male-3.jpg" alt="avatar"><i data-eva="radio-button-on"></i></div>
-                                        <div class="content">
-                                            <h5>Triệu Quang Minh</h5>
-                                            <span>Hà Nội, VN</span>
-                                        </div>
-                                        <div class="icon"><i data-eva="person"></i></div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="status offline"><img src="~/Content/img/avatars/avatar-male-4.jpg" alt="avatar"><i data-eva="radio-button-on"></i></div>
-                                        <div class="content">
-                                            <h5>Lê Sỹ Tùng</h5>
-                                            <span>Thanh Hóa, VN</span>
-                                        </div>
-                                        <div class="icon"><i data-eva="person"></i></div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="status offline"><img src="~/Content/img/avatars/avatar-male-5.jpg" alt="avatar"><i data-eva="radio-button-on"></i></div>
-                                        <div class="content">
-                                            <h5>Nguyễn Nam</h5>
-                                            <span>Hà Nam, VN</span>
-                                        </div>
-                                        <div class="icon"><i data-eva="person"></i></div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="status online"><img src="~/Content/img/avatars/avatar-male-6.jpg" alt="avatar"><i data-eva="radio-button-on"></i></div>
-                                        <div class="content">
-                                            <h5>Lê Huy</h5>
-                                            <span>Hà Nam, VN</span>
-                                        </div>
-                                        <div class="icon"><i data-eva="person"></i></div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="status offline"><img src="~/Content/img/avatars/avatar-female-1.jpg" alt="avatar"><i data-eva="radio-button-on"></i></div>
-                                        <div class="content">
-                                            <h5>Hoàng Thủy</h5>
-                                            <span>Thanh Hóa, VN</span>
-                                        </div>
-                                        <div class="icon"><i data-eva="person"></i></div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="status offline"><img src="~/Content/img/avatars/avatar-female-2.jpg" alt="avatar"><i data-eva="radio-button-on"></i></div>
-                                        <div class="content">
-                                            <h5>Lan Hương</h5>
-                                            <span>Ninh Bình, VN</span>
-                                        </div>
-                                        <div class="icon"><i data-eva="person"></i></div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="status online"><img src="~/Content/img/avatars/avatar-female-3.jpg" alt="avatar"><i data-eva="radio-button-on"></i></div>
-                                        <div class="content">
-                                            <h5>Hà Phương</h5>
-                                            <span>Nghệ An, VN</span>
-                                        </div>
-                                        <div class="icon"><i data-eva="person"></i></div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- Xong phần bạn bè -->
-                    <!-- Thông báo -->
-                    <div class="tab-pane fade" id="notifications" role="tabpanel">
-                        <div class="top">
-                            <form>
-                                <input type="search" class="form-control" placeholder="Tìm kiếm">
-                                <button type="submit" class="btn prepend"><i data-eva="search"></i></button>
-                            </form>
-                        </div>
-                        <div class="middle">
-                            <h4>Thông báo</h4>
-                            <hr>
-                            <ul class="notifications">
-                                <li>
-                                    <div class="round"><i data-eva="person-done"></i></div>
-                                    <p><strong>Minh Hiếu</strong> đã tham gia nhóm <strong>Squad Ghouls</strong>.</p>
-                                </li>
-                                <li>
-                                    <div class="round"><i data-eva="lock"></i></div>
-                                    <p>Bạn cần thay đổi mật khẩu để tăng bảo mật.</p>
-                                </li>
-                                <li>
-                                    <div class="round"><i data-eva="attach"></i></div>
-                                    <p><strong>Phan</strong> đã gửi một file đính kèm: <strong>workbox.js</strong>.</p>
-                                </li>
-                                <li>
-                                    <div class="icon round"><i data-eva="gift"></i></div>
-                                    <p>Hôm nay là sinh nhật của <strong>Hoàng Thủy</strong>. Hãy chúc mừng!</p>
-                                </li>
-                                <li>
-                                    <div class="round"><i data-eva="person"></i></div>
-                                    <p><strong>Hà Phương</strong> đã chấp nhận lời mời kết bạn của bạn.</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- Kết thúc phần Thông báo-->
+
                     <!-- Tùy chọn -->
                     <div class="settings tab-pane fade" id="settings" role="tabpanel">
                         <div class="user">
                             <label>
-                                <input type="file">
+                                <input type="file" accept=".jpg,.png,.jepg">
                                 <img src="~/Content/img/avatars/avatar-male-1.jpg" alt="avatar">
                             </label>
                             <div class="content">
@@ -257,7 +114,11 @@
                                                 <input type="email" class="form-control" placeholder="Địa chỉ email của bạn" value="tungtung@gmail.com">
                                             </div>
                                             <div class="form-group">
-                                                <label>Mật khẩu</label>
+                                                <label>Mật khẩu mới</label>
+                                                <input type="password" class="form-control" placeholder="Nhập mật khẩu của bạn" value="3921847634095723">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Xác nhận mật khẩu mới</label>
                                                 <input type="password" class="form-control" placeholder="Nhập mật khẩu của bạn" value="3921847634095723">
                                             </div>
                                             <div class="form-group">
@@ -303,26 +164,6 @@
                                                 </div>
                                                 <p>Lưu lại lịch sử các cuộc trò chuyện</p>
                                             </li>
-                                            <li>
-                                                <div class="headline">
-                                                    <h5>Máy ảnh</h5>
-                                                    <label class="switch">
-                                                        <input type="checkbox">
-                                                        <span class="slider round"></span>
-                                                    </label>
-                                                </div>
-                                                <p>Cho phép truy cập máy ảnh trên thiết bị của bạn</p>
-                                            </li>
-                                            <li>
-                                                <div class="headline">
-                                                    <h5>Micro</h5>
-                                                    <label class="switch">
-                                                        <input type="checkbox">
-                                                        <span class="slider round"></span>
-                                                    </label>
-                                                </div>
-                                                <p>Cho phép truy cập micro trên thiết bị của bạn</p>
-                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -353,16 +194,6 @@
                                             </li>
                                             <li>
                                                 <div class="headline">
-                                                    <h5>Rung</h5>
-                                                    <label class="switch">
-                                                        <input type="checkbox">
-                                                        <span class="slider round"></span>
-                                                    </label>
-                                                </div>
-                                                <p>Rung khi nhận được tin nhắn ngoài cuộc trò chuyện đang diễn ra</p>
-                                            </li>
-                                            <li>
-                                                <div class="headline">
                                                     <h5>Âm thanh</h5>
                                                     <label class="switch">
                                                         <input type="checkbox" checked>
@@ -370,16 +201,6 @@
                                                     </label>
                                                 </div>
                                                 <p>Âm thanh thông báo khi nhận được tin nhắn mới ngoài cuộc trò chuyện đang diễn ra</p>
-                                            </li>
-                                            <li>
-                                                <div class="headline">
-                                                    <h5>Chế độ ban đêm</h5>
-                                                    <label class="switch">
-                                                        <input type="checkbox">
-                                                        <span class="slider round"></span>
-                                                    </label>
-                                                </div>
-                                                <p>Chuyển sang màu tối cho sử dụng vào ban đêm.</p>
                                             </li>
                                         </ul>
                                     </div>
