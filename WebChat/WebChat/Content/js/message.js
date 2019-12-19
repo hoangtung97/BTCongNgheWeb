@@ -28,11 +28,10 @@ $(document).ready(function () {
     var userID = parseInt(getCookie("userID"));
     var username = getCookie("displayName");
     var roomID;
-
+    var sendbutton;
     //get room clicked
     $(".roomtab").click(function () {
         roomID = this.id;
-        sendbutton = "SendButton" + roomID;
     });
 
     //press send button message
@@ -51,6 +50,8 @@ $(document).ready(function () {
                 message: sendingmessage,
                 id: userID
             }))
+
+            
         }
     });
 
@@ -69,8 +70,8 @@ $(document).ready(function () {
         adddiv.classList.add("Out");
         adddiv.innerHTML = '<div class="contentOut"><div class="message"><div class="bubbleOut"><p class="pOut">' + message + '</p></div></div></div>';
         addli.appendChild(adddiv);
-        $("#" + roomID + "InputMessage").text("");
-        $(addli).appendTo("#" + roomid + "message-container")
+        $("#" + roomID + "InputMessage").val("");
+        $(addli).appendTo("#" + roomid + "message-container");
     }
 
     //function append inbox mess

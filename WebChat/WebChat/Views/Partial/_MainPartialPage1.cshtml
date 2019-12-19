@@ -8,7 +8,7 @@
     <ul class="nav discussions " role="tablist">
         @foreach (var item1 in Model.ChatRoom)
         {
-            <li>
+            <li id="@(item1.RoomID)RoomList">
                 <a href="#chat@(item1.RoomID)" id="@(item1.RoomID)" class="filter groups roomtab" data-chat="open" data-toggle="tab" role="tab" aria-controls="chat2" aria-selected="false">
                     <div class="content">
                         <div class="headline">

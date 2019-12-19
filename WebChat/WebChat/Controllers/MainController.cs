@@ -85,14 +85,14 @@ namespace WebChat.Controllers
         //CREATE, DELETE, EDIT METHODS
 
         //delelte user in room
-        public void DeleteUserInRoom(int userid, int roomid)
+        public void DeleteUserInRoom(int userid, int kickuserid, int roomid)
         {
-            DbModuls.DbDelete.deleteUserFromRoom(userid, roomid);
+            var adright = DbModuls.DbDelete.kickUser(userid, kickuserid, roomid);
         }
-        //exit room
+        //leave room
         public void ExitRoom(int userid, int roomid)
         {
-            DbModuls.DbDelete.GetOutOfRoom(userid, roomid);
+            DbModuls.DbDelete.leaveRoom(userid,roomid);
         }
 
         //create room

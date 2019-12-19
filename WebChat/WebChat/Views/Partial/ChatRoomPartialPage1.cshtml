@@ -12,8 +12,8 @@
                                 <div class="headline">
                                     <img src="~/Content/img/avatars/avatar-group-1.jpg" alt="avatar">
                                     <div class="content">
-                                        <h5>@item1.RoomAdmin@item1.RoomName</h5>
-                                        <span>Nhóm</span>
+                                        <h5>@item1.RoomName</h5>
+                                        <span>ID: @item1.RoomID</span>
                                     </div>
                                 </div>
                                 <ul>
@@ -38,7 +38,7 @@
                         </div>
                         <div class="middle">
                             <div class="container">
-                                <ul id="@(item1.RoomID)message-container">  </ul>
+                                <ul class ="messagelist" id="@(item1.RoomID)message-container">  </ul>
                             </div>
                         </div>
                         <div class="container">
@@ -100,7 +100,7 @@
                                 </div>
 
                             </div>
-                            <button id="@(item1.RoomID)ExitRoom" type="button" class="btn primary exitbutton">Thoát khỏi phòng</button>
+                            <button id="@(item1.RoomID)ExitRoom" type="button" class="btn primary leavebutton">Thoát khỏi phòng</button>
                         </div>
                     </div>
                     <!-- End of Utility -->

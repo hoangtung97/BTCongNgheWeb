@@ -211,12 +211,12 @@
                                 @{
                                     HttpCookie cookie = Request.Cookies["userID"];
                                     var UserId = Int32.Parse(cookie.Value);
-                                    foreach( var item in Model.Users)
+                                    foreach (var item in Model.Users)
                                     {
                                         if (UserId == item.UserID)
                                         {
                                             <h5>@item.DisplayName</h5>
-                                            <span>Tiểu vương quốc Thanh Hóa</span>
+                                            <span>@item.UserID</span>
                                         }
                                     }
                                 }
@@ -461,7 +461,7 @@
                                 <a href="#" class="headline" data-toggle="collapse" aria-expanded="false" data-target="#appearance" aria-controls="appearance">
                                     <div class="title">
                                         <h5>Đăng xuất</h5>
-                                  
+
                                     </div>
                                     <i data-eva="arrow-ios-forward"></i>
                                     <i data-eva="arrow-ios-downward"></i>
@@ -527,11 +527,11 @@
                                 <form id="joinroom">
                                     <div class="form-group">
                                         <label>ID phòng</label>
-                                        <input  name="groupname" type="text" class="form-control" placeholder="Tên nhóm?">
+                                        <input name="groupname" type="text" class="form-control" placeholder="Tên nhóm?">
                                     </div>
                                     <div class="form-group">
                                         <label>Password</label>
-                                        <textarea  name="grouppass" class="form-control" placeholder="Nhập mật khẩu"></textarea>
+                                        <textarea name="grouppass" class="form-control" placeholder="Nhập mật khẩu"></textarea>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn primary">Vào phòng</button>
@@ -542,7 +542,7 @@
                         </div>
                     </div>
 
-                    
+
                 </div>
             </div>
         </div>
@@ -558,5 +558,6 @@
     <script src="~/Content/js/swipe.min.js"></script>
     <script src="~/Content/js/message.js"></script>
     <script src="~/Content/js/Assignment.js"></script>
+    <script src="~/Content/js/vanilla.js"></script>
 </body>
 </html>																																																										
