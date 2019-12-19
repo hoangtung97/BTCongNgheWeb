@@ -96,13 +96,38 @@ namespace WebChat.Controllers
         }
 
         //create room
- 
-        public ActionResult CreateRoom(string roomname, string roompass)
+        
+        public ActionResult CreateRoom()
         {
+            string roomname = Request["roomname"];
+            string roompw = Request["roompw"];
+
             HttpCookie cookie = Request.Cookies["userID"];
             var adminId = Int32.Parse(cookie.Value);
-            DbModuls.DbAdd.addRoom(roomname, adminId, roompass);
+
+            DbModuls.DbAdd.addRoom(roomname, adminId, roompw);
+
             return RedirectToAction("Main", "Main");
+        }
+
+        public ActionResult JoinRoom()
+        {
+            int roomID = Int32.Parse(Request["joinroomID"]);
+            string roompw = Request["joinroompw"];
+
+            HttpCookie cookie = Request.Cookies["userID"];
+            var userID = Int32.Parse(cookie.Value);
+
+            if( DbModuls.DbAdd.requestJoinRoom( userID, roomID, roompw))
+            {
+                return RedirectToAction("Main", "Main");
+            }
+            else
+            {
+                ViewBag.Message = "ID is not exist or wrong password";
+                return RedirectToAction("Main", "Main");
+            }
+            
         }
 
     }

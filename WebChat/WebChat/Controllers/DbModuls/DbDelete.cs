@@ -123,6 +123,12 @@ namespace WebChat.Controllers.DbModuls
                     var newad = database.Room_Users.First();
 
                     newad.AdminRight = true;
+
+                    var room = (from r in database.ChatRooms
+                                where r.RoomID == roomID
+                                select r).FirstOrDefault();
+
+                    room.RoomAdmin = newad.UserID;
                 }
             }
             else

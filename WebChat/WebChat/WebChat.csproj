@@ -405,6 +405,7 @@
     <Content Include="Views\Assignment\Delete.cshtml" />
     <Content Include="Views\Partial\ChatRoomPartialPage1.cshtml" />
     <Content Include="Views\Message\Message.cshtml" />
+    <Content Include="Views\Partial\_CreateRoomPartialPage1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -23,6 +23,7 @@ namespace WebChat.Controllers.DbModuls
             room.RoomID = id;
             room.RoomName = roomName;
             room.RoomPW = roomPW;
+            room.RoomAdmin = adminID;
 
             database.ChatRooms.Add(room);
             database.SaveChanges();
