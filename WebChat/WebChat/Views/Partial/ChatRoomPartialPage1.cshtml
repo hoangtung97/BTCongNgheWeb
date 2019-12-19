@@ -21,10 +21,9 @@
                                     <li><button type="button" class="btn"><i data-eva="video" data-eva-animation="pulse"></i></button></li>
                                     <li><button type="button" class="btn"><i data-eva="phone" data-eva-animation="pulse"></i></button></li>
                                     <li><button type="button" class="btn" data-toggle="modal" data-target="#compose"><i data-eva="person-add" data-eva-animation="pulse"></i></button></li>
-                                    <li><button type="button" class="btn" data-utility="open"><i data-eva="info" data-eva-animation="pulse"></i></button></li>
+                                    <li><button type="button" class="btn" data-utility="open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="eva eva-info eva-animation eva-icon-hover-pulse"><g data-name="Layer 2"><g data-name="info"><rect width="24" height="24" transform="rotate(180 12 12)" opacity="0"></rect><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14a1 1 0 0 1-2 0v-5a1 1 0 0 1 2 0zm-1-7a1 1 0 1 1 1-1 1 1 0 0 1-1 1z"></path></g></g></svg></button></li>
                                     <li><button type="button" class="btn round" data-chat="open"><i data-eva="arrow-ios-back"></i></button></li>
-                                    <li>
-                                        <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-eva="more-vertical" data-eva-animation="pulse"></i></button>
+                                    <li><button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-eva="more-vertical" data-eva-animation="pulse"></i></button>
                                         <div class="dropdown-menu">
                                             <button type="button" class="dropdown-item"><i data-eva="video"></i>Video call</button>
                                             <button type="button" class="dropdown-item"><i data-eva="phone"></i>Voice call</button>
@@ -45,7 +44,8 @@
                             <div class="bottom">
                                 <form>
                                     <textarea class="form-control InputMessage" id="@(item1.RoomID)InputMessage" placeholder="Type message..." rows="1"></textarea>
-                                    <button type="button" id="@(item1.RoomID)SendButton" class="btn prepend SendButton"><i data-eva="paper-plane"></i></button>
+                                    <button type="button" id="@(item1.RoomID)SendButton" class="btn prepend SendButton"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="eva eva-paper-plane"><g data-name="Layer 2"><g data-name="paper-plane"><rect width="24" height="24" opacity="0"></rect><path d="M21 4a1.31 1.31 0 0 0-.06-.27v-.09a1 1 0 0 0-.2-.3 1 1 0 0 0-.29-.19h-.09a.86.86 0 0 0-.31-.15H20a1 1 0 0 0-.3 0l-18 6a1 1 0 0 0 0 1.9l8.53 2.84 2.84 8.53a1 1 0 0 0 1.9 0l6-18A1 1 0 0 0 21 4zm-4.7 2.29l-5.57 5.57L5.16 10zM14 18.84l-1.86-5.57 5.57-5.57z"></path></g></g></svg>
+                                    </button>
                                 </form>
                             </div>
                         </div>
@@ -54,8 +54,19 @@
                     <div class="utility">
                         <div class="container">   
                             <h4>@(item1.RoomName)</h4>
+                            <h7>ID: @(item1.RoomID)</h7>
+                            @{ 
+                                var numberofuser =0;
+                                foreach(var item2 in Model.Room_Users)
+                                {
+                                    if(item2.RoomID == item1.RoomID)
+                                    {
+                                        numberofuser++;
+                                    }
+                                }
+                            }
                             <ul class="nav" role="tablist">
-                                <li><a href="#users2" class="active" data-toggle="tab" role="tab" aria-controls="users2" aria-selected="true">Người dùng trong phòng</a></li>
+                                <li><a href="#users2" class="active" data-toggle="tab" role="tab" aria-controls="users2" aria-selected="true">Người dùng trong phòng: @numberofuser</a></li>
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane fade active show" id="users2" role="tabpanel">
@@ -81,7 +92,8 @@
                                                                 if (currentUser == item1.RoomAdmin && currentUser != item3.UserID)
                                                                 {                                  
                                                                         <div class="dropdown">
-                                                                            <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-eva="more-vertical"></i></button>
+                                                                            <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="eva eva-more-vertical"><g data-name="Layer 2"><g data-name="more-vertical"><rect width="24" height="24" transform="rotate(-90 12 12)" opacity="0"></rect><circle cx="12" cy="12" r="2"></circle><circle cx="12" cy="5" r="2"></circle><circle cx="12" cy="19" r="2"></circle></g></g></svg>
+                                                                            </button>
                                                                             <div class="dropdown-menu dropdown-menu-right">
                                                                                 <button id="@(item3.UserID)-@(item1.RoomID)" type="button" class="dropdown-item kickbutton">
                                                                                     Kick khỏi phòng
