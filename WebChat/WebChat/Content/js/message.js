@@ -34,6 +34,16 @@ $(document).ready(function () {
         roomID = this.id;
     });
 
+    $(".InputMessage").keypress(function (event) {     
+        if (event.which == 13) {
+            event.preventDefault();
+            alert("event listened");
+            if ($("#" + roomID + "InputMessage").val() != "") {
+                $("#" + roomID + "SendButton").click();
+            }
+        }
+    });
+
     //press send button message
     $(".SendButton").click(function () {
         if (!services.OPEN) {
@@ -50,8 +60,7 @@ $(document).ready(function () {
                 message: sendingmessage,
                 id: userID
             }))
-
-            
+      
         }
     });
 
