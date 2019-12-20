@@ -120,21 +120,15 @@ namespace WebChat.Controllers.DbModuls
         public static List<Models.Room_Users> GetRoom_Users()
         {
             var AllRoomUser = from room in database.Room_Users
-                           join user in database.Users
-                           on room.UserID equals user.UserID
-                           select new
-                           {
-                               RoomID = room.RoomID,
-                               UserID = user.UserID,
-                           };
+                              join user in database.Users
+                              on room.UserID equals user.UserID
+                              select room;
 
             List<Models.Room_Users> room_UsersList = new List<Models.Room_Users>();
-
-            foreach (var item in AllRoomUser)
+            foreach(var item in AllRoomUser)
             {
-                room_UsersList.Add(new Models.Room_Users { RoomID = item.RoomID, UserID = item.UserID });
+                room_UsersList.Add(item);
             }
-
             return room_UsersList;
         }
 
