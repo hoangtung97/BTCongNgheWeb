@@ -21,28 +21,7 @@ namespace WebChat.Controllers.DbModuls
             database.SaveChanges();
         }
 
-        //thoat khoi phong 
-        public static void GetOutOfRoom(int userID, int roomID)
-        {
-            deleteUserFromRoom(userID, roomID);
-            //kiem tra quyen admin va trao quyen admin cho nguoi khac
-            var room_user = DbModuls.DbGet.getUserInRoom(roomID);
-            var room = DbModuls.DbGet.getSpecificRoom(roomID);
-            if(room.RoomAdmin == userID)
-            {
-                var roomdatabase = database.ChatRooms.Single(r => r.RoomID == roomID);
-                foreach (var item in room_user)
-                {
-                    if (item.UserID != userID)
-                    {
-                        roomdatabase.RoomAdmin = userID;
-                        break;
-                    }
-                }
-                database.SaveChanges();
-            }       
-        }
-
+        
 
         public static void deleteRoom( int roomID)
         {
