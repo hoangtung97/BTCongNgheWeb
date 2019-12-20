@@ -11,7 +11,9 @@ namespace WebChat.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Web.Mvc;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,6 +25,8 @@ namespace WebChat.Models
         }
     
         public int UserID { get; set; }
+
+        //[Remote("usernameExist", "SignUp", HttpMethod = "POST", ErrorMessage = "Username already exists")]
         public string Username { get; set; }
         public string DisplayName { get; set; }
         public string Password_ { get; set; }
