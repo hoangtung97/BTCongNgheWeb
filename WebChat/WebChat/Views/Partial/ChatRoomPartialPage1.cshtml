@@ -17,7 +17,6 @@
                                     </div>
                                 </div>
                                 <ul>
-
                                     <li><button type="button" class="btn"><i data-eva="video" data-eva-animation="pulse"></i></button></li>
                                     <li><button type="button" class="btn"><i data-eva="phone" data-eva-animation="pulse"></i></button></li>
                                     <li><button type="button" class="btn" data-toggle="modal" data-target="#compose"><i data-eva="person-add" data-eva-animation="pulse"></i></button></li>
@@ -55,31 +54,31 @@
                         <div class="container">   
                             <h4>@(item1.RoomName)</h4>
                             <h7>ID: @(item1.RoomID)</h7>
-                            @{ 
-                                var numberofuser =0;
-                                foreach(var item2 in Model.Room_Users)
-                                {
-                                    if(item2.RoomID == item1.RoomID)
-                                    {
-                                        numberofuser++;
-                                    }
-                                }
-                            }
                             <ul class="nav" role="tablist">
-                                <li><a href="#users2" class="active" data-toggle="tab" role="tab" aria-controls="users2" aria-selected="true">Người dùng trong phòng: @numberofuser</a></li>
+                                <li><a href="#users2" class="active" data-toggle="tab" role="tab" aria-controls="users2" aria-selected="true">Người dùng trong phòng</a></li>
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane fade active show" id="users2" role="tabpanel">
-                
+                                    @{ var roomadmin = false; var currentUser = 0;}
+                                    @foreach (var item2 in Model.Room_Users)
+                                    {
+                                        HttpCookie cookie = Request.Cookies["userID"];
+                                        currentUser = Int32.Parse(cookie.Value);
+                                        if (item2.AdminRight == true && item2.UserID == currentUser && item2.RoomID == item1.RoomID)
+                                        {
+                                            roomadmin = true;
+                                        }
+                                    }
                                     @foreach (var item2 in Model.Room_Users)
                                     {
                                         if (item2.RoomID == item1.RoomID)
                                         {
-                                            foreach (var item3 in Model.Users)
+                                            foreach(var item3 in Model.Users)
                                             {
                                                 if (item3.UserID == item2.UserID)
                                                 {
-                                                    <ul class="users">
+
+                                                    <ul class="users" id="asdasdd">
                                                         <li id="user@(item3.UserID)inroom@(item1.RoomID)">
                                                             <div class="status online"><img src="~/Content/img/avatars/avatar-male-1.jpg" alt="avatar"><i data-eva="radio-button-on"></i></div>
                                                             <div class="content">
@@ -87,9 +86,7 @@
                                                                 <span>@item3.Username</span>
                                                             </div>
                                                             @{
-                                                                HttpCookie cookie = Request.Cookies["userID"];
-                                                                var currentUser = Int32.Parse(cookie.Value);
-                                                                if (currentUser == item1.RoomAdmin && currentUser != item3.UserID)
+                                                                if (roomadmin == true && currentUser != item3.UserID)
                                                                 {                                  
                                                                         <div class="dropdown">
                                                                             <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="eva eva-more-vertical"><g data-name="Layer 2"><g data-name="more-vertical"><rect width="24" height="24" transform="rotate(-90 12 12)" opacity="0"></rect><circle cx="12" cy="12" r="2"></circle><circle cx="12" cy="5" r="2"></circle><circle cx="12" cy="19" r="2"></circle></g></g></svg>
@@ -106,6 +103,8 @@
                                                     </ul>
                                                 }
                                             }
+                                            
+                                            
                                         }
                                      }
 
