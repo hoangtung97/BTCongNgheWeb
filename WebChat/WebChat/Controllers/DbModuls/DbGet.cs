@@ -202,5 +202,25 @@ namespace WebChat.Controllers.DbModuls
             return userlist.ToList();
         }
         #endregion
+
+        #region Validate New User
+        public static bool usernameExist( string username)
+        {
+            var userlist = database.Users.ToList();
+
+            bool exist = userlist.Any(u => u.Username == username);
+
+            if( exist)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+
+        #endregion
     }
 }

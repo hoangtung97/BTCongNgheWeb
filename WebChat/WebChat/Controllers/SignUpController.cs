@@ -14,5 +14,12 @@ namespace WebChat.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult SignUp( string username, string displayname, string password, string checkpw)
+        {
+
+            return RedirectToAction("Main", "Main");
+        }
     }
 }
