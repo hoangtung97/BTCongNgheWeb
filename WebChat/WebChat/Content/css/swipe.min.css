@@ -89,8 +89,8 @@ hr {
     }
 
 .form-control {
-    background: #f5f5f5;
-    color: #bdbac2;
+    background: #dad9d9;
+    color: #000000;
     border: none;
     font-size: 16px;
     font-weight: 500;
@@ -98,8 +98,8 @@ hr {
 }
 
     .form-control:focus {
-        background: #f5f5f5;
-        color: #bdbac2;
+        background: #cbc8c8;
+        color: #575757;
         border: none !important;
         box-shadow: none
     }

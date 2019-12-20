@@ -176,15 +176,23 @@ namespace WebChat.Controllers.DbModuls
 
         public static List<Models.ChatRoom> searchRoom( string roomName )
         {
-            var roomList = from room in database.ChatRooms
-                           select room;
-
-            if(!String.IsNullOrEmpty(roomName))
+            if(roomName == null)
             {
-                roomList = roomList.Where(room => room.RoomName.Contains(roomName));
+                return getRoomList();
             }
+            else
+            {
+                var roomList = from room in database.ChatRooms
+                               select room;
 
-            return roomList.ToList();
+                if (!String.IsNullOrEmpty(roomName))
+                {
+                    roomList = roomList.Where(room => room.RoomName.Contains(roomName));
+                }
+
+                return roomList.ToList();
+            }
+            
         }
 
         public static List<Models.User> searchUserInRoom( string name, int roomID )
