@@ -37,8 +37,7 @@ namespace WebChat.Controllers
             WebsocketManager.Manager.updateRoomsManager();
             WebsocketManager.Manager.updateDisplayNamesMapping();
             WebsocketManager.Manager.updateMappingRooms();
-
-            //return View( Controllers.DbModuls.DbGet.getUserRoomList( currentUser.userID ));
+           
             //get all user in all room
             var Room_Users = Controllers.DbModuls.DbGet.GetRoom_Users();
             //get chat room user currently joined
@@ -50,6 +49,7 @@ namespace WebChat.Controllers
 
             return View(ViewModel1);
         }
+
 
         public ActionResult LogOut()
         {

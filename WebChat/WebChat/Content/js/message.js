@@ -37,7 +37,6 @@ $(document).ready(function () {
     $(".InputMessage").keypress(function (event) {     
         if (event.which == 13) {
             event.preventDefault();
-            alert("event listened");
             if ($("#" + roomID + "InputMessage").val() != "") {
                 $("#" + roomID + "SendButton").click();
             }
