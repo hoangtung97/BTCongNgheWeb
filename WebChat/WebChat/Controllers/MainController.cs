@@ -13,13 +13,16 @@ namespace WebChat.Controllers
 
     public class UserCredential
     {
-        public static int getUSerID()
+        public static string getUSerID()
         {
-            HttpCookie authCookie = HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName];
+            //FormsIdentity formsIdentity = HttpContext.Current.User.Identity as FormsIdentity;
+            //FormsAuthenticationTicket ticket = formsIdentity.Ticket;
 
-            FormsAuthenticationTicket authTicket = FormsAuthentication.Decrypt(authCookie.Value);
+            //return ticket.UserData;
+            HttpCookie authCookie = HttpContext.Current.Response.Cookies[FormsAuthentication.FormsCookieName];
+            FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authCookie.Value);
 
-            return Int32.Parse(authTicket.Name);
+            return ticket.UserData;
         }
         public int userID;
         public UserCredential( int? id)
@@ -35,11 +38,11 @@ namespace WebChat.Controllers
         public ActionResult Main()
         {
             HttpCookie cookie = Request.Cookies["userID"];
-            if( cookie == null)
+            if (cookie == null)
             {
                 return RedirectToAction("LogIn", "LogIn");
             }
-            
+
             UserCredential currentUser = new UserCredential(Int32.Parse(cookie.Value));
 
 
