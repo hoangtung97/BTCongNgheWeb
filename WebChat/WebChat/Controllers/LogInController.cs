@@ -27,17 +27,15 @@ namespace WebChat.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
-        public ActionResult LogIn( Models.User user)
+        [Authorize]
+        public ActionResult LogIn( string username, string password, bool rememberMe )
         {
             Models.ChatWebsiteEntities chatWebsiteEntities = new Models.ChatWebsiteEntities();
 
-            string username = Request.Form["username"];
-            string password = Request.Form["pass"];
+            //string username = Request.Form["username"];
+            //string password = Request.Form["pass"];
 
             int? validate = chatWebsiteEntities.Validate(username, password).FirstOrDefault();
-
-            
 
             string message = String.Empty;
 
@@ -51,15 +49,38 @@ namespace WebChat.Controllers
                 default:
                     {
                         //create cookies
-                        HttpCookie userIDCookie = new HttpCookie("userID", validate.ToString());
-                        HttpCookie displayNameCookie = new HttpCookie("displayName", DbModuls.DbGet.getSpecificUser( validate.Value ).DisplayName.ToString());
+                        //HttpCookie userIDCookie = new HttpCookie("userID", validate.ToString());
+                        //HttpCookie displayNameCookie = new HttpCookie("displayName", DbModuls.DbGet.getSpecificUser( validate.Value ).DisplayName.ToString());
+                        //HttpCookie logged = new HttpCookie("Logged", Boolean.TrueString);
 
-                        //FormsAuthentication.SetAuthCookie(validate.Value.ToString(), false);
+                        //set expire date
+                        var expireDate = rememberMe ? DateTime.Now.AddYears(1) : DateTime.Now.AddMinutes(20);
 
+                        //create an authenticate ticket
+                        var ticket = new FormsAuthenticationTicket(
+                            1,
+                            validate.Value.ToString(),
+                            DateTime.Now,
+                            expireDate,
+                            rememberMe,
+                            DbModuls.DbGet.getSpecificUser(validate.Value).DisplayName.ToString());
 
-                        userIDCookie.Expires.AddDays(10);
-                        HttpContext.Response.SetCookie(displayNameCookie);
-                        HttpContext.Response.SetCookie(userIDCookie);
+                        //encrypt the cookie
+                        var encrypted = FormsAuthentication.Encrypt(ticket);
+                        var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encrypted);
+
+                        //set cookie expiration time equal the ticket expiration time
+                        if( ticket.IsPersistent)
+                        {
+                            cookie.Expires = ticket.Expiration;
+                        }
+
+                        //add cookie to the list for outgoing response
+                        System.Web.HttpContext.Current.Response.Cookies.Add(cookie);
+
+                        //userIDCookie.Expires.AddDays(10);
+                        //HttpContext.Response.SetCookie(displayNameCookie);
+                        //HttpContext.Response.SetCookie(userIDCookie);
 
                         
                         //Session["UserCredential"] = new UserCredential( validate );
@@ -68,20 +89,8 @@ namespace WebChat.Controllers
             }
 
             ViewBag.Message = message;
-            return View(user);
+            return View();
         }
 
-        [ChildActionOnly]
-        public ActionResult SignUp()
-        {
-            return SignUpRedirect();
-        }
-            
-
-        //[NonAction]
-        public ActionResult SignUpRedirect()
-        {
-            return RedirectToAction("SignUp", "SignUp");
-        }
     }
 }

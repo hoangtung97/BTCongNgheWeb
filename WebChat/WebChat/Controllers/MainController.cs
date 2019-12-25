@@ -6,12 +6,21 @@ using System.Web.Mvc;
 using System.Data;
 using WebChat.Models;
 using WebChat.Models.CustomModel;
+using System.Web.Security;
 
 namespace WebChat.Controllers
 {
 
     public class UserCredential
     {
+        public static int getUSerID()
+        {
+            HttpCookie authCookie = HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName];
+
+            FormsAuthenticationTicket authTicket = FormsAuthentication.Decrypt(authCookie.Value);
+
+            return Int32.Parse(authTicket.Name);
+        }
         public int userID;
         public UserCredential( int? id)
         {
