@@ -8,9 +8,10 @@
     <Property Name="RoomName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Room_Users" Relationship="Self.FK__Room_User__RoomI__06CD04F7" FromRole="ChatRoom" ToRole="Room_Users" />
     <NavigationProperty Name="Conversations" Relationship="ChatWebsiteModel.FK__Conversat__RoomI__160F4887" FromRole="ChatRoom" ToRole="Conversation" />
-    <Property Name="RoomAdmin" Type="Int32" />
     <Property Name="RoomPW" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
     <NavigationProperty Name="User" Relationship="ChatWebsiteModel.FK__ChatRoom__RoomAd__3A4CA8FD" FromRole="ChatRoom" ToRole="User" />
+    <Property Name="RoomAdmin" Type="Int32" />
+    <NavigationProperty Name="User1" Relationship="ChatWebsiteModel.FK__ChatRoom__RoomAd__3A4CA8FD1" FromRole="ChatRoom" ToRole="User" />
   </EntityType>
   <EntityType Name="Room_Users">
     <Key>
@@ -32,12 +33,13 @@
     <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="DisplayName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Password_" Type="String" MaxLength="16" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="Avatar" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Avatar" Type="String" />
     <NavigationProperty Name="Room_Users" Relationship="Self.FK__Room_User__UserI__07C12930" FromRole="Users" ToRole="Room_Users" />
     <NavigationProperty Name="Conversations" Relationship="ChatWebsiteModel.FK__Conversat__UserI__2739D489" FromRole="User" ToRole="Conversation" />
     <NavigationProperty Name="ChatRooms" Relationship="ChatWebsiteModel.FK__ChatRoom__RoomAd__3A4CA8FD" FromRole="User" ToRole="ChatRoom" />
     <Property Name="Sex" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="ChatRooms1" Relationship="ChatWebsiteModel.FK__ChatRoom__RoomAd__3A4CA8FD1" FromRole="User" ToRole="ChatRoom" />
   </EntityType>
   <Association Name="FK__Room_User__RoomI__06CD04F7">
     <End Role="ChatRoom" Type="Self.ChatRoom" Multiplicity="1" />
@@ -126,6 +128,10 @@
       <Parameter Name="new_diagramname" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
+    <AssociationSet Name="FK__ChatRoom__RoomAd__3A4CA8FD1" Association="ChatWebsiteModel.FK__ChatRoom__RoomAd__3A4CA8FD1">
+      <End Role="User" EntitySet="Users" />
+      <End Role="ChatRoom" EntitySet="ChatRooms" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Conversation">
     <Key>
@@ -187,4 +193,16 @@
     <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
     <Property Type="Int32" Name="OwnerID" Nullable="false" />
   </ComplexType>
+  <Association Name="FK__ChatRoom__RoomAd__3A4CA8FD1">
+    <End Type="ChatWebsiteModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="ChatWebsiteModel.ChatRoom" Role="ChatRoom" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="ChatRoom">
+        <PropertyRef Name="RoomAdmin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

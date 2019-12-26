@@ -14,6 +14,7 @@
         <AssociationConnector Association="ChatWebsiteModel.FK__Conversat__RoomI__160F4887" />
         <AssociationConnector Association="ChatWebsiteModel.FK__Conversat__UserI__2739D489" />
         <AssociationConnector Association="ChatWebsiteModel.FK__ChatRoom__RoomAd__3A4CA8FD" />
+        <AssociationConnector Association="ChatWebsiteModel.FK__ChatRoom__RoomAd__3A4CA8FD1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
