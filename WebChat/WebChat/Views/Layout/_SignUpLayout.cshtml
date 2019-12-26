@@ -56,10 +56,10 @@
                 </div>
                 <div class="wrap-input100 validate-input m-b-20" data-validate="Giới tính">
                     <label for="sex1">Giới tính:</label>
-                    <select class="form-control" id="sex1">
-                        <option value="nam">Nam</option>
-                        <option value="nu">Nữ</option>
-                        <option value="khongro">Không rõ</option>
+                    <select class="form-control" id="sex1" name="sex">
+                        <option value="Nam">Nam</option>
+                        <option value="Nữ">Nữ</option>
+                        <option value="Không rõ">Không rõ</option>
                     </select>
                 
                 </div>
@@ -75,6 +75,7 @@
                         else {
                             document.getElementById('submit').disable = true;
                             document.getElementById('message').style.color = 'red'
+
                             //document.getElementById('message').style("font-size","11")
                             document.getElementById('message').innerHTML = "    Mật khẩu không khớp"
                         }

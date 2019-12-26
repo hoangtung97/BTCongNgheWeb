@@ -18,7 +18,14 @@ namespace WebChat.Controllers
                                 where user.Username == username && user.Password_ == password
                                 select user).FirstOrDefault();
 
-                return validate.UserID;
+                if( validate == null)
+                {
+                    return -1;
+                }
+                else
+                {
+                    return validate.UserID;
+                }
             }
         }
         // GET: LogIn

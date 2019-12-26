@@ -142,5 +142,19 @@ namespace WebChat.Controllers
             
         }
 
+        public ActionResult UpdateUserInfo( string updateName, string updatePassword )
+        {
+            HttpCookie cookie = Request.Cookies["userID"];
+            var userID = Int32.Parse(cookie.Value);
+
+            Models.User newUser = DbModuls.DbGet.getSpecificUser( userID );
+
+            newUser.DisplayName = updateName;
+            newUser.Password_ = updatePassword;
+
+            DbModuls.DbEdit.editUser(newUser);
+
+            return RedirectToAction("Main", "Main");
+        }
     }
 }

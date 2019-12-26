@@ -84,29 +84,57 @@
                                 </a>
                                 <div class="content collapse" id="account" data-parent="#preferences">
                                     <div class="inside">
-                                        <form class="account">
-                                            <div class="form-row">
-                                                <div class="col-sm-12">
-                                                    <div class="form-group">
-                                                        <label>Tên người dùng</label>
-                                                        <input type="text" class="form-control" placeholder="Tên người dùng" value="Hoàng Tùng">
-                                                    </div>
-                                                </div>
-                                                
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Mật khẩu mới</label>
-                                                <input type="password" class="form-control" placeholder="Nhập mật khẩu của bạn" value="3921847634095723">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Xác nhận mật khẩu mới</label>
-                                                <input type="password" class="form-control" placeholder="Nhập mật khẩu của bạn" value="3921847634095723">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Mô tả</label>
-                                                <textarea class="form-control" placeholder="Giới thiệu một chút về bản thân bạn"></textarea>
-                                            </div>
-                                            <button type="submit" class="btn primary">Lưu</button>
+                                        <form class="account" name="updateUserInfo" action="~/Main/UpdateUserInfo">
+                                            <script>
+                                                function checkpass() {
+                                                    if (document.getElementById('password').value ==
+                                                        document.getElementById('confirm').value) {
+                                                        document.getElementById('submit').disable = false;
+                                                        document.getElementById('message').style.color = 'green'
+                                                        document.getElementById('message').innerHTML = 'Mật khẩu khớp'
+                                                    }
+                                                    else {
+                                                        document.getElementById('submit').disable = true;
+                                                        document.getElementById('message').style.color = 'red'
+
+                                                        //document.getElementById('message').style("font-size","11")
+                                                        document.getElementById('message').innerHTML = "    Mật khẩu không khớp"
+                                                    }
+                                                }
+                                            </script>
+                                            @{
+                                                foreach (var item in Model.Users)
+                                                {
+                                                    if (item.UserID == UserId)
+                                                    {
+                                                        <div class="form-row">
+                                                            <div class="col-sm-12">
+                                                                <div class="form-group">
+                                                                    <label>Tên người dùng</label>
+                                                                    <input type="text" name="updateName" class="form-control" placeholder="Tên người dùng" value=@item.DisplayName>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Mật khẩu mới</label>
+                                                            <input type="password" id="password" name="updatePassword" class="form-control" placeholder="Nhập mật khẩu của bạn" value=@item.Password_ onkeyup="checkpass()">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Xác nhận mật khẩu mới</label>
+                                                            <input type="password" id="confirm" name="updatePassword" class="form-control" placeholder="Nhập mật khẩu của bạn" value=@item.Password_ onkeyup="checkpass()">
+                                                            <span id="message" style="text-align:center; margin-left:15px"></span>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Mô tả</label>
+                                                            <textarea class="form-control" placeholder="Giới thiệu một chút về bản thân bạn"></textarea>
+                                                        </div>
+                                                    }
+                                                }
+
+                                            }
+
+                                            <button type="submit" id="submit" class="btn primary">Lưu</button>
                                         </form>
                                     </div>
                                 </div>
