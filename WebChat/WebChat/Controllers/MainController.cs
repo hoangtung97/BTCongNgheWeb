@@ -142,7 +142,8 @@ namespace WebChat.Controllers
             
         }
 
-        public ActionResult UpdateUserInfo( string updateName, string updatePassword )
+        [HttpPost]
+        public ActionResult UpdateUserInfo( string updateName, string updatePassword, HttpPostedFileBase file )
         {
             HttpCookie cookie = Request.Cookies["userID"];
             var userID = Int32.Parse(cookie.Value);
@@ -151,6 +152,12 @@ namespace WebChat.Controllers
 
             newUser.DisplayName = updateName;
             newUser.Password_ = updatePassword;
+            if( file != null)
+            {
+                file.SaveAs(HttpContext.Server.MapPath("~/Content/img/avatars/") + file.FileName);
+
+                newUser.Avatar = file.FileName;
+            }
 
             DbModuls.DbEdit.editUser(newUser);
 

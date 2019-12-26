@@ -57,7 +57,7 @@
                     <div class="settings tab-pane fade" id="settings" role="tabpanel">
                         <div class="user">
                             <label>
-                                <input type="file" accept=".jpg,.png,.jepg">
+                                @*<input type="file" accept=".jpg,.png,.jepg">*@
                                 <img src="@useravatar" alt="avatar">
                             </label>
                             <div class="content">
@@ -89,7 +89,7 @@
                                 </a>
                                 <div class="content collapse" id="account" data-parent="#preferences">
                                     <div class="inside">
-                                        <form class="account" name="updateUserInfo" action="~/Main/UpdateUserInfo">
+                                        <form class="account" name="updateUser" action="~/Main/UpdateUserInfo">
                                             <script>
                                                 function checkpass() {
                                                     if (document.getElementById('password').value ==
@@ -131,8 +131,10 @@
                                                             <span id="message" style="text-align:center; margin-left:15px"></span>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label>Mô tả</label>
-                                                            <textarea class="form-control" placeholder="Giới thiệu một chút về bản thân bạn"></textarea>
+                                                            <label>Thay đổi anh đại diện</label>
+                                                            <input type="file" id="imgPath" title="Chọn ảnh" name="file" accept=".jpg,.png,.jepg" value=@item.Avatar>
+                                                            
+                                                            @*<textarea class="form-control" placeholder="Giới thiệu một chút về bản thân bạn"></textarea>*@
                                                         </div>
                                                     }
                                                 }
