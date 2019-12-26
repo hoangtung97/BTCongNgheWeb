@@ -33,7 +33,13 @@
                 <ul class="nav" role="tablist">
                     <li><a href="#conversations" class="active" data-toggle="tab" role="tab" aria-controls="conversations" aria-selected="true"><i data-eva="message-square" data-eva-animation="pulse"></i></a></li>
                     <li><a href="#settings" data-toggle="tab" role="tab" aria-controls="settings" aria-selected="false"><i data-eva="settings" data-eva-animation="pulse"></i></a></li>
-                    <li><button type="button" class="btn"><img src="~/Content/img/avatars/avatar-male-1.jpg" alt="avatar"><i data-eva="radio-button-on"></i></button></li>
+                    @{ 
+                        HttpCookie cookie = Request.Cookies["userID"];
+                        var userid = Int32.Parse(cookie.Value);
+                        var usermodel = Model.Users.Where(m => m.UserID == userid);
+                        var useravatar = usermodel.First().Avatar;
+                    }
+                    <li><button type="button" class="btn"><img src="@useravatar" alt="avatar"><i data-eva="radio-button-on"></i></button></li>
                 </ul>
             </div>
         </nav>
@@ -52,11 +58,10 @@
                         <div class="user">
                             <label>
                                 <input type="file" accept=".jpg,.png,.jepg">
-                                <img src="~/Content/img/avatars/avatar-male-1.jpg" alt="avatar">
+                                <img src="@useravatar" alt="avatar">
                             </label>
                             <div class="content">
-                                @{
-                                    HttpCookie cookie = Request.Cookies["userID"];
+                                @{ 
                                     var UserId = Int32.Parse(cookie.Value);
                                     foreach (var item in Model.Users)
                                     {
