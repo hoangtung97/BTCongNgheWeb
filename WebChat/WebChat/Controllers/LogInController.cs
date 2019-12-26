@@ -5,17 +5,41 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using System.Web.Security;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace WebChat.Controllers
 {
     public class LogInController : Controller
     {
+        private static MD5 md5Hash = MD5.Create();
+        static private string GetMd5Hash(string input)
+        {
+
+            // Convert the input string to a byte array and compute the hash.
+            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+
+            // Create a new Stringbuilder to collect the bytes
+            // and create a string.
+            StringBuilder sBuilder = new StringBuilder();
+
+            // Loop through each byte of the hashed data 
+            // and format each one as a hexadecimal string.
+            for (int i = 0; i < data.Length; i++)
+            {
+                sBuilder.Append(data[i].ToString("x2"));
+            }
+
+            // Return the hexadecimal string.
+            return sBuilder.ToString();
+        }
         private int? Validate( string username, string password )
         {
+            string new_pass = GetMd5Hash(password);
             using( WebChat.Models.ChatWebsiteEntities database = new Models.ChatWebsiteEntities())
             {
                 var validate = (from user in database.Users
-                                where user.Username == username && user.Password_ == password
+                                where user.Username == username && user.Password_ == new_pass
                                 select user).FirstOrDefault();
 
                 if( validate == null)

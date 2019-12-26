@@ -7,6 +7,8 @@ using System.Data;
 using WebChat.Models;
 using WebChat.Models.CustomModel;
 using System.Web.Security;
+using System.Text;
+using System.Security.Cryptography;
 
 namespace WebChat.Controllers
 {
@@ -108,11 +110,31 @@ namespace WebChat.Controllers
         }
 
         //create room
-        
+        private static MD5 md5Hash = MD5.Create();
+        static private string GetMd5Hash(string input)
+        {
+
+            // Convert the input string to a byte array and compute the hash.
+            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+
+            // Create a new Stringbuilder to collect the bytes
+            // and create a string.
+            StringBuilder sBuilder = new StringBuilder();
+
+            // Loop through each byte of the hashed data 
+            // and format each one as a hexadecimal string.
+            for (int i = 0; i < data.Length; i++)
+            {
+                sBuilder.Append(data[i].ToString("x2"));
+            }
+
+            // Return the hexadecimal string.
+            return sBuilder.ToString();
+        }
         public ActionResult CreateRoom()
         {
             string roomname = Request["roomname"];
-            string roompw = Request["roompw"];
+            string roompw = GetMd5Hash(Request["roompw"]);
 
             HttpCookie cookie = Request.Cookies["userID"];
             var adminId = Int32.Parse(cookie.Value);
@@ -125,7 +147,7 @@ namespace WebChat.Controllers
         public ActionResult JoinRoom()
         {
             int roomID = Int32.Parse(Request["joinroomID"]);
-            string roompw = Request["joinroompw"];
+            string roompw = GetMd5Hash(Request["joinroompw"]);
 
             HttpCookie cookie = Request.Cookies["userID"];
             var userID = Int32.Parse(cookie.Value);

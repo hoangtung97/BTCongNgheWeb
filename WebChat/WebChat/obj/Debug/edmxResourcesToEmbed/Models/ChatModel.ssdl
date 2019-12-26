@@ -7,7 +7,7 @@
     <Property Name="RoomID" Type="int" Nullable="false" />
     <Property Name="RoomName" Type="nvarchar" MaxLength="50" />
     <Property Name="RoomAdmin" Type="int" />
-    <Property Name="RoomPW" Type="char" MaxLength="16" />
+    <Property Name="RoomPW" Type="char" MaxLength="32" />
   </EntityType>
   <EntityType Name="Conversations">
     <Key>
@@ -37,8 +37,8 @@
     <Property Name="UserID" Type="int" Nullable="false" />
     <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="DisplayName" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Password_" Type="char" MaxLength="16" Nullable="false" />
-    <Property Name="Avatar" Type="varbinary(max)" />
+    <Property Name="Password_" Type="char" MaxLength="32" Nullable="false" />
+    <Property Name="Avatar" Type="nvarchar(max)" />
     <Property Name="Sex" Type="nvarchar" MaxLength="50" />
     <Property Name="DateOfBirth" Type="date" />
   </EntityType>
@@ -54,7 +54,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Conversat__RoomI__160F4887">
+  <Association Name="FK__Conversat__RoomI__3E52440B">
     <End Role="ChatRoom" Type="Self.ChatRoom" Multiplicity="1" />
     <End Role="Conversations" Type="Self.Conversations" Multiplicity="*" />
     <ReferentialConstraint>
@@ -102,41 +102,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
   <Function Name="Log_In" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="username" Type="nvarchar" Mode="In" />
     <Parameter Name="password" Type="char" Mode="In" />
   </Function>
-  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-    <Parameter Name="version" Type="int" Mode="In" />
-    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-  </Function>
-  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-    <Parameter Name="version" Type="int" Mode="In" />
-    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-  </Function>
-  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-  </Function>
-  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-  </Function>
-  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-  </Function>
-  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-  </Function>
-  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="ChatWebsiteModelStoreContainer">
     <EntitySet Name="ChatRoom" EntityType="Self.ChatRoom" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Conversations" EntityType="Self.Conversations" Schema="dbo" store:Type="Tables" />
@@ -146,7 +115,7 @@
       <End Role="Users" EntitySet="Users" />
       <End Role="ChatRoom" EntitySet="ChatRoom" />
     </AssociationSet>
-    <AssociationSet Name="FK__Conversat__RoomI__160F4887" Association="Self.FK__Conversat__RoomI__160F4887">
+    <AssociationSet Name="FK__Conversat__RoomI__3E52440B" Association="Self.FK__Conversat__RoomI__3E52440B">
       <End Role="ChatRoom" EntitySet="ChatRoom" />
       <End Role="Conversations" EntitySet="Conversations" />
     </AssociationSet>
