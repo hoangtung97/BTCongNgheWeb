@@ -92,9 +92,9 @@ namespace WebChat.Controllers
 
                         //HttpCookie userIDCookie = new HttpCookie("userID", tempUserID);
 
-                        //userIDCookie.Expires.AddDays(10);
-                        //HttpContext.Response.SetCookie(displayNameCookie);
-                        //HttpContext.Response.SetCookie(userIDCookie);
+                        userIDCookie.Expires.AddDays(10);
+                        HttpContext.Response.SetCookie(displayNameCookie);
+                        HttpContext.Response.SetCookie(userIDCookie);
 
 
                         //Session["UserCredential"] = new UserCredential( validate );
