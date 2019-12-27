@@ -186,10 +186,11 @@ namespace WebChat.Controllers
                 //string extension = Path.GetExtension(file.FileName);
 
                 //filename = filename + DateTime.Now.ToString() + extension;
-                string filepath = HttpContext.Server.MapPath("~/Content/img/avatars/") + file.FileName + DateTime.Now.ToString();
+                var Timestamp = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
+                string filepath = HttpContext.Server.MapPath("~/Content/img/avatars/") + Timestamp.ToString() + file.FileName;
                 file.SaveAs( filepath );
 
-                newUser.Avatar = filepath;
+                newUser.Avatar = "/Content/img/avatars/" + Timestamp.ToString() + file.FileName;
             }
 
             DbModuls.DbEdit.editUser(newUser);
