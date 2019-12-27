@@ -9,6 +9,7 @@ using WebChat.Models.CustomModel;
 using System.Web.Security;
 using System.Text;
 using System.Security.Cryptography;
+using System.IO;
 
 namespace WebChat.Controllers
 {
@@ -173,12 +174,22 @@ namespace WebChat.Controllers
             Models.User newUser = DbModuls.DbGet.getSpecificUser( userID );
 
             newUser.DisplayName = updateName;
-            newUser.Password_ = updatePassword;
+
+            if( updatePassword != "")
+            {
+                newUser.Password_ = GetMd5Hash(updatePassword);
+            }
+            
             if( file != null)
             {
-                file.SaveAs(HttpContext.Server.MapPath("~/Content/img/avatars/") + file.FileName);
+                //string filename = Path.GetFileNameWithoutExtension(file.FileName);
+                //string extension = Path.GetExtension(file.FileName);
 
-                newUser.Avatar = file.FileName;
+                //filename = filename + DateTime.Now.ToString() + extension;
+                string filepath = HttpContext.Server.MapPath("~/Content/img/avatars/") + file.FileName + DateTime.Now.ToString();
+                file.SaveAs( filepath );
+
+                newUser.Avatar = filepath;
             }
 
             DbModuls.DbEdit.editUser(newUser);

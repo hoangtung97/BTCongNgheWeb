@@ -40,8 +40,14 @@ namespace WebChat.Controllers.DbModuls
                         select last_id;
 
             //Models.User user = new Models.User();
-
-            newUser.UserID = idnum.Max( m => m.UserID ) + 1;
+            if( idnum != null)
+            {
+                newUser.UserID = idnum.Max(m => m.UserID) + 1;
+            }
+            else
+            {
+                newUser.UserID = 1;
+            }
 
             //user.UserID = id;
             //user.Username = username;

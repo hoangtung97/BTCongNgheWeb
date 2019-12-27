@@ -89,7 +89,7 @@
                                 </a>
                                 <div class="content collapse" id="account" data-parent="#preferences">
                                     <div class="inside">
-                                        <form class="account" name="updateUser" action="~/Main/UpdateUserInfo">
+                                        <form class="account" name="updateUser" action="~/Main/UpdateUserInfo" method="post" enctype="multipart/form-data">
                                             <script>
                                                 function checkpass() {
                                                     if (document.getElementById('password').value ==
@@ -123,11 +123,11 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label>Mật khẩu mới</label>
-                                                            <input type="password" id="password" name="updatePassword" class="form-control" placeholder="Nhập mật khẩu của bạn" value=@item.Password_ onkeyup="checkpass()">
+                                                            <input type="password" id="password" name="updatePassword" class="form-control" placeholder="Nhập mật khẩu của bạn" onkeyup="checkpass()">
                                                         </div>
                                                         <div class="form-group">
                                                             <label>Xác nhận mật khẩu mới</label>
-                                                            <input type="password" id="confirm" name="updatePassword" class="form-control" placeholder="Nhập mật khẩu của bạn" value=@item.Password_ onkeyup="checkpass()">
+                                                            <input type="password" id="confirm" name="updatePassword" class="form-control" placeholder="Nhập mật khẩu của bạn" onkeyup="checkpass()">
                                                             <span id="message" style="text-align:center; margin-left:15px"></span>
                                                         </div>
                                                         <div class="form-group">
