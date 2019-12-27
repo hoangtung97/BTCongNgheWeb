@@ -92,6 +92,9 @@ namespace WebChat.Controllers
         public JsonResult GetConversations(int room)
         {
             List<Models.CustomModel.CustomConversations> getUserConversations = DbModuls.DbGet.getUserConversations(room);
+            WebsocketManager.Manager.updateRoomsManager();
+            WebsocketManager.Manager.updateDisplayNamesMapping();
+            WebsocketManager.Manager.updateMappingRooms();
             return Json(getUserConversations, JsonRequestBehavior.AllowGet);
             
         }
@@ -102,12 +105,20 @@ namespace WebChat.Controllers
         //delelte user in room
         public void DeleteUserInRoom(int userid, int kickuserid, int roomid)
         {
+
             var adright = DbModuls.DbDelete.kickUser(userid, kickuserid, roomid);
+            WebsocketManager.Manager.updateRoomsManager();
+            WebsocketManager.Manager.updateDisplayNamesMapping();
+            WebsocketManager.Manager.updateMappingRooms();
         }
         //leave room
         public void ExitRoom(int userid, int roomid)
         {
             DbModuls.DbDelete.leaveRoom(userid,roomid);
+            WebsocketManager.Manager.updateRoomsManager();
+            WebsocketManager.Manager.updateDisplayNamesMapping();
+            WebsocketManager.Manager.updateMappingRooms();
+
         }
 
         //create room

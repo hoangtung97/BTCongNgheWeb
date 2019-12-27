@@ -13,7 +13,7 @@ namespace WebChat.Controllers.DbModuls
         //Tao phong
         public static void addRoom( string roomName, int adminID, string roomPW )
         {
-            var idnum = from last_id in database.Room_Users
+            var idnum = from last_id in database.ChatRooms
                         select last_id;
 
             Models.ChatRoom room = new Models.ChatRoom();
