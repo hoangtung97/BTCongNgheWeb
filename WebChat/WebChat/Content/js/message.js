@@ -50,7 +50,7 @@ $(document).ready(function () {
             services = new WebSocket(url);
         }
         if ($("#" + roomID + "InputMessage").val() != "") {
-            sendingmessage = $("#" + roomID + "InputMessage").val();
+            sendingmessage = btoa($("#" + roomID + "InputMessage").val());
             nametodisplay = username;
             services.send(JSON.stringify({
                 action: 'SEND_MESS',
@@ -76,7 +76,7 @@ $(document).ready(function () {
         var addli = document.createElement("li");
         var adddiv = document.createElement("div");
         adddiv.classList.add("Out");
-        adddiv.innerHTML = '<div class="contentOut"><div class="message"><div class="bubbleOut"><p class="pOut">' + message + '</p></div></div></div>';
+        adddiv.innerHTML = '<div class="contentOut"><div class="message"><div class="bubbleOut"><p class="pOut">' + atob(message) + '</p></div></div></div>';
         addli.appendChild(adddiv);
         $("#" + roomID + "InputMessage").val("");
         $(addli).appendTo("#" + roomid + "message-container");
@@ -87,7 +87,7 @@ $(document).ready(function () {
         var addli = document.createElement("li");
         var adddiv = document.createElement("div");
         adddiv.classList.add("In");
-        adddiv.innerHTML = '<span>' + name + '</span><div class="contentIn"><div class="message"><div class="bubbleIn"><p class ="pIn">' + message + '</p></div></div></div>';
+        adddiv.innerHTML = '<span>' + name + '</span><div class="contentIn"><div class="message"><div class="bubbleIn"><p class ="pIn">' + atob(message) + '</p></div></div></div>';
         addli.appendChild(adddiv);
         $(addli).appendTo("#" + roomid + "message-container");
     }
