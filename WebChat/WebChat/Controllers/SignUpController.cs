@@ -67,6 +67,7 @@ namespace WebChat.Controllers
                 newUser.Sex = sex;
                 newUser.DateOfBirth = DateTime.Parse(birthdate);
                 newUser.Password_ = GetMd5Hash(password);
+                newUser.Avatar = "/Content/img/avatars/default_icon.png";
 
                 DbModuls.DbAdd.addUser(newUser);
             }
