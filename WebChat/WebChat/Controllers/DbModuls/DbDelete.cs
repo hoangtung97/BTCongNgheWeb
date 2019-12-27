@@ -92,7 +92,8 @@ namespace WebChat.Controllers.DbModuls
 
             //if the user is the last user in the room
             //delete the room
-            var usernum = database.Room_Users.Count();
+            var usernum = ( from room in database.Room_Users
+                            where room.RoomID == roomID select room).Count();
 
             if( usernum != 0)
             {

@@ -1,7 +1,7 @@
 ﻿@model WebChat.Models.ViewModel
 
 
-<div class="tab-content">
+<div class="tab-content" id="ChatRoomPartialPage">
         @foreach (var item1 in Model.ChatRoom)
         {
             <div class="tab-pane fade" id="chat@(item1.RoomID)" role="tabpanel">
@@ -51,7 +51,8 @@
                     </div>
                     <!-- Start of Utility -->
                     <div class="utility">
-                        <div class="container">   
+                        <div class="container">
+                            <button type="button" class="close" data-utility="open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="eva eva-close"><g data-name="Layer 2"><g data-name="close"><rect width="24" height="24" transform="rotate(180 12 12)" opacity="0"></rect><path d="M13.41 12l4.3-4.29a1 1 0 1 0-1.42-1.42L12 10.59l-4.29-4.3a1 1 0 0 0-1.42 1.42l4.3 4.29-4.3 4.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l4.29-4.3 4.29 4.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"></path></g></g></svg></button>
                             <h4>@(item1.RoomName)</h4>
                             <h7>ID: @(item1.RoomID)</h7>
                             <ul class="nav" role="tablist">
