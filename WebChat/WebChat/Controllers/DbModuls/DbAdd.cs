@@ -18,7 +18,16 @@ namespace WebChat.Controllers.DbModuls
 
             Models.ChatRoom room = new Models.ChatRoom();
 
-            int id = idnum.Max( m => m.RoomID ) + 1;
+            int id;
+
+            if( idnum.Count() != 0)
+            {
+                id = idnum.Max(m => m.RoomID) + 1;
+            }
+            else
+            {
+                id = 2;
+            }
 
             room.RoomID = id;
             room.RoomName = roomName;
@@ -26,11 +35,10 @@ namespace WebChat.Controllers.DbModuls
             room.RoomAdmin = adminID;
 
             database.ChatRooms.Add(room);
-            database.SaveChanges();
 
             //khi them phong tuc la admin cung la mot thanh vien cua phong do
             addUserToRoom(adminID, id, true);
-
+            database.SaveChanges();
         }
 
         //Them nguoi dung
@@ -40,7 +48,7 @@ namespace WebChat.Controllers.DbModuls
                         select last_id;
 
             //Models.User user = new Models.User();
-            if( idnum != null)
+            if( idnum.Count() != 0)
             {
                 newUser.UserID = idnum.Max(m => m.UserID) + 1;
             }
